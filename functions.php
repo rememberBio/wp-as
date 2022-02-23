@@ -7,6 +7,16 @@
  * @package remmember
  */
 
+define('WP_THEME_URI', get_template_directory_uri());
+ 
+function url(){
+	return sprintf(
+		"%s://%s",
+		isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+		isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : ""
+	);
+}
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -146,6 +156,13 @@ function remmember_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	if(is_single() && 'remmember_item' == get_post_type()) { 
+		wp_enqueue_script( 'qr_js', 'https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js');
+	    wp_enqueue_style ( 'remmember-item', WP_THEME_URI . '/assets/css/single-remmember.css' );
+
+	}
+
 }
 add_action( 'wp_enqueue_scripts', 'remmember_scripts' );
 
@@ -176,3 +193,52 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+//Add custom type
+function create_posttypes() {
+	//post type
+	///remmeber items
+	register_post_type( 'remmember_item',
+	// CPT Options
+		array(
+			'labels' => array(
+				'name' => __( 'remmember_items' ),
+				'singular_name' => __( 'remmember_item' )
+			),
+			'public' => true,
+			'has_archive' => true,
+			'rewrite' => array('slug' => 'remmember_items'),
+			'show_in_rest' => true,
+			'taxonomies'          => array('categories' )
+		)
+	);
+  
+  }
+  // Hooking up our function to theme setup
+  add_action( 'init', 'create_posttypes' );
+
+
+  
+//Add option page
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Theme General Settings',
+		'menu_title'	=> 'Theme Settings',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+}
+
+//Allow SVG
+function cc_mime_types($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+  }
+  add_filter('upload_mimes', 'cc_mime_types');
+  /**
+   * uncommented only when upload svg to media, because is security issue 
+   * !!!!
+   */
+  define(ALLOW_UNFILTERED_UPLOADS, true);
