@@ -12,7 +12,7 @@
  $url = get_permalink();
  $name = get_the_title();
 
- 
+$current_tab = "";
 if(isset($_GET["tab"])) { 
     $current_tab = $_GET["tab"];
 }
@@ -51,6 +51,11 @@ if(isset($_GET["tab"])) {
 						<li id="menu-item-6" class="menu-item <?php if($current_tab == 'places-of-commemoration') echo("current"); ?>"><a href="<?= $url ?>?tab=places-of-commemoration">Places Of Commemoration</a></li>
 						<li id="menu-item-7" class="menu-item <?php if($current_tab == 'candle-and-flowers') echo("current"); ?>"><a href="<?= $url ?>?tab=candle-and-flowers">Candle And Flowers</a></li>
 						<li id="menu-item-8" class="menu-item <?php if($current_tab == 'the-grave') echo("current"); ?>"><a href="<?= $url ?>?tab=the-grave">The Grave</a></li>
+					<?php 
+					$count_row = 1;
+					foreach (get_field("header-links","option") as $header_link) { ?>
+						<li id="menu-item-<?= $count_row ?>" class="menu-item <?php if($current_tab == $header_link['tab-name']) echo("current"); ?>"><a href="<?= $url ?>"><?= $header_link['text'] ?></a></li>
+					<?php $count_row  = $count_row  + 1; } ?>
 					</ul>
 				</div>
 				
