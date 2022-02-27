@@ -37,7 +37,7 @@ if(isset($_GET["tab"])) {
 	<header id="masthead" class="site-header remmember-item">
 		<div class="wrap-header-content">
 			<div class="site-branding">
-				<img src="<?php the_field("remmember_item_header_logo","option"); ?>" alt="">
+				<img src="<?php the_field("remmember_page_header_logo","option"); ?>" alt="">
 				
 			</div>
 			<nav id="site-navigation" class="main-navigation">
@@ -53,7 +53,8 @@ if(isset($_GET["tab"])) {
 						<li id="menu-item-8" class="menu-item <?php if($current_tab == 'the-grave') echo("current"); ?>"><a href="<?= $url ?>?tab=the-grave">The Grave</a></li>
 					<?php 
 					$count_row = 1;
-					foreach (get_field("header-links","option") as $header_link) { ?>
+					$header_links = get_field("header-links","option");
+					foreach ( $header_links as $header_link) { ?>
 						<li id="menu-item-<?= $count_row ?>" class="menu-item <?php if($current_tab == $header_link['tab-name']) echo("current"); ?>"><a href="<?= $url ?>"><?= $header_link['text'] ?></a></li>
 					<?php $count_row  = $count_row  + 1; } ?>
 					</ul>

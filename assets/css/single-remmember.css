@@ -1,7 +1,9 @@
 .menu-menu-1-container a {
     font-size: 15px;
 }
-
+.mobile-only {
+    display: none !important;
+}
 
 .menu-menu-1-container li.current a {color: var(--custom-light-blue);border-bottom: 3px solid var(--custom-light-blue);}
 
@@ -18,6 +20,7 @@ header#masthead {
     left: 0;
     right: 0;
     background-color: white;
+    box-shadow: 0px 3px 6px #00000029;
 }
 
 ul#primary-menu {
@@ -120,7 +123,7 @@ form#registerForm {
 .remmber-footer-count-of-remmbers {
     box-shadow: 3px -3px 6px #00000029;
     position: absolute;
-    height: 255px;
+    height: 215px;
     text-align: center;
     background-color: var(--custom-light-blue);
     display: flex;
@@ -195,6 +198,138 @@ form#registerForm button[type=submit] img {
     width: 100%;
     height: auto;
 }
+.wrap-remmember-page {
+    padding: 91px 0px 106px;
+}
+
+section h1 {
+    font-family: 'Rubik Medium';
+    font-size: 25px;
+    margin: 0;
+    padding-left: 40px;
+    border-bottom: 2px solid var(--custom-blue);
+    color: var(--custom-blue);
+    padding-bottom: 4px;
+    padding-top: 53px;
+    margin-bottom: 31px;
+    font-weight: normal;
+}
+
+.wrap-remmember-page section {
+    width: 75%;
+    margin: auto;
+}
+
+section.about .first-part .wrap-content {
+    display: flex;
+    gap: 3%;
+    padding: 0px 30px;
+}
+
+section.about .first-part .wrap-content>.text {width: 59%;}
+
+section.about .first-part .wrap-content p {
+    margin: 0;
+}
+
+section.about .wrap-dates .date {
+    width: 150px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 2px 2px 10px #00000029;
+    border-radius: 15px;
+    height: 68px;
+    color: var(--custom-blue);
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section.about .wrap-dates .date .year {
+    font-weight: bold;
+}
+
+section.about .wrap-dates {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+section.about .second-part .circle {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+section.about .second-part {
+    display: flex;
+    padding-left: 30px;
+    width: 35%;
+    justify-content: space-between;
+}
+
+section.about .second-part .circle img {
+    width: 60px;
+    height: 60px;
+}
+
+section.about .second-part .circle h2 {
+    margin: 20px auto 4px auto;
+    font-size: 16px;
+}
+
+section.about .second-part .circle span {
+    font-size: 16px;
+}
+
+section.about .third-part {
+    padding: 0px 30px;
+    margin-top: 55px;
+}
+
+section.about .third-part .numbers-line {
+    display: flex;
+    font-size: 14px;
+    color: var(--custom-blue);
+    position: relative;
+    border-top: 1px solid var(--custom-blue);
+    padding-top: 15px;
+    padding-bottom: 57px;
+    gap: 10px;
+}
+
+section.about .third-part .numbers-line .wrap-year {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    min-width: 100px;
+}
+
+section.about .third-part .numbers-line .wrap-year>.year {
+    font-weight: bold;
+    text-align: center;
+}
+
+section.about .third-part .numbers-line .wrap-year:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    background-color: var(--custom-light-blue);
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 50%;
+    top: -7px;
+}
+
+section.about .third-part .numbers-line .wrap-year span {
+    line-height: 1.2;
+    text-align: left;
+    max-width: 50px;
+}
 @media screen and (min-width: 1800px) { 
     form#registerForm button[type=submit] img {
         width: auto;
@@ -205,6 +340,12 @@ form#registerForm button[type=submit] img {
 /* End Footer */
 @media screen and (max-width: 1100px) {
 
+    .mobile-only {
+        display: flex !important;
+    }
+    .desktop-only {
+        display:none !important;
+    }
 	nav#site-navigation.toggled {
         display: block;
     }
@@ -298,7 +439,7 @@ form#registerForm button[type=submit] img {
         border-radius: 21px 21px 0px 0px;
         min-width: 94px;
         width: max-content;
-        left: 9%;
+        left: 5%;
         height: 135px;
         padding: 0px 10px 0px;
         align-items: center;
@@ -306,8 +447,8 @@ form#registerForm button[type=submit] img {
     }
    
     footer.site-footer.remmember-item-footer.main-tab {
-        padding-left: calc(9% + 94px + 7%);
-        padding-right: 9%;
+        padding-left: calc(5% + 94px + 10%);
+        padding-right: 5%;
         height: max-content;
         padding-bottom: 19px;
     }
@@ -357,6 +498,120 @@ form#registerForm button[type=submit] img {
     
 
     /* End Footer*/
+    /* About */
+    .wrap-remmember-page {
+        padding: 32px 0px 50px;
+    }
+    
+    section h1 {
+        padding-top: 24px;
+        font-size: 20px;
+        padding-left: 16px;
+        margin-bottom: 10px;
+        padding-bottom: 0;
+    }
+    
+    .wrap-remmember-page section {
+        width: unset;
+        padding: 0px 17px;
+    }
+    
+    section.about .third-part, section.about .second-part, section.about .first-part .wrap-content {
+        padding: 0px 17px!important;
+    }
+    
+    .first-part {}
+    
+    section.about .first-part .wrap-content>.text {
+        width: unset;
+        font-size: 12px;
+        line-height: 1.3;
+    }
+    
+    section.about .first-part .wrap-content {
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+        display: block;
+        font-size: 12px;
+    }
+    
+    section.about .first-part .wrap-content .wrap-desc>img {
+        width: 201px;
+    }
+    
+    section.about .wrap-dates {
+        margin-top: 12px;
+        gap: 8px;
+    }
+    
+    section.about .wrap-dates .date {
+        height: 47px;
+        width: 92px;
+        font-size: 12px;
+    }
+    
+    section.about .first-part .wrap-content .wrap-desc {float: right;padding: 0px 12px 12px;}
+    
+    section.about .second-part .circle img {
+        width: 32px;
+        height: auto;
+    }
+    
+    section.about .second-part .circle h2 {
+        margin-top: 7px;
+        font-size: 12px;
+        margin-bottom: 3px;
+    }
+    
+    section.about .second-part .circle span {
+        font-size: 12px;
+    }
+    
+    section.about .second-part {
+        width: unset;
+        justify-content: flex-start;
+        gap: 30px;
+    }
+    
+    section.about .third-part {
+        margin-top: 25px;
+        margin-bottom: 80px;
+    }
+    
+    section.about .third-part .numbers-line {
+        flex-direction: column;
+        border-top: none;
+        border-left: 1px solid var(--custom-blue);
+        padding-left: 29px;
+        padding-top: 10px;
+        gap: 25px;
+        font-size: 12px;
+        height: 450px;
+    }
+    
+    
+    section.about .third-part .numbers-line .wrap-year:before {
+        top: 0;
+        left: -37px;
+    }
+    
+    section.about .third-part .numbers-line .wrap-year {
+        position: relative;
+        min-width: unset;
+        min-height: max-content;
+    }
+    
+    section.about .third-part .numbers-line .wrap-year span {
+        max-width: unset;
+    }
+    
+    
+    
+    section.about .first-part .wrap-content>.text.mobile-only {
+        display: block !important;
+    }
+    /* About */
 
 }
 

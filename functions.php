@@ -157,7 +157,7 @@ function remmember_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	if(is_single() && 'remmember_item' == get_post_type()) { 
+	if(is_single() && 'remmember_page' == get_post_type()) { 
 		wp_enqueue_script( 'qr_js', 'https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js');
 	    wp_enqueue_style ( 'remmember-item', WP_THEME_URI . '/assets/css/single-remmember.css' );
 
@@ -199,16 +199,16 @@ require  get_template_directory() . '/inc/remmember-item-functions.php';
 function create_posttypes() {
 	//post type
 	///remmeber items
-	register_post_type( 'remmember_item',
+	register_post_type( 'remmember_page',
 	// CPT Options
 		array(
 			'labels' => array(
-				'name' => __( 'remmember_items' ),
-				'singular_name' => __( 'remmember_item' )
+				'name' => __( 'remmember_pages' ),
+				'singular_name' => __( 'remmember_page' )
 			),
 			'public' => true,
 			'has_archive' => true,
-			'rewrite' => array('slug' => 'remmember_items'),
+			'rewrite' => array('slug' => 'remmember_pages'),
 			'show_in_rest' => true,
 			'taxonomies'          => array('categories' )
 		)

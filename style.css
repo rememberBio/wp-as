@@ -87,6 +87,12 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	font-weight: bold;
 }
 
+@font-face {
+	font-family: "Rubik Medium";
+	src: url(/wp-content/themes/remmember/assets/fonts/Rubik-Medium.ttf);
+	font-weight: normal;
+}
+
 html {
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;

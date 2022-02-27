@@ -27,7 +27,7 @@ if(isset($_POST['email']))
 	{ 
 		$email = $_POST['email'];
 		if($email != "" && strpos($email, "@") && strpos($email, ".") ) {
-			register_email_to_spec_remmember_item($email,$post_id);
+			register_email_to_spec_remmember_page($email,$post_id);
 		}
 	}
 
@@ -43,7 +43,7 @@ if(isset($_POST['email']))
 		</div>
 		<?php if($current_tab == "") { ?>
 		<div class="remmber-footer-count-of-remmbers">
-			<span class="num"><?php echo get_register_email_to_spec_remmember_item($post_id); ?></span>
+			<span class="num"><?php echo get_register_email_to_spec_remmember_page($post_id); ?></span>
 			<span class="text"><?= get_field("people_remmember_text","option"); ?></span>
 		</div>
 		<?php } ?>
