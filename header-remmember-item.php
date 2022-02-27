@@ -37,7 +37,7 @@ if(isset($_GET["tab"])) {
 	<header id="masthead" class="site-header remmember-item">
 		<div class="wrap-header-content">
 			<div class="site-branding">
-				<img src="<?php the_field("remmember_page_header_logo","option"); ?>" alt="">
+				<img src="<?php the_field("remmember_item_header_logo","option"); ?>" alt="">
 				
 			</div>
 			<nav id="site-navigation" class="main-navigation">

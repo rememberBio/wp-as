@@ -151,7 +151,7 @@ function remmember_scripts() {
 	wp_enqueue_style( 'remmember-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'remmember-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'remmember-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'remmember-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -159,8 +159,20 @@ function remmember_scripts() {
 
 	if(is_single() && 'remmember_page' == get_post_type()) { 
 		wp_enqueue_script( 'qr_js', 'https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js');
-	    wp_enqueue_style ( 'remmember-item', WP_THEME_URI . '/assets/css/single-remmember.css' );
 
+		wp_enqueue_script( 'remember-item-js', WP_THEME_URI . '/assets/js/remember-page.js' );
+	    wp_enqueue_style ( 'remember-item', WP_THEME_URI . '/assets/css/single-remember/general.css' );
+
+		$current_tab = "";
+		if(isset($_GET["tab"])) { 
+			$current_tab = $_GET["tab"];
+		}
+		if($current_tab != "")  {
+			wp_enqueue_style ( 'remember-item-' . $current_tab , WP_THEME_URI . '/assets/css/single-remember/' . $current_tab .'.css' );
+		} 
+		else {
+			wp_enqueue_style ( 'remember-item-main', WP_THEME_URI . '/assets/css/single-remember/main.css' );
+		}
 	}
 
 }

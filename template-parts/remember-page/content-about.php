@@ -86,6 +86,7 @@
                     $year_diff = ($year_diff / $years_range ) * 100;
                 }
             ?>
+           
             <div class="wrap-year mobile-only" style="height:<?php echo $year_diff ?>%">
                 <span class="year"><?php echo $year_birth; ?></span>
                 <span class="desc">born</span>
@@ -94,6 +95,7 @@
                 <span class="year"><?php echo $year_birth; ?></span>
                 <span class="desc">born</span>
             </div>
+            
             <?php //print_r($about_timeline); ?>
             <?php for ($i=0; $i < count($about_timeline) ; $i++) {
 
@@ -119,6 +121,7 @@
                 //echo(' $year ' . $year . ' $next_year ' .$next_year. ' $year_diff ' . $year_diff);
 
             ?>
+             <?php if($year && $year != "") { ?>
              <div class="wrap-year mobile-only" style="height:<?php echo $year_diff ?>%;">
                 <span class="year"><?php echo $year; ?></span>
                 <span class="desc"><?php echo $line['short_description']; ?></span>
@@ -127,6 +130,7 @@
                 <span class="year"><?php echo $year; ?></span>
                 <span class="desc"><?php echo $line['short_description']; ?></span>
             </div>
+            <?php } ?>
             <?php } 
             ?>
             <div class="wrap-year">
