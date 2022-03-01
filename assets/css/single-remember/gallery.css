@@ -115,10 +115,10 @@ span.top-item-gallery {
 }
 .gallery-popup .wrap-popup .top>a {
     position: absolute;
-    top: -8%;
+    top: -5%;
     left: -2%;
-    width: 6%;
-    height: 6%;
+    width: 5%;
+    height: 5%;
     background-size: contain;
     background-image: url(/wp-content/uploads/2022/02/Group-956.svg);
     background-repeat: no-repeat;
