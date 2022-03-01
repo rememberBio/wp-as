@@ -40,6 +40,15 @@ jQuery(document).ready(($)=>{
         event.stopPropagation();
     });
 
+    $(".wrap-gallery img").click(function(){
+        thisEl = $(this);
+        src = thisEl.attr("src");
+        currenyViewImage = thisEl.siblings(".current-gallery-image");
+        if(currenyViewImage.length) {
+           currenyViewImage.attr("src",src);
+        }
+    });
+
 });
 
 function hideMoreStoryText(e) {

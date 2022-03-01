@@ -1,0 +1,90 @@
+section.the-grave>h1 {
+    margin-bottom: 44px;
+}
+
+section.the-grave>.wrap-content {
+    padding: 0px 30px;
+}
+
+section.the-grave>.wrap-content>.top {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 46px;
+}
+
+.wrap-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 270px;
+}
+
+.wrap-gallery .current-gallery-image {
+    width: 100%;
+    border-radius: 13px;
+}
+
+.wrap-gallery img:not(.current-gallery-image) {width: auto;height: 60px;border-radius: 5px;cursor: pointer;}
+
+.wrap-address {
+    display: flex;
+    font-size: 16px;
+    padding-top: 14px;
+    flex-direction: column;
+    color: var(--custom-black);
+}
+
+.wrap-address .name {
+    font-weight: bold;
+}
+
+.wrap-address .wrap-links {
+    margin-top: 25px;
+    display: flex;
+    gap: 17px;
+}
+
+.wrap-address .wrap-links a {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 6px #00000029;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+section.the-grave {
+    padding-bottom: 100px;
+}
+
+section.the-grave>.wrap-content>.bottom .acf-map {
+    height: 255px;
+}
+@media screen and (max-width: 1100px) {
+    .wrap-gallery {
+        width: 213px;
+        gap: 9px;
+    }
+    
+    section.the-grave>.wrap-content>.bottom .acf-map {
+        height: 168px;
+    }
+    
+    section.the-grave {
+        padding-bottom: 0;
+    }
+    section.the-grave>.wrap-content>.top {
+        gap: 19px;
+    }
+    
+    .wrap-address {
+        padding-top: 0px;
+        font-size: 11px;
+    }
+    .wrap-address .wrap-links {
+        gap: 12px;
+    }
+    
+}
+@media screen and (max-width: 767px) {}
