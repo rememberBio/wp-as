@@ -175,6 +175,10 @@ function remmember_scripts() {
 		else {
 			wp_enqueue_style ( 'remember-item-main', WP_THEME_URI . '/assets/css/single-remember/main.css' );
 		}
+		if($current_tab == "comments") {
+			wp_enqueue_script( 'magic_grid_js', 'https://unpkg.com/magic-grid/dist/magic-grid.min.js');
+
+		}
 	}
 
 }
@@ -224,7 +228,11 @@ function create_posttypes() {
 			'has_archive' => true,
 			'rewrite' => array('slug' => 'remmember_pages'),
 			'show_in_rest' => true,
-			'taxonomies'          => array('categories' )
+			'taxonomies'          => array('categories' ),
+			'supports' => array(
+				'title',
+				'comments'
+			)
 		)
 	);
   

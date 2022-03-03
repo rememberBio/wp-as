@@ -90,7 +90,7 @@ if(isset($_GET["tab"])) {
         height: 300,
         type: "png",
         data: "<?= $url ?>",
-        image: "<?= url() . '/wp-content/uploads/2022/02/Group-955.svg' ?>",
+        image: "<?= url() . '/wp-content/uploads/2022/03/Group-961-1.svg' ?>",
         dotsOptions: {
             color: "#022855",
             type: "rounded"
