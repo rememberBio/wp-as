@@ -24,7 +24,16 @@ section.the-grave>.wrap-content>.top {
     border-radius: 13px;
 }
 
-.wrap-gallery img:not(.current-gallery-image) {width: auto;height: 60px;border-radius: 5px;cursor: pointer;}
+.wrap-gallery img:not(.current-gallery-image) {
+    width: auto;
+    height: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.4;
+}
+.wrap-gallery img:not(.current-gallery-image):hover,.wrap-gallery img.hovered-current-img {
+    opacity: 1;
+}
 
 .wrap-address {
     display: flex;

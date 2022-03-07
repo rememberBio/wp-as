@@ -20,11 +20,10 @@
         <div class="top">
             <div class="wrap-gallery">
                 <?php foreach ($images as $img) { ?>
-                    <?php if(!$images_count) { 
-                        $images_count = 1; ?>
+                    <?php if(!$images_count) { ?>
                         <img src="<?= $img ?>" class="current-gallery-image" alt="">
                     <?php }?>
-                        <img src="<?= $img ?>" alt="">
+                        <img src="<?= $img ?>" class="  <?php if(!$images_count) { echo "hovered-current-img";  $images_count = 1; } ?>" alt="">
                 <?php } ?>
             </div>
             <div class="wrap-address">

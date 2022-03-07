@@ -213,6 +213,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 require  get_template_directory() . '/inc/remmember-item-functions.php';
 
+require  get_template_directory() . '/inc/custom-woocommerce.php';
+
 //Add custom type
 function create_posttypes() {
 	//post type
@@ -221,12 +223,12 @@ function create_posttypes() {
 	// CPT Options
 		array(
 			'labels' => array(
-				'name' => __( 'remmember_pages' ),
-				'singular_name' => __( 'remmember_page' )
+				'name' => __( 'remember pages' ),
+				'singular_name' => __( 'remember_page' )
 			),
 			'public' => true,
 			'has_archive' => true,
-			'rewrite' => array('slug' => 'remmember_pages'),
+			'rewrite' => array('slug' => 'remember_pages'),
 			'show_in_rest' => true,
 			'taxonomies'          => array('categories' ),
 			'supports' => array(

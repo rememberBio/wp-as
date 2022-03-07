@@ -52,3 +52,25 @@ function get_remember_post_comments($post_id) {
     $comments = get_comments( $args );
     return $comments;
 }
+
+//set candle or flower by order id
+function set_remember_post_candles_flowers($remmember_post_id,$type,$name,$message,$order_id) {
+    $cf_list = get_post_meta( $remmember_post_id, '_cf_by', true );
+    $cf_list = is_array( $cf_list ) ? $cf_list : [];
+
+    if ( ! isset( $cf_list[ $order_id ] ) ) {
+        $cf_list[ $order_id ] = array(
+            'type' => $type,
+            'name' => $name,
+            'message' => $message
+        );
+        update_post_meta( $remmember_post_id, '_cf_by', $cf_list );
+    }
+}
+
+//get cndle or flower of remember post type by post id
+function get_remember_post_candles_flowers($remmember_post_id){
+    $cf_list = get_post_meta( $remmember_post_id, '_cf_by', true );
+    $cf_list = is_array( $cf_list ) ? $cf_list : [];
+    return $cf_list;
+}

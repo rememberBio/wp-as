@@ -15,6 +15,11 @@ jQuery(document).ready(($)=>{
             }
         }
 
+        if($("section.candles-flowers").length) {
+            if(!$(event.target).is('.write-candles-flowers-btn a')) {
+                $(".write-candles-flowers.opened").removeClass("opened");
+            }
+        }
     });
 
     $(".photo-gallery-popup .next,.photo-gallery-popup .prev").click(function(){
@@ -46,18 +51,25 @@ jQuery(document).ready(($)=>{
         }
     });
 
-    $('.gallery-popup .wrap-popup,.wrap-write-comment-form').on('click touch', function(event) {
+    $('.gallery-popup .wrap-popup,.wrap-write-comment-form,.wrap-write-candles-flowers-form form').on('click touch', function(event) {
         event.stopPropagation();
     });
 
-    $(".wrap-gallery img").click(function(){
-        thisEl = $(this);
-        src = thisEl.attr("src");
-        currenyViewImage = thisEl.siblings(".current-gallery-image");
-        if(currenyViewImage.length) {
-           currenyViewImage.attr("src",src);
+    $(".wrap-gallery img").hover(
+        function() {
+            if(!$(this).hasClass("hovered-current-img")) {
+                $(".hovered-current-img").removeClass("hovered-current-img");
+                thisEl = $(this);
+                src = thisEl.attr("src");
+                currenyViewImage = thisEl.siblings(".current-gallery-image");
+                if(currenyViewImage.length) {
+                currenyViewImage.attr("src",src);
+                }
+                thisEl.addClass("hovered-current-img");
+            }
+        }, function() {
         }
-    });
+    );
 
     //toggle comment form in comments tab
     $(".write-comment-btn").click(function(event) {
@@ -65,6 +77,28 @@ jQuery(document).ready(($)=>{
         $(this).parents(".write-comment").toggleClass("opened");
     });
 
+    $(".write-candles-flowers-btn a").click(function(event) {
+        event.preventDefault();
+        $(this).parents(".write-candles-flowers").addClass("opened");
+    });
+
+    $(".wrap-write-candles-flowers-form a").click(function(event) {
+        event.preventDefault();
+        $(this).parents(".write-candles-flowers").removeClass("opened");
+    });
+
+    $(".wrap-write-candles-flowers-form input[type=radio]").change(function(event) {
+        let url = 'https://' + window.location.hostname + "/checkout?add-to-cart=";
+        let candleProductId = 210;
+        let flowerCandleId = 212;
+        if(event.target.id == 'flower') {
+            $("form#cfform").attr("action",url + flowerCandleId);
+        } else {
+            $("form#cfform").attr("action",url + candleProductId);
+        }
+        $(".wrap-radio").removeClass("current");
+        $(this).parents(".wrap-radio").addClass("current");
+    });
 });
 
 function hideMoreStoryText(e) {
