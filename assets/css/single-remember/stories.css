@@ -2,10 +2,13 @@ section.stories .wrap-content {
     padding: 0px 30px;
 }
 
-section.stories .wrap-story img {
+section.stories .wrap-story .wrap-telling-image {
     width: 31px;
     height: 31px;
     border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 31px;
 }
 
 section.stories .wrap-story p {

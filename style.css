@@ -679,8 +679,9 @@ textarea {
 /* Navigation
 --------------------------------------------- */
 .main-navigation {
-	display: block;
-	width: max-content;
+	display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .main-navigation ul {

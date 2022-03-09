@@ -26,7 +26,7 @@
                 <p class="text" style="display:none;"><?php echo($story['text']); ?></p>
                 <div class="wrap-bottom-story">
                     <div class="wrap-desc-story">
-                        <img src="<?php echo($story['telling_image']); ?>" alt="">
+                        <div class="wrap-telling-image" style="background-image:url(<?php echo($story['telling_image']); ?>)"></div>
                         <div class="wrap-desc-date-story">
                             <span class="date"><?php echo($story['date']); ?></span>
                             <span class="name"><?php echo($story['telling_name']); ?></span>

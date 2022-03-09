@@ -2,7 +2,7 @@
     $post_id = get_the_ID();
 
     //get custom fields
-    $hero_img = get_field("about_image",$post_id);
+    $hero_img = get_field("main_image_of_the_deceased",$post_id);
     $hero_desc = get_field("about_description",$post_id);
     $country = get_field("about_country",$post_id);
     $parents = get_field("about_parents",$post_id);
@@ -74,15 +74,14 @@
                 $years_range =  $year_dead - $year_birth; //83
                 $year_diff = 100;
                 $next_year = $year_dead;//2020
-
-                if(count($about_timeline) > 0) {
-
+                if($about_timeline && count($about_timeline) > 0) {
                     $next_year = $about_timeline[0]['year'];
                     $next_year = explode("/",$next_year);
                     $next_year = $next_year[count($next_year) - 1];
 
                     $year_diff = $next_year - $year_birth; //5
                     if($year_diff == 0) $year_diff = 1;
+                    if($years_range == 0) $years_range = 1;
                     $year_diff = ($year_diff / $years_range ) * 100;
                 }
             ?>
@@ -96,7 +95,6 @@
                 <span class="desc">born</span>
             </div>
             
-            <?php //print_r($about_timeline); ?>
             <?php for ($i=0; $i < count($about_timeline) ; $i++) {
 
                 $line = $about_timeline[$i];
@@ -118,6 +116,9 @@
 
                 $year_diff = $next_year - $year; //5
                 $year_diff = ($year_diff / $years_range ) * 100;
+
+                if($year_diff == 0) $year_diff = 1;
+                if($years_range == 0) $years_range = 1;
                 //echo(' $year ' . $year . ' $next_year ' .$next_year. ' $year_diff ' . $year_diff);
 
             ?>

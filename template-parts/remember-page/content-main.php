@@ -109,26 +109,32 @@ if($google_maps_details) {
         </div>
     </a>
 </section>
+<?php if($about_country && $about_country !== "" || $about_day_of_death && $about_day_of_death !== "" || $about_birthday && $about_birthday !== "" ||  $about_children && count($about_children) > 0 || $about_parents && count($about_parents) > 0) { ?>
 <section class="main-about">
     <h2 class="main-heading">About</h2>
     <div class="wrap-content">
         <p class="text"><?php echo($about_desc); ?></p>
         <div class="wrap-dates">
+            <?php if($about_birthday && $about_birthday !== "") { ?>
             <a href="<?= $url . '/?tab=about' ?>" class="date">
                 <span class="date-desc">Date of birth:</span>
                 <span class="year"><?php echo($about_birthday); ?></span>
             </a>
+            <?php } if($about_day_of_death && $about_day_of_death !== "") { ?>
             <a href="<?= $url . '/?tab=about' ?>" class="date">
                 <span class="date-desc">Date of death:</span>
                 <span class="year"><?php echo($about_day_of_death); ?></span>
             </a>
+            <?php } ?>
         </div>
         <div class="second-part">
+            <?php if($about_country && $about_country !== "") { ?>
             <div class="circle country">
                 <img src="/wp-content/uploads/2022/02/Group-106.svg" alt="">
                 <h3>Country:</h3>
                 <span><?php echo($about_country); ?></span>
             </div>
+            <?php } if($about_parents && count($about_parents) > 0 ) {  ?>
             <div class="circle parents">
                 <img src="/wp-content/uploads/2022/02/Group-109.svg" alt="">
                 <h3>Parents:</h3>
@@ -138,6 +144,7 @@ if($google_maps_details) {
                     <?php } ?>
                 </div>
             </div>
+            <?php } if($about_children && count($about_children) > 0) { ?>
             <div class="circle children">
                 <img src="/wp-content/uploads/2022/02/Group-110.svg" alt="">
                 <h3>Children:</h3>
@@ -147,12 +154,15 @@ if($google_maps_details) {
                     <?php } ?>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
     <div class="wrap-bottom-link-main">
         <a href="<?= $url . '/?tab=about' ?>" class="main-link-main">Read More ></a>
     </div>
 </section>
+<?php } ?>
+<?php if($main_stories && count($main_stories) > 0) {  ?>
 <section class="main-stories">
     <h2 class="main-heading">Stories</h2>
     <div class="wrap-content">
@@ -180,6 +190,8 @@ if($google_maps_details) {
         <a href="<?= $url . '/?tab=stories' ?>" class="main-link-main">More Stories ></a>
     </div>
 </section>
+<?php } ?>
+<?php if($gallery_items && count($gallery_items) > 0) {  ?>
 <section class="main-gallery">
     <h2 class="main-heading">Gallery</h2>
     <div class="wrap-content" id="galley-main-slider">
@@ -205,6 +217,8 @@ if($google_maps_details) {
         <a href="<?= $url . '/?tab=gallery' ?>" class="main-link-main">To The Gallery ></a>
     </div>
 </section>
+<?php } ?>
+
 <section class="main-comments">
     <h2 class="main-heading">Comments</h2>
     <div class="wrap-content">
@@ -232,6 +246,8 @@ if($google_maps_details) {
         <a href="<?= $url . '/?tab=comments' ?>" class="main-link-main">Write A Comment ></a>
     </div>
 </section>
+
+<?php if($places && count($places) > 0) {  ?>
 <section class="main-places">
     <h2 class="main-heading">Places Of Commemoration</h2>
     <div class="wrap-content">
@@ -258,6 +274,8 @@ if($google_maps_details) {
         <a href="<?= $url . '/?tab=places-of-commemoration' ?>" class="main-link-main">View More ></a>
     </div>
 </section>
+<?php } ?>
+<?php if($google_maps_details && $google_maps_details !== "") {  ?>
 <section class="main-tomb">
     <h2 class="main-heading">The Tomb</h2>
     <div class="wrap-content">
@@ -275,3 +293,4 @@ if($google_maps_details) {
             </a>
     </div>
 </section>
+<?php } ?>

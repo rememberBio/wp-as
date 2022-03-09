@@ -31,10 +31,12 @@
                 <span class="street"><?php echo $street; ?></span>
                 <span class="city"><?php echo $city; ?></span>
                 <span class="country"><?php echo $country; ?></span>
+                <?php if($google_maps_details) { ?>
                 <div class="wrap-links">
                     <a target="blank" href="https://www.waze.com/ul?q=<?php echo urlencode($address_name); ?>&navigate=yes"><img src="/wp-content/uploads/2022/03/Group-293.svg" alt="wase link"></a>
                     <a href="http://maps.google.com/?q=<?php echo urlencode($address_name); ?>" target="blank"><img src="/wp-content/uploads/2022/03/Group-291.svg" alt="google maps link"></a>
                 </div>
+                <?php } ?>
             </div>
         </div>
         <div class="bottom">

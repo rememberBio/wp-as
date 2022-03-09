@@ -1,7 +1,9 @@
 section.places h1 {
     margin-bottom: 44px;
 }
-
+.wrap-place img {
+    border-radius: 15px 15px 0px 0px;
+}
 section.places .wrap-content {
     display: flex;
     flex-wrap: wrap;

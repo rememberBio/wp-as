@@ -8,7 +8,7 @@
 .menu-menu-1-container li.current a {color: var(--custom-light-blue);border-bottom: 3px solid var(--custom-light-blue);}
 
 .site-branding img {
-    height: 31px;
+    height: 25px;
     width: auto;
     max-width: unset;
 }
@@ -26,10 +26,10 @@ header#masthead {
 
 ul#primary-menu {
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;;
+    gap: 15px;
     display: flex;
-    width: max-content;
+    width: 100%;
 }
 
 .share-btn {
@@ -51,12 +51,13 @@ a#qr-code-download img {
 
 .wrap-header-content {
     display: flex;
-    max-width: 1500px;
+    min-width: max-content;
     margin: auto;
     height: 100%;
     align-items: center;
     justify-content: space-between;
-    width: 85vw;
+    width: 85%;
+    max-width: 1450px;
 }
 
 nav#site-navigation li a {
@@ -71,8 +72,9 @@ nav#site-navigation li a {
 ul#primary-menu li {display: block;}
 
 .menu-menu-1-container {
-    width: max-content;
+    width: 100%;
     display: block;
+    margin: 0px 3vw;
 }
 
 /* Footer */
@@ -239,6 +241,9 @@ section h1 {
         width: auto;
         height: 100%;
         max-width: unset;
+    }
+    .menu-menu-1-container {
+        margin: 0px 10%;
     }
 }
 /* End Footer */
