@@ -77,7 +77,7 @@ jQuery(document).ready(($)=>{
         $(this).parents(".write-comment").toggleClass("opened");
     });
 
-    $(".write-candles-flowers-btn a").click(function(event) {
+    $(".write-candles-flowers-btn a:not(.main-cf-btn)").click(function(event) {
         event.preventDefault();
         $(this).parents(".write-candles-flowers").addClass("opened");
     });
@@ -98,6 +98,31 @@ jQuery(document).ready(($)=>{
         }
         $(".wrap-radio").removeClass("current");
         $(this).parents(".wrap-radio").addClass("current");
+    });
+
+    //main tab
+    $('#galley-main-slider').slick({
+        //lazyLoad: 'ondemand',
+        slidesToShow: 2,
+        centerMode: false,
+        variableWidth: true,
+        autoplay: true,
+        arrows: true, 
+        prevArrow: '<button class="slide-arrow prev-arrow"><img src="/wp-content/uploads/2022/02/Path-119.svg" /></button>',
+        nextArrow: '<button class="slide-arrow next-arrow"><img src="/wp-content/uploads/2022/02/Path-119.svg" /></button>',
+        responsive: [
+        {
+            breakpoint: 1100,
+            settings: {
+                slidesToShow: 2
+            },
+        },
+        {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 1
+            },
+        }]
     });
 });
 

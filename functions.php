@@ -172,7 +172,8 @@ function remmember_scripts() {
 		if($current_tab != "")  {
 			wp_enqueue_style ( 'remember-item-' . $current_tab , WP_THEME_URI . '/assets/css/single-remember/' . $current_tab .'.css' );
 		} 
-		else {
+		else { //Main tab
+			slick_slider_scripts();
 			wp_enqueue_style ( 'remember-item-main', WP_THEME_URI . '/assets/css/single-remember/main.css' );
 		}
 		if($current_tab == "comments") {
@@ -184,6 +185,16 @@ function remmember_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'remmember_scripts' );
 
+
+function google_maps_scripts() {
+	wp_enqueue_script( 'google-maps-js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAk5oOe33Nmwh6X_PbL13W50atji4wcUfo');
+	wp_enqueue_script( 'custom-google-maps-js', WP_THEME_URI . '/assets/js/google-maps.js' ); 
+}
+function slick_slider_scripts() {
+	wp_enqueue_style('slick-slider-css-1', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
+	wp_enqueue_style('slick-slider-css-2', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css');
+	wp_enqueue_script('slick-slider-js', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js');
+}
 /**
  * Implement the Custom Header feature.
  */
@@ -257,16 +268,12 @@ if( function_exists('acf_add_options_page') ) {
 	));
 }
 
- // register api key for google map
- function my_acf_google_map_api( $api ){
+// register api key for google map
+function my_acf_google_map_api( $api ){
 	$api['key'] = 'AIzaSyAk5oOe33Nmwh6X_PbL13W50atji4wcUfo';
 	return $api;
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
-/*function my_acf_init() {
-    acf_update_setting('google_api_key', 'AIzaSyAnuGvqOb7TTx_ERCoOkWcPAUjCU1BLuGM');
-}
-add_action('acf/init', 'my_acf_init');*/
 //Allow SVG
 function cc_mime_types($mimes) {
 	$mimes['svg'] = 'image/svg+xml';
@@ -278,8 +285,3 @@ function cc_mime_types($mimes) {
    * !!!!
    */
   define(ALLOW_UNFILTERED_UPLOADS, true);
-
-  function google_maps_scripts() {
-	wp_enqueue_script( 'google-maps-js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAk5oOe33Nmwh6X_PbL13W50atji4wcUfo');
-	wp_enqueue_script( 'custom-google-maps-js', WP_THEME_URI . '/assets/js/google-maps.js' ); 
-  }

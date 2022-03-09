@@ -217,6 +217,7 @@ form#cfform input[type=radio] {
     background-repeat: none;
     background-image: url(/wp-content/uploads/2022/03/Group-425-1.svg);
     background-size: contain;
+    background-repeat: no-repeat;
 }
 .wrap-top-form .wrap-radio:last-child:not(.current) label:before {background-image: url(/wp-content/uploads/2022/03/Group-424.svg) !important;}
 
@@ -239,6 +240,13 @@ form#cfform input:focus, form#cfform textarea:focus {
 }
 
 @media screen and (max-width: 1100px) {
+    .wrap-top-form .wrap-radio .price {
+        width: 22px;
+        height: 22px;
+        left: 36px;
+        top: 0;
+        font-size: 11px;
+    }
     .write-candles-flowers {
         justify-content: center;
         display: flex;
@@ -276,6 +284,7 @@ form#cfform input:focus, form#cfform textarea:focus {
     .write-candles-flowers-btn a {
         width: 106px;
         margin-top: 7px;
+        border-width: 1px;
     }
     .wrap-candles_flower {
         width: 185px;
