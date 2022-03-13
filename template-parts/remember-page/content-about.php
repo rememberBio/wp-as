@@ -5,6 +5,7 @@
     $hero_img = get_field("main_image_of_the_deceased",$post_id);
     $hero_desc = get_field("about_description",$post_id);
     $country = get_field("about_country",$post_id);
+    $spouse = get_field("about__-_husband__wife",$post_id);
     $parents = get_field("about_parents",$post_id);
     $children = get_field("about_children",$post_id);
     $birthday = get_field("about_birth_day",$post_id);
@@ -39,18 +40,59 @@
             <h2>Country:</h2>
             <span><?php echo($country); ?></span>
         </div>
+        <?php if($spouse['hasband_or_wife']) { ?>
+        <div class="circle spouse">
+            <?php $has_link = false;
+            if($spouse['link_to_the_spouses_remember_page']) { 
+                $has_link = get_permalink( $spouse['link_to_the_spouses_remember_page'] );
+            } ?>
+            <?php if($spouse['hasband_or_wife'] == 'husband') { ?>
+                <img src="/wp-content/uploads/2022/03/husband.svg" alt="">
+                <h2>Husband:</h2>
+                <?php if($has_link) { ?>
+                <a href="<?= $has_link ?>">
+                <?php  }?>
+                <span><?php echo($spouse['husband_name']); ?></span>
+                <?php if($has_link) { ?>
+                </a>
+                <?php  }?>
+            <?php } else { ?>
+                <img src="/wp-content/uploads/2022/03/wife.svg" alt="">
+                <h2>Wife:</h2>
+                <?php if($has_link) { ?>
+                <a href="<?= $has_link ?>">
+                <?php  }?>
+                <span><?php echo($spouse['wifes_name']); ?></span>
+                <?php if($has_link) { ?>
+                </a>
+                <?php  }?>
+            <?php } ?>
+        </div>
+        <?php } ?>
         <div class="circle parents">
             <img src="/wp-content/uploads/2022/02/Group-109.svg" alt="">
             <h2>Parents:</h2>
-            <?php foreach ($parents as $parent) { ?>
+            <?php foreach ($parents as $parent) { 
+                if($parent['link']) {
+                    $parent_link = get_permalink($parent['link']);
+                }
+            ?>
+            <?php if($parent_link) {  echo '<a href="' . $parent_link .'">'; }?>
             <span><?php echo($parent['name_of_parent']); ?></span>
+            <?php if($parent_link) { echo("</a>"); $parent_link = null; } ?>
             <?php } ?>
         </div>
         <div class="circle children">
             <img src="/wp-content/uploads/2022/02/Group-110.svg" alt="">
             <h2>Children:</h2>
-            <?php foreach ($children as $child) { ?>
+            <?php foreach ($children as $child) { 
+                if($child['link']) {
+                    $child_link = get_permalink($child['link']);
+                }
+            ?>
+                <?php if($child_link) {  echo '<a href="' . $child_link .'">'; }?>
                 <span><?php echo($child['name_of_child']); ?></span>
+                <?php if($child_link) { echo("</a>");  $child_link = null; } ?>
             <?php } ?>
         </div>
     </div>

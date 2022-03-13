@@ -51,11 +51,14 @@ section.about .second-part .circle {
 section.about .second-part {
     display: flex;
     padding-left: 30px;
-    width: 35%;
+    width: 40%;
     justify-content: space-between;
     margin-top: 25px;
 }
-
+section.about .second-part .circle a {
+    text-decoration: underline;
+    color: var(--custom-light-blue);
+}
 section.about .second-part .circle img {
     width: 60px;
     height: 60px;
@@ -164,7 +167,7 @@ section.about .third-part .numbers-line .wrap-year span {
         margin-bottom: 3px;
     }
     
-    section.about .second-part .circle span {
+    section.about .second-part .circle a,section.about .second-part .circle span {
         font-size: 12px;
     }
     

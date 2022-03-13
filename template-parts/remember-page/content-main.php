@@ -41,6 +41,7 @@ $about_parents = get_field("about_parents",$post_id);
 $about_children = get_field("about_children",$post_id);
 $about_birthday = get_field("about_birth_day",$post_id);
 $about_day_of_death = get_field("about_death_day",$post_id);
+$about_spouse = get_field("about__-_husband__wife",$post_id);
 
 //stories
 $main_stories = get_field("stories_repeater",$post_id);
@@ -134,13 +135,40 @@ if($google_maps_details) {
                 <h3>Country:</h3>
                 <span><?php echo($about_country); ?></span>
             </div>
+            <?php } if($about_spouse && $about_spouse['hasband_or_wife'] ) {  ?>
+                <div class="circle spouse">
+            <?php $has_link = false;
+            if($about_spouse['link_to_the_spouses_remember_page']) { 
+                $has_link = get_permalink( $about_spouse['link_to_the_spouses_remember_page'] );
+            } ?>
+            <?php if($spouse['hasband_or_wife'] == 'husband') { ?>
+                    <img src="/wp-content/uploads/2022/03/husband.svg" alt="">
+                    <h3>Husband:</h3>
+                    <?php if($has_link) {  echo '<a href="' . $has_link .'">'; }?>
+                    <span><?php echo($about_spouse['husband_name']); ?></span>
+                    <?php if($has_link) { echo("</a>"); } ?>
+            <?php } else { ?>
+                    <img src="/wp-content/uploads/2022/03/wife.svg" alt="">
+                    <h3>Wife:</h3>
+                    <?php if($has_link) {  echo '<a href="' . $has_link .'">'; }?>
+                        <span><?php echo($about_spouse['wifes_name']); ?></span>
+                    <?php if($has_link) { echo("</a>"); } ?>
+            <?php } ?>
+            </div>
+
             <?php } if($about_parents && count($about_parents) > 0 ) {  ?>
             <div class="circle parents">
                 <img src="/wp-content/uploads/2022/02/Group-109.svg" alt="">
                 <h3>Parents:</h3>
                 <div class="wrap-parents flex">
-                    <?php foreach ($about_parents as $parent) { ?>
-                    <span><?php echo($parent['name_of_parent']); ?></span>
+                    <?php foreach ($about_parents as $parent) { 
+                        if($parent['link']) {
+                            $parent_link = get_permalink($parent['link']);
+                        }
+                    ?>
+                    <?php if($parent_link) {  echo '<a href="' . $parent_link .'">'; }?>
+                        <span><?php echo($parent['name_of_parent']); ?></span>
+                    <?php if($parent_link) { echo("</a>");  $parent_link = null; } ?>
                     <?php } ?>
                 </div>
             </div>
@@ -149,8 +177,14 @@ if($google_maps_details) {
                 <img src="/wp-content/uploads/2022/02/Group-110.svg" alt="">
                 <h3>Children:</h3>
                 <div class="wrap-children flex">
-                    <?php foreach ($about_children as $child) { ?>
+                    <?php foreach ($about_children as $child) { 
+                        if($child['link']) {
+                            $child_link = get_permalink($child['link']);
+                        }
+                    ?>
+                        <?php if($child_link) {  echo '<a href="' . $child_link .'">'; }?>
                         <span><?php echo($child['name_of_child']); ?></span>
+                        <?php if($child_link) { echo("</a>");  $child_link = null; } ?>
                     <?php } ?>
                 </div>
             </div>

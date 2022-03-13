@@ -166,7 +166,10 @@ section.main-about .text {
     margin: 0;
     line-height: 20px;
 }
-
+section.main-about .second-part .circle a {
+    text-decoration: underline;
+    color: var(--custom-light-blue);
+}
 section.main-about .wrap-dates {
     display: flex;
     gap: 30px;
@@ -510,7 +513,9 @@ div#galley-main-slider a {
         font-size: 13px;
         line-height: 17px;
     }
-
+    section.main-about .second-part .circle a ,section.main-about .second-part .circle span{
+        font-size: 12px;
+    }
     section.main-candles-and-flowers {
         padding: 31px 0px 42px;
         width: 100vw;
