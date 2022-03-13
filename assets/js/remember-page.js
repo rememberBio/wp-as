@@ -216,8 +216,14 @@ function openAlbumTab(photosArr,videosArr,years,AlbumName) {
     for (let index = 0; index < photosArr.length; index++) {
         const element = photosArr[index];
         let wrapItem = jQuery("<div class='wrap-photo-item'></div>");
-        let item = jQuery("<img />").attr({ "src":element,"data-index":indexEl});
+        let item = jQuery("<img />").attr({ "src":element['url'],"data-index":indexEl});
+        let caption = "";
+        if(element['caption'] != "") {
+            caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
+        }
         wrapItem.append(item);
+        if(caption != "")
+            wrapItem.append(caption);
         container.append(wrapItem);
         indexEl = indexEl + 1;
     }
@@ -278,14 +284,18 @@ function openVideoPhotoPopup(imagesArrToPopup,currentIndex) {
                 const element = imagesArrToPopup[index];
                 let video = element['video'];
                 let item = "";
+                let caption = "";
                 if(video != undefined) {
                     item = jQuery("<video class='video-popup-photo' controls > </video>").attr({ "src":video,"data-index":index,"data-length-all":imagesLength });
                 } else  {
-                    item = jQuery("<img />").attr({ "src":element,"data-index":index,"data-length-all":imagesLength });
+                    item = jQuery("<img />").attr({ "src":element['url'],"data-index":index,"data-length-all":imagesLength });
+                    if(element['caption'] != "")
+                        caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
                 }
                 
                 if(index == currentIndex) item.addClass("current-image");
                 container.append(item);
+                if(caption != "") container.append(caption);
                 
             }
 

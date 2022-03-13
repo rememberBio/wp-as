@@ -66,7 +66,7 @@
                 ?>
                     <div class="wrap-album-item" onclick='openAlbumTab(`<?= $album_photos_json ?>`,`<?= $album_videos_json ?>`,`<?= $album_years ?>`,`<?php echo urlencode($album["name_of_album"]); ?>`)'>
                         <?php if( is_array($album_photos) && count($album_photos) > 0 )  { ?>
-                         <img src="<?php echo($album_photos[0]); ?>" alt="">
+                         <img src="<?php echo($album_photos[0]['url']); ?>" alt="">
                        <?php } else { ?>
                          <img src="/wp-content/uploads/woocommerce-placeholder.png" alt="">
                        <?php } ?>
@@ -112,7 +112,12 @@
                </span>
                 <?php foreach ($photos as $photo) {  ?>
                     <div class="wrap-photo-item">
-                        <img data-index="<?= $index_img ?>" src="<?php echo $photo; ?>" alt="">
+                        <?php if(!empty( $photo )) { ?>
+                            <img data-index="<?= $index_img ?>" src="<?php echo $photo['url']; ?>" alt="">
+                            <?php if($photo['caption'] !== "") { ?>
+                            <span class="caption" style="display:none;"><?php echo $photo['caption']; ?></span>
+                            <?php } ?>
+                        <?php } ?>
                     </div>
                 <?php 
                     $index_img = $index_img + 1;

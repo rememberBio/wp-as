@@ -180,6 +180,9 @@ function remmember_scripts() {
 			wp_enqueue_script( 'magic_grid_js', 'https://unpkg.com/magic-grid/dist/magic-grid.min.js');
 
 		}
+		if($current_tab == "candle-and-flowers") {
+			//rapyd_script();
+		}
 	}
 
 }
@@ -195,6 +198,11 @@ function slick_slider_scripts() {
 	wp_enqueue_style('slick-slider-css-2', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css');
 	wp_enqueue_script('slick-slider-js', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js');
 }
+/*
+function rapyd_script() {
+	wp_enqueue_script('rapyd-js', 'https://sandboxcheckouttoolkit.rapyd.net');
+
+}*/
 /**
  * Implement the Custom Header feature.
  */
@@ -225,6 +233,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 require  get_template_directory() . '/inc/remmember-item-functions.php';
 
 require  get_template_directory() . '/inc/custom-woocommerce.php';
+
+//require  get_template_directory() . '/inc/rapyd-payments.php';
 
 //Add custom type
 function create_posttypes() {
