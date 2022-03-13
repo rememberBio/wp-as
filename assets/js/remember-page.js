@@ -12,12 +12,19 @@ jQuery(document).ready(($)=>{
         if($('section.comments').length) {
             if(!$(event.target).is('.write-comment-btn') && !$(event.target).is('.write-comment-btn span')) {
                 $("section.comments .write-comment.opened").removeClass("opened");
+                let container = $(".wrap-write-comment-form");
+                container.children("form").show();
+                container.children(".wrap-after-submit-comment").hide();
             }
         }
 
         if($("section.candles-flowers").length) {
             if(!$(event.target).is('.write-candles-flowers-btn a')) {
                 $(".write-candles-flowers.opened").removeClass("opened");
+                $("#cfform").trigger("reset");
+                $('.wrap-write-candles-flowers-form a.close').siblings(".step-1").show();
+                $('.wrap-write-candles-flowers-form a.close').siblings(".step-2").hide();
+                $(".wrap-thank-section").hide();
             }
         }
     });
@@ -75,16 +82,24 @@ jQuery(document).ready(($)=>{
     $(".write-comment-btn").click(function(event) {
         event.preventDefault();
         $(this).parents(".write-comment").toggleClass("opened");
+        let container = $(this).siblings(".wrap-write-comment-form");
+        container.children("form").show();
+        container.children(".wrap-after-submit-comment").hide();
     });
 
+    //candles and flowers
     $(".write-candles-flowers-btn a:not(.main-cf-btn)").click(function(event) {
         event.preventDefault();
         $(this).parents(".write-candles-flowers").addClass("opened");
     });
 
-    $(".wrap-write-candles-flowers-form a").click(function(event) {
+    $(".wrap-write-candles-flowers-form a.close").click(function(event) {
         event.preventDefault();
         $(this).parents(".write-candles-flowers").removeClass("opened");
+        $("#cfform").trigger("reset");
+        $(this).siblings(".step-1").show();
+        $(this).siblings(".step-2").hide();
+        $(".wrap-thank-section").hide();
     });
 
     $(".wrap-write-candles-flowers-form input[type=radio]").change(function(event) {
@@ -98,6 +113,29 @@ jQuery(document).ready(($)=>{
         }
         $(".wrap-radio").removeClass("current");
         $(this).parents(".wrap-radio").addClass("current");
+    });
+
+    $(".wrap-write-candles-flowers-form #next-button").click(function(event) {
+        let parent = $(this).parents(".step-1");
+        let required_input = parent.find("#senderName");
+        if(required_input.val() == "") {
+            required_input.focus(); //the customer see default required error message
+        } else {
+            let is_candle = true;
+            let checked_radio = parent.find("input[type=radio]:checked");
+            if(checked_radio.val() == 'flower' ) is_candle = false;
+            parent.hide();
+            part2 = parent.next('.step-2');
+            if(is_candle) {
+                part2.find(".flower-image").hide();
+                part2.find(".price-flower").hide();
+            } else {
+                part2.find(".candle-image").hide();
+                part2.find(".price-candle").hide();
+            }
+            part2.show();
+        }
+      
     });
 
     //main tab
@@ -127,6 +165,7 @@ jQuery(document).ready(($)=>{
         });
     }
 });
+
 
 function hideMoreStoryText(e) {
     e.preventDefault();

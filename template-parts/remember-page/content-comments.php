@@ -3,15 +3,19 @@
     $url = get_permalink();
     //get comments
     $comments = get_remember_post_comments($post_id);
-    //var_dump($comments);
+    
+    $after_submit_comment = false;
+    if(isset($_GET["submit"])) { 
+        $after_submit_comment = true;
+    }
 ?>
 
 <section class="comments">
     <h1>Comments</h1>
-    <div class="write-comment">
+    <div class="write-comment <?php if($after_submit_comment) { echo "after-sub-comment opened"; } ?>">
         <a href="" class="write-comment-btn" ><span>New Comment</span></a>
         <div class="wrap-write-comment-form">
-            <form action="<?php echo url() . '/wp-comments-post.php';  ?>" id="commentform" method="POST" enctype="multipart/form-data">
+            <form <?php if($after_submit_comment)  { echo "style=display:none"; } ?> action="<?php echo url() . '/wp-comments-post.php';  ?>" id="commentform" method="POST" enctype="multipart/form-data">
                 <input required type="text" placeholder="Name" id="name" name="name" size="30" maxlength="245">
                 <input required type="text" placeholder="Relationship" id="rel" name="rel">
                 <textarea maxlength="65525" required name="comment" id="comment" cols="30" rows="10" aria-required="true" placeholder="Write A Comment"></textarea>
@@ -27,12 +31,17 @@
                 <input type="submit" id="submit" value="Submit A Response">
                 <input type="hidden" name="comment_post_ID" value="<?php echo $post_id; ?>" id="comment_post_ID">
                 <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-                <input type="hidden" name="dome_redirect_to" value="<?php echo $url . '/?tab=comments'; ?>"; />
+                <input type="hidden" name="dome_redirect_to" value="<?php echo $url . '/?tab=comments&submit=true'; ?>"; />
 
             </form>
+            <?php if($after_submit_comment)  { ?>
+            <div class="wrap-after-submit-comment">
+                <span class="head">Thank You For Your Comment!</span>
+                <span class="text">The Comment Has Been Sent For Manager Approval And Will Be Displayed As Soon As Possible</span>
+            </div>
+            <?php } ?>
         </div>
     </div>
-    <?php /*comment_form();*/ ?>
     <div class="wrap-content">
         <?php foreach ($comments as $comment) { 
 

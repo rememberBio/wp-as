@@ -152,7 +152,7 @@ form#cfform textarea {
     margin: 15px 0px 10px;
 }
 
-form#cfform input[type=submit] {
+form#cfform input[type=submit],form#cfform input[type=button] {
     background: var(--custom-light-blue);
     color: white;
     cursor: pointer;
@@ -352,7 +352,7 @@ form#cfform input:focus, form#cfform textarea:focus {
         height: 136px;
     }
     
-    form#cfform input[type=submit] {
+    form#cfform input[type=submit],form#cfform input[type=button]  {
         height: 32px;
         padding: 10px;
     }
