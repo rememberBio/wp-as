@@ -141,7 +141,7 @@ section.main-candles-and-flowers {
 .main-hero-img {
     background-repeat: no-repeat;
     width: 50%;
-    background-position: center;
+    /* background-position: center; */
     background-size: cover;
 }
 

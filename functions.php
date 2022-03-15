@@ -236,6 +236,8 @@ require  get_template_directory() . '/inc/custom-woocommerce.php';
 
 //require  get_template_directory() . '/inc/rapyd-payments.php';
 
+require  get_template_directory() . '/inc/sendinblue-functions.php';
+
 //Add custom type
 function create_posttypes() {
 	//post type

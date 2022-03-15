@@ -236,7 +236,7 @@ if($google_maps_details) {
                 $album_videos = $album['videos'];
                 if($album_photos && is_array($album_photos)) {
                     foreach ($album_photos as $photo) { ?>
-                    <a href="<?= $url . '/?tab=gallery' ?>"><img src="<?= $photo ?>" alt=""></a>
+                    <a href="<?= $url . '/?tab=gallery' ?>"><img src="<?= $photo['url'] ?>" alt=""></a>
             <?php   }
                 }
                 if($album_videos && is_array($album_videos)) {
