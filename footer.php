@@ -9,21 +9,41 @@
  * @package remmember
  */
 
+$url = get_site_url();
+$name = get_bloginfo( 'name' );
+
 ?>
 
-	<footer id="colophon" class="site-footer">
+	<footer id="generalFooter" class="site-footer">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'remmember' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'remmember' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'remmember' ), 'remmember', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
+			<div class="part-1">
+				<span>remember pages</span>
+				<div class="wrap-serach">
+					<input type="text" placeholder="Search remember page">
+				</div>
+			</div>
+			<div class="part-2">
+				<?php wp_nav_menu( array(
+    					'menu_id' => 21
+				)); ?>
+			</div>
+			<div class="part-3">
+				<a href="">Create remember page</a>
+				<div class="share-btns">
+					<a href="<?= 'mailto:?subject=' . $url ?>" target="_blank" class="email">
+						<img src="/wp-content/uploads/2022/03/Group-182.svg" alt="">
+					</a>
+					<a href="<?= 'https://www.facebook.com/sharer/sharer.php?u=' . $url ?>" target="_blank" class="facebook">
+						<img src="/wp-content/uploads/2022/03/Group-180.svg" alt="">
+					</a>
+					<a href="https://www.instagram.com/?url=<?= $url ?>" target="_blank" class="instegram">
+						<img src="/wp-content/uploads/2022/03/Group-181.svg" alt="">
+					</a>
+					<a href="<?= 'https://twitter.com/share?url=' . $url ?>" target="_blank" class="twitter">
+						<img src="/wp-content/uploads/2022/03/Group-179.svg" alt="">
+					</a>
+				</div>
+			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

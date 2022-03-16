@@ -8,6 +8,7 @@
  *
  * @package remmember
  */
+$create_remember_page_link = "";
 
 ?>
 <!doctype html>
@@ -25,35 +26,20 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'remmember' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$remmember_description = get_bloginfo( 'description', 'display' );
-			if ( $remmember_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $remmember_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	<header id="generalHeader" class="site-header">
+		<div class="wrap-header-content">
+			<div class="site-branding">
+				<img src="<?php the_field("remmember_item_header_logo","option"); ?>" alt="">
+				
+			</div>
+			<div class="wrap-serach">
+				<input type="text" placeholder="Search remember page">
+			</div>
+			<div class="wrap-btns">
+				<a href="" class="login">log in</a>
+				<a href="<?php echo $create_remember_page_link;  ?>" class="create">Create remeber page</a>
+			</div>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'remmember' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="/wp-content/uploads/2022/02/Group-543.svg" alt=""></button>
+		</div>
 	</header><!-- #masthead -->

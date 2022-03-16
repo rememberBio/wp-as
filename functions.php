@@ -156,7 +156,11 @@ function remmember_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
+	if(is_front_page() || is_home()) {
+		wp_enqueue_style ( 'home-css', WP_THEME_URI . '/assets/css/home.css' );
+		wp_enqueue_script( 'remember-item-js', WP_THEME_URI . '/assets/js/home.js' );
+		slick_slider_scripts();
+	}
 	if(is_single() && 'remmember_page' == get_post_type()) { 
 		wp_enqueue_script( 'qr_js', 'https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js');
 
@@ -179,9 +183,6 @@ function remmember_scripts() {
 		if($current_tab == "comments") {
 			wp_enqueue_script( 'magic_grid_js', 'https://unpkg.com/magic-grid/dist/magic-grid.min.js');
 
-		}
-		if($current_tab == "candle-and-flowers") {
-			//rapyd_script();
 		}
 	}
 
