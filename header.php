@@ -28,10 +28,9 @@ $create_remember_page_link = "";
 
 	<header id="generalHeader" class="site-header">
 		<div class="wrap-header-content">
-			<div class="site-branding">
+			<a href="<?php echo get_site_url(); ?>" class="site-branding">
 				<img src="<?php the_field("remmember_item_header_logo","option"); ?>" alt="">
-				
-			</div>
+			</a>
 			<div class="wrap-serach">
 				<input type="text" placeholder="Search remember page">
 			</div>

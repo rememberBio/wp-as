@@ -112,7 +112,7 @@
                </span>
                 <?php foreach ($photos as $photo) {  ?>
                     <div class="wrap-photo-item">
-                        <?php if(!empty( $photo )) { ?>
+                        <?php if($photo && !empty( $photo )) { ?>
                             <img data-index="<?= $index_img ?>" src="<?php echo $photo['url']; ?>" alt="">
                             <?php if($photo['caption'] !== "") { ?>
                             <span class="caption" style="display:none;"><?php echo $photo['caption']; ?></span>

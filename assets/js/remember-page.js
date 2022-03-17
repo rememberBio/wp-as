@@ -215,26 +215,30 @@ function openAlbumTab(photosArr,videosArr,years,AlbumName) {
     let indexEl = 0;
     for (let index = 0; index < photosArr.length; index++) {
         const element = photosArr[index];
-        let wrapItem = jQuery("<div class='wrap-photo-item'></div>");
-        let item = jQuery("<img />").attr({ "src":element['url'],"data-index":indexEl});
-        let caption = "";
-        if(element['caption'] != "") {
-            caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
+        if(element['url'] != "") {
+            let wrapItem = jQuery("<div class='wrap-photo-item'></div>");
+            let item = jQuery("<img />").attr({ "src":element['url'],"data-index":indexEl});
+            let caption = "";
+            if(element['caption'] != "") {
+                caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
+            }
+            wrapItem.append(item);
+            if(caption != "")
+                wrapItem.append(caption);
+            container.append(wrapItem);
+            indexEl = indexEl + 1;
         }
-        wrapItem.append(item);
-        if(caption != "")
-            wrapItem.append(caption);
-        container.append(wrapItem);
-        indexEl = indexEl + 1;
     }
 
     for (let index = 0; index < videosArr.length; index++) {
         const element = videosArr[index];
-        let wrapItem = jQuery("<a href='' class='wrap-video-item'></a>");
-        let item = jQuery("<video></video>").attr({"src":element['video'],"data-index":indexEl});
-        wrapItem.append(item);
-        container.append(wrapItem);
-        indexEl = indexEl + 1
+        if(element['url'] != "") {
+            let wrapItem = jQuery("<a href='' class='wrap-video-item'></a>");
+            let item = jQuery("<video></video>").attr({"src":element['video'],"data-index":indexEl});
+            wrapItem.append(item);
+            container.append(wrapItem);
+            indexEl = indexEl + 1;
+        }
     }
    
 
@@ -270,7 +274,6 @@ function openVideoGalleryPopup(e,videoUrl) {
 }
 
 function openVideoPhotoPopup(imagesArrToPopup,currentIndex) {
-
     jQuery(".current-image").removeClass("current-image");
 
     currentIndex = Number(currentIndex);
@@ -282,21 +285,23 @@ function openVideoPhotoPopup(imagesArrToPopup,currentIndex) {
             container = popupEl.find(".images-container");
             for (let index = 0; index < imagesArrToPopup.length; index++) {
                 const element = imagesArrToPopup[index];
-                let video = element['video'];
-                let item = "";
-                let caption = "";
-                if(video != undefined) {
-                    item = jQuery("<video class='video-popup-photo' controls > </video>").attr({ "src":video,"data-index":index,"data-length-all":imagesLength });
-                } else  {
-                    item = jQuery("<img />").attr({ "src":element['url'],"data-index":index,"data-length-all":imagesLength });
-                    if(element['caption'] != "")
-                        caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
+                if(element) {
+                    let video = element['video'];
+                    if((video != undefined && video != "") || element['url'] != "") {
+                        let item = "";
+                        let caption = "";
+                        if(video != undefined) {
+                            item = jQuery("<video class='video-popup-photo' controls > </video>").attr({ "src":video,"data-index":index,"data-length-all":imagesLength });
+                        } else  {
+                            item = jQuery("<img />").attr({ "src":element['url'],"data-index":index,"data-length-all":imagesLength });
+                            if(element['caption'] != "")
+                                caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
+                        }
+                        if(index == currentIndex) item.addClass("current-image");
+                        container.append(item);
+                        if(caption != "") container.append(caption);
+                    }
                 }
-                
-                if(index == currentIndex) item.addClass("current-image");
-                container.append(item);
-                if(caption != "") container.append(caption);
-                
             }
 
             if( currentIndex ==  imagesLength - 1 ) { 

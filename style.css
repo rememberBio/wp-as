@@ -911,6 +911,9 @@ footer#generalFooter .site-info .part-2 {
 	header#generalHeader .wrap-header-content div:not(.site-branding) {
 		display: none;
 	}
+	header#generalHeader .wrap-header-content {
+		width: 95%;
+	}
 	
 	header#generalHeader .wrap-header-content .menu-toggle {
 		background: transparent;

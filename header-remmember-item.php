@@ -36,10 +36,10 @@ if(isset($_GET["tab"])) {
 
 	<header id="masthead" class="site-header remmember-item">
 		<div class="wrap-header-content">
-			<div class="site-branding">
+			<a href="<?php echo get_site_url(); ?>" class="site-branding">
 				<img src="<?php the_field("remmember_item_header_logo","option"); ?>" alt="">
 				
-			</div>
+			</a>
 			<nav id="site-navigation" class="main-navigation">
 				<div class="menu-menu-1-container">
 					<ul id="primary-menu" class="menu nav-menu">
