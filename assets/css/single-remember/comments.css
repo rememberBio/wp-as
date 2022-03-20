@@ -58,7 +58,23 @@ form#commentform input::placeholder, form#commentform textarea::placeholder {
     background: white;
     border-radius: 15px;
 }
-
+.attach-img:not(.success) .cancel,.attach-img:not(.success) .success {
+    display: none;
+}
+.attach-img.success .comment-form-attachment__label:not(.success){
+    display: none;
+}
+.success.attach-img label:before {
+    background-image: url(/wp-content/uploads/2022/03/Group-994.svg);
+    width:18px;
+    height: 18px;
+}
+.attach-img label a {
+    color: black;
+    border-bottom: 1px solid;
+    line-height: 1.2;
+    margin-left: 5px;
+}
 .attach-img {
     color: var(--custom-light-blue);
 }

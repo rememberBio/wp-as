@@ -52,9 +52,17 @@ jQuery(document).ready(($)=>{
                 if(Number(index) - 1 < arrayLen - 1) thisEl.siblings(".next").show();
             }
         } 
-        if(jQuery(".current-image").height() > window.innerHeight || jQuery(".current-image").height() > window.innerHeight * 0.75) {
-            jQuery(".current-image").css("height",window.innerHeight * 0.75 );
-            jQuery(".current-image").css("width","auto" );
+        if(jQuery(".current-image img").length) {
+            if(jQuery(".current-image img").height() > window.innerHeight || jQuery(".current-image img").height() > window.innerHeight * 0.75) {
+                jQuery(".current-image img").css("height",window.innerHeight * 0.75 );
+                jQuery(".current-image img").css("width","auto" );
+                jQuery(".current-image").addClass("adaptive-height");
+            }
+        } else {
+            if(jQuery(".current-image").height() > window.innerHeight || jQuery(".current-image").height() > window.innerHeight * 0.75) {
+                jQuery(".current-image").css("height",window.innerHeight * 0.75 );
+                jQuery(".current-image").css("width","auto" );
+            }
         }
     });
 
@@ -138,7 +146,7 @@ jQuery(document).ready(($)=>{
       
     });
 
-    //main tab
+    //main tab gallery slider
     if($('#galley-main-slider').length) {
         $('#galley-main-slider').slick({
             //lazyLoad: 'ondemand',
@@ -164,8 +172,28 @@ jQuery(document).ready(($)=>{
             }]
         });
     }
+
+    //comments
+    jQuery('.comment-form-attachment.attach-img #attachment').on("change", function(){
+        val = jQuery(this).val();
+        wrapper = jQuery(this).parents(".comment-form-attachment.attach-img");
+        label = wrapper.find("label");
+        if(val != "") {
+            wrapper.addClass("success");
+        }
+        else {
+            wrapper.removeClass("success");
+        }
+    });
 });
 
+function cancelUploadFile(e) {
+    e.preventDefault();
+    var wrapper = jQuery(".comment-form-attachment.attach-img");
+    var input = wrapper.find("input");
+    input.val("");
+    wrapper.removeClass("success");
+}
 
 function hideMoreStoryText(e) {
     e.preventDefault();
@@ -208,7 +236,14 @@ function openAlbumTab(photosArr,videosArr,years,AlbumName) {
     tabElement.find('span.year').text(years);
     tabElement.find('span.album-name').text(decodeURI(AlbumName).replaceAll("+"," "));
 
-    imagesArrToSend = photosArr.concat(videosArr);
+    imagesArrToSend = [];
+    if(videosArr && photosArr) {
+        imagesArrToSend = photosArr.concat(videosArr);
+    } else if(videosArr) {
+        imagesArrToSend = videosArr;
+    } else if(photosArr) {
+        imagesArrToSend = photosArr;
+    }
 
 
     let container = tabElement.find(".wrap-item-gallery");
@@ -223,8 +258,10 @@ function openAlbumTab(photosArr,videosArr,years,AlbumName) {
                 caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
             }
             wrapItem.append(item);
-            if(caption != "")
+            if(caption != "") {
                 wrapItem.append(caption);
+                wrapItem.addClass("has-caption");
+            }
             container.append(wrapItem);
             indexEl = indexEl + 1;
         }
@@ -293,13 +330,17 @@ function openVideoPhotoPopup(imagesArrToPopup,currentIndex) {
                         if(video != undefined) {
                             item = jQuery("<video class='video-popup-photo' controls > </video>").attr({ "src":video,"data-index":index,"data-length-all":imagesLength });
                         } else  {
-                            item = jQuery("<img />").attr({ "src":element['url'],"data-index":index,"data-length-all":imagesLength });
-                            if(element['caption'] != "")
+                            item = jQuery('<div class="wrap-image-popup-el"></div>').attr({ "data-index":index,"data-length-all":imagesLength });
+                            img = jQuery("<img />").attr({ "src":element['url']});
+                            item.append(img);
+                            if(element['caption'] != "") {
                                 caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
-                        }
+                                item.append(caption);
+                                item.addClass("has-caption");
+                            }
+                       }
                         if(index == currentIndex) item.addClass("current-image");
                         container.append(item);
-                        if(caption != "") container.append(caption);
                     }
                 }
             }
@@ -317,10 +358,17 @@ function openVideoPhotoPopup(imagesArrToPopup,currentIndex) {
         }
 
         popupEl.show();
-
-        if(jQuery(".current-image").height() > window.innerHeight || jQuery(".current-image").height() > window.innerHeight * 0.75) {
-            jQuery(".current-image").css("height",window.innerHeight * 0.75 );
-            jQuery(".current-image").css("width","auto" );
+        if(jQuery(".current-image img").length) {
+            if(jQuery(".current-image img").height() > window.innerHeight || jQuery(".current-image img").height() > window.innerHeight * 0.75) {
+                jQuery(".current-image img").css("height",window.innerHeight * 0.75 );
+                jQuery(".current-image img").css("width","auto" );
+                jQuery(".current-image").addClass("adaptive-height");
+            }
+        } else {
+            if(jQuery(".current-image").height() > window.innerHeight || jQuery(".current-image").height() > window.innerHeight * 0.75) {
+                jQuery(".current-image").css("height",window.innerHeight * 0.75 );
+                jQuery(".current-image").css("width","auto" );
+            }
         }
 
     }
@@ -331,7 +379,7 @@ function closeGalleryPopup(e) {
         e.preventDefault();
     popupEl = jQuery(".gallery-popup");
     
-    items = popupEl.find("img,video.video-popup-photo");
+    items = popupEl.find(".wrap-image-popup-el,video.video-popup-photo");
     if(items.length)
         items.remove();
 

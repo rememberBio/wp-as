@@ -25,8 +25,10 @@
                 </div> -->
                 <p class="comment-form-attachment attach-img">
                     <label class="comment-form-attachment__label" for="attachment"> Attach A Picture </label>
+                    <label class="comment-form-attachment__label success" for="attachment"> Successfully Attached <a href="" onclick="cancelUploadFile(event)" class="cancel">cancel</a></label>
                     <input class="comment-form-attachment__input" id="attachment" name="attachment" type="file" accept=".jpg,.jpeg,.jpe,.gif,.png,.bmp,.tiff,.tif,.webp,.ico,.heic">	
-				</p>
+                    
+                </p>
 
                 <input type="submit" id="submit" value="Submit A Response">
                 <input type="hidden" name="comment_post_ID" value="<?php echo $post_id; ?>" id="comment_post_ID">
