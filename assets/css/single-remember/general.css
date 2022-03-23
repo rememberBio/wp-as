@@ -67,6 +67,7 @@ nav#site-navigation li a {
 
 .share-btn a {
     display: flex;
+    outline: none;
 }
 
 ul#primary-menu li {display: block;}

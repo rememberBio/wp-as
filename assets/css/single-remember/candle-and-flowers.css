@@ -115,7 +115,7 @@ section.candles-flowers .wrap-content {
     z-index: 99;
 }
 
-form#cfform {
+form#cfform,.wrap-thank-section {
     background-color: var(--custom-blue);
     width: 450px;
     height: 480px;
@@ -317,7 +317,7 @@ form#cfform input:focus, form#cfform textarea:focus {
         padding-bottom: 80px;
     }
     /* popup */
-    form#cfform {
+    form#cfform,.wrap-thank-section  {
         width: 93%;
         padding: 14px;
         height: 461px;

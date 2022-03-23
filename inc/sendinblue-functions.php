@@ -2,10 +2,12 @@
 
 //create list when publish new post
 function dome_publish_post( $new_status, $old_status, $post ) {
-    if ( $new_status == 'publish' && $old_status != 'publish' ) {
-        $post_slug = $post->post_name;
-        $post_id = $post->ID;
-        create_list_sendinblue_function($post_slug,$post_id);
+    if(get_post_type( $post->ID ) == "remmember_page") {
+        if ( $new_status == 'publish' && $old_status != 'publish' ) {
+            $post_slug = $post->post_name;
+            $post_id = $post->ID;
+            create_list_sendinblue_function($post_slug,$post_id);
+        }
     }
 }
 add_action('transition_post_status', 'dome_publish_post', 10, 3 );
@@ -74,12 +76,6 @@ function create_contact_sendinblue($list_id,$post_id,$email) {
         echo "cURL Error #:" . $err;
     } else {
         echo $response;
-        error_log('👍👍👍');
-        error_log($response);
-        error_log($post_id);
-        error_log($list_id);
-        error_log('👍👍👍');
-
     }
 }
 
@@ -209,9 +205,6 @@ function register_email_to_spec_remmember_page($email,$remmember_post_id) {
     if($list_id) {
         //check if exist contact with this email
         $exist_contact = is_exist_contact_by_email($email);
-        // error_log("😊😊");
-        // error_log(print_r($exist_contact,true));
-        // error_log("😊😊");
         if(!$exist_contact) {
             create_contact_sendinblue($list_id,$remmember_post_id,$email); 
         } else {
@@ -219,9 +212,6 @@ function register_email_to_spec_remmember_page($email,$remmember_post_id) {
             $list_ids = $exist_contact -> listIds;
             //add list id to list_ids
             $list_ids[] = (int)$list_id;
-            // error_log("**");
-            // error_log(print_r($list_ids,true));
-            // error_log("**");
             update_contact_lists_array($email,$list_ids);
         }
     }

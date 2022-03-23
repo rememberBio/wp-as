@@ -56,3 +56,8 @@ function get_remember_post_candles_flowers($remmember_post_id){
     $cf_list = is_array( $cf_list ) ? $cf_list : [];
     return $cf_list;
 }
+
+function app_output_buffer() {
+    ob_start();
+} // soi_output_buffer
+add_action('init', 'app_output_buffer');

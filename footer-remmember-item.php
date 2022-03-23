@@ -38,7 +38,7 @@ if(isset($_POST['email']))
 		<div class="wrap-form-footer">
 			<form method="post" name="registerForm" id="registerForm" action="">
 				<input type="email" name="email" value="" id="email" placeholder="<?= get_field("enter_email_text","option"); ?>" >
-				<button type="submit"><img src="/wp-content/uploads/2022/02/Group-884.png" alt=""></button>
+				<button type="submit"><img src="/wp-content/uploads/2022/03/remember-1.svg" alt=""></button>
 			</form>
 		</div>
 		<?php if($current_tab == "") { ?>

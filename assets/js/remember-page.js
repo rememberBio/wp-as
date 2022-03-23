@@ -21,9 +21,9 @@ jQuery(document).ready(($)=>{
         if($("section.candles-flowers").length) {
             if(!$(event.target).is('.write-candles-flowers-btn a')) {
                 $(".write-candles-flowers.opened").removeClass("opened");
-                $("#cfform").trigger("reset");
-                $('.wrap-write-candles-flowers-form a.close').siblings(".step-1").show();
-                $('.wrap-write-candles-flowers-form a.close').siblings(".step-2").hide();
+                $("#cfform").trigger("reset").show();
+                $('.wrap-write-candles-flowers-form .step-1').show();
+                $('.wrap-write-candles-flowers-form .step-2').hide();
                 $(".wrap-thank-section").hide();
             }
         }
@@ -98,15 +98,34 @@ jQuery(document).ready(($)=>{
     //candles and flowers
     $(".write-candles-flowers-btn a:not(.main-cf-btn)").click(function(event) {
         event.preventDefault();
+        let dataProduct = $(this).attr("data-product");
+
+        let wrapRadios = $(this).parents(".write-candles-flowers").find(".step-1 .wrap-radio");
+        let candleRadio = wrapRadios.first();
+        let flowerRadio = wrapRadios.last();
+
+        if(dataProduct == "flower") { 
+            candleRadio.removeClass("current");
+            candleRadio.find("input").attr('checked', false);
+            flowerRadio.addClass("current");
+            flowerRadio.find("input").attr('checked', true);
+        } else {
+            flowerRadio.removeClass("current");
+            flowerRadio.find("input").attr('checked', false);
+            candleRadio.addClass("current");
+            candleRadio.find("input").attr('checked', true);
+        }
+
         $(this).parents(".write-candles-flowers").addClass("opened");
+
     });
 
     $(".wrap-write-candles-flowers-form a.close").click(function(event) {
         event.preventDefault();
         $(this).parents(".write-candles-flowers").removeClass("opened");
-        $("#cfform").trigger("reset");
-        $(this).siblings(".step-1").show();
-        $(this).siblings(".step-2").hide();
+        $("#cfform").trigger("reset").show();
+        $('.wrap-write-candles-flowers-form .step-1').show();
+        $('.wrap-write-candles-flowers-form .step-2').hide();
         $(".wrap-thank-section").hide();
     });
 
@@ -125,9 +144,15 @@ jQuery(document).ready(($)=>{
 
     $(".wrap-write-candles-flowers-form #next-button").click(function(event) {
         let parent = $(this).parents(".step-1");
-        let required_input = parent.find("#senderName");
-        if(required_input.val() == "") {
-            required_input.focus(); //the customer see default required error message
+        let required_inputs = parent.find("input[required]");
+        let required_to_focus = [];
+        required_inputs.each(function(i,el){
+            if(jQuery(this).val() == "" || !validateInput(jQuery(this))) {
+                required_to_focus.push(jQuery(this));
+            }
+        });
+        if(required_to_focus.length) {
+            required_to_focus[0].focus(); //the customer see default required error message
         } else {
             let is_candle = true;
             let checked_radio = parent.find("input[type=radio]:checked");
@@ -187,6 +212,13 @@ jQuery(document).ready(($)=>{
     });
 });
 
+function validateInput(input) {
+    var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+    var testPhone = /[0-9\-\(\)\s]+./;
+    if(input.attr("type") == "email" && !testEmail.test(input.val())) return false;
+    if(input.attr("type") == "tel" && !testPhone.test(input.val())) return false;
+    return true;
+}
 function cancelUploadFile(e) {
     e.preventDefault();
     var wrapper = jQuery(".comment-form-attachment.attach-img");

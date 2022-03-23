@@ -1,3 +1,0 @@
-<?php
-$secret_key = '7dc14779920c9fad375f90aa18f079e38f1ba3c1446a167398f727362a23599e09b8a033cd4693d3';
-$access_key = 'D6D4E907026E85FDF2E1';
