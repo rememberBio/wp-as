@@ -21,10 +21,7 @@ jQuery(document).ready(($)=>{
         if($("section.candles-flowers").length) {
             if(!$(event.target).is('.write-candles-flowers-btn a')) {
                 $(".write-candles-flowers.opened").removeClass("opened");
-                $("#cfform").trigger("reset").show();
-                $('.wrap-write-candles-flowers-form .step-1').show();
-                $('.wrap-write-candles-flowers-form .step-2').hide();
-                $(".wrap-thank-section").hide();
+                closeCandleFlowerPopup();
             }
         }
     });
@@ -123,21 +120,10 @@ jQuery(document).ready(($)=>{
     $(".wrap-write-candles-flowers-form a.close").click(function(event) {
         event.preventDefault();
         $(this).parents(".write-candles-flowers").removeClass("opened");
-        $("#cfform").trigger("reset").show();
-        $('.wrap-write-candles-flowers-form .step-1').show();
-        $('.wrap-write-candles-flowers-form .step-2').hide();
-        $(".wrap-thank-section").hide();
+        closeCandleFlowerPopup();
     });
 
     $(".wrap-write-candles-flowers-form input[type=radio]").change(function(event) {
-        let url = 'https://' + window.location.hostname + "/checkout?add-to-cart=";
-        let candleProductId = 210;
-        let flowerCandleId = 212;
-        if(event.target.id == 'flower') {
-            $("form#cfform").attr("action",url + flowerCandleId);
-        } else {
-            $("form#cfform").attr("action",url + candleProductId);
-        }
         $(".wrap-radio").removeClass("current");
         $(this).parents(".wrap-radio").addClass("current");
     });
@@ -145,6 +131,7 @@ jQuery(document).ready(($)=>{
     $(".wrap-write-candles-flowers-form #next-button").click(function(event) {
         let parent = $(this).parents(".step-1");
         let required_inputs = parent.find("input[required]");
+        let error_container = parent.find(".wrap-error");
         let required_to_focus = [];
         required_inputs.each(function(i,el){
             if(jQuery(this).val() == "" || !validateInput(jQuery(this))) {
@@ -153,7 +140,9 @@ jQuery(document).ready(($)=>{
         });
         if(required_to_focus.length) {
             required_to_focus[0].focus(); //the customer see default required error message
+            error_container.show();
         } else {
+            error_container.hide();
             let is_candle = true;
             let checked_radio = parent.find("input[type=radio]:checked");
             if(checked_radio.val() == 'flower' ) is_candle = false;
@@ -211,7 +200,19 @@ jQuery(document).ready(($)=>{
         }
     });
 });
+function closeCandleFlowerPopup() {
 
+    jQuery("#cfform").trigger("reset").show();
+    jQuery('.wrap-write-candles-flowers-form .step-1').show();
+    jQuery('.wrap-write-candles-flowers-form .step-2,.wrap-thank-section').hide();
+
+    //remove payment param from url
+    url = new URL(window.location.href);
+    if (url.searchParams.get('payment')) {
+        url.searchParams.set('payment','');
+        window.location.href = url
+    }
+}
 function validateInput(input) {
     var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
     var testPhone = /[0-9\-\(\)\s]+./;

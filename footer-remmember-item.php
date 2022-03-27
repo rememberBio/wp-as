@@ -28,6 +28,7 @@ if(isset($_POST['email']))
 		$email = $_POST['email'];
 		if($email != "" && strpos($email, "@") && strpos($email, ".") ) {
 			register_email_to_spec_remmember_page($email,$post_id);
+			db_add_customer_remember_page($email,$post_id);
 		}
 	}
 

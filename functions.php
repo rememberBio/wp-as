@@ -241,6 +241,8 @@ require  get_template_directory() . '/inc/stripe-payments.php';
 
 require  get_template_directory() . '/inc/sendinblue-functions.php';
 
+require  get_template_directory() . '/inc/data-base-functions.php';
+
 //Add custom type
 function create_posttypes() {
 	//post type
