@@ -259,6 +259,8 @@ function closeAlbumTab(event) {
 }
 
 function openAlbumTab(photosArr,videosArr,years,AlbumName) {
+    photosArr = decodeURIComponent(photosArr);
+    videosArr = decodeURIComponent(videosArr);
     photosArr = JSON.parse(photosArr);
     videosArr = JSON.parse(videosArr);
     tabElement = jQuery(".wrap-content.tab-album");
@@ -267,8 +269,8 @@ function openAlbumTab(photosArr,videosArr,years,AlbumName) {
     tabElement.find(".wrap-video-item").remove();
 
     tabElement.find('span.year').text(years);
-    tabElement.find('span.album-name').text(decodeURI(AlbumName).replaceAll("+"," "));
-
+    tabElement.find('span.album-name').text(decodeURIComponent(AlbumName).replaceAll("+"," "));
+    
     imagesArrToSend = [];
     if(videosArr && photosArr) {
         imagesArrToSend = photosArr.concat(videosArr);
@@ -288,6 +290,7 @@ function openAlbumTab(photosArr,videosArr,years,AlbumName) {
             let item = jQuery("<img />").attr({ "src":element['url'],"data-index":indexEl});
             let caption = "";
             if(element['caption'] != "") {
+                element['caption'] = element['caption'].replaceAll("+"," ");
                 caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
             }
             wrapItem.append(item);
@@ -345,7 +348,6 @@ function openVideoGalleryPopup(e,videoUrl) {
 
 function openVideoPhotoPopup(imagesArrToPopup,currentIndex) {
     jQuery(".current-image").removeClass("current-image");
-
     currentIndex = Number(currentIndex);
 
     if( imagesArrToPopup != "" && imagesArrToPopup != undefined ) {
@@ -367,6 +369,7 @@ function openVideoPhotoPopup(imagesArrToPopup,currentIndex) {
                             img = jQuery("<img />").attr({ "src":element['url']});
                             item.append(img);
                             if(element['caption'] != "") {
+                                element['caption'] = element['caption'].replaceAll("+"," ");
                                 caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
                                 item.append(caption);
                                 item.addClass("has-caption");

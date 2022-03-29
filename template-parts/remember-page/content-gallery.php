@@ -61,8 +61,8 @@
                     $album_videos = $album['videos'];
                     $gallery_item['photos_arr'] = array_merge($gallery_item['photos_arr'],$album_photos);
                     $gallery_item['videos_arr'] = array_merge($gallery_item['videos_arr'],$album_videos);
-                    $album_photos_json = json_encode($album_photos);
-                    $album_videos_json = json_encode($album_videos);
+                    $album_photos_json = urlencode(json_encode($album_photos));
+                    $album_videos_json = urlencode(json_encode($album_videos));
                 ?>
                     <div class="wrap-album-item" onclick='openAlbumTab(`<?= $album_photos_json ?>`,`<?= $album_videos_json ?>`,`<?= $album_years ?>`,`<?php echo urlencode($album["name_of_album"]); ?>`)'>
                         <?php if( is_array($album_photos) && count($album_photos) > 0 )  { ?>
@@ -100,7 +100,8 @@
             $start_year = $gallery_item['start_year'];
             $end_year = $gallery_item['end_year'];
             $photos = $gallery_item['photos_arr'];
-            $all_photos = array_merge($all_photos,$photos);
+            if($photos)
+                $all_photos = array_merge($all_photos,$photos);
         ?>
            <div class="wrap-item-gallery">
                <span class="top-item-gallery">
