@@ -79,18 +79,21 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	font-family: "Rubik";
 	src: url(/wp-content/themes/remmember/assets/fonts/Rubik-Regular.ttf);
 	font-weight: normal;
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "Rubik";
 	src: url(/wp-content/themes/remmember/assets/fonts/Rubik-Bold.ttf);
 	font-weight: bold;
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "Rubik Medium";
 	src: url(/wp-content/themes/remmember/assets/fonts/Rubik-Medium.ttf);
 	font-weight: normal;
+	font-display: swap;
 }
 
 html {
