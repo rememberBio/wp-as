@@ -236,12 +236,16 @@ if($google_maps_details) {
                 $album_videos = $album['videos'];
                 if($album_photos && is_array($album_photos)) {
                     foreach ($album_photos as $photo) { ?>
-                    <a href="<?= $url . '/?tab=gallery' ?>"><img src="<?= $photo['url'] ?>" alt=""></a>
+                    <a href="<?= $url . '/?tab=gallery' ?>"><img class="lazy" src="" data-srcset="<?= $photo['url'] ?>" alt=""></a>
             <?php   }
                 }
                 if($album_videos && is_array($album_videos)) {
                     foreach ($album_videos as $video) { ?>
-                        <a class="gallery-video" href="<?= $url . '/?tab=gallery' ?>"><video src="<?= $video['video'] ?>"></video></a>
+                        <a class="gallery-video" href="<?= $url . '/?tab=gallery' ?>">
+                            <video class="lazy">
+                                <source src="" data-src="<?= $video['video'] ?>">
+                            </video>
+                        </a>
                 <?php }
                 }
             }
@@ -296,7 +300,7 @@ if($google_maps_details) {
             $name = $place['name'];
         ?>
             <a <?= $url . '/?tab=places-of-commemoration' ?> class="wrap-place">
-                <img src="<?= $img ?>" alt="">
+                <img class="lazy" src="" data-srcset="<?= $img ?>" alt="">
                 <div class="wrap-place-bottom">
                     <span class="name"><?= $name ?></span>
                     <span class="desc"><?= $address ?></span>

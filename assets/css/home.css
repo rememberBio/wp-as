@@ -307,6 +307,9 @@ section.say-about-us .wrap-content .wrap-say-about-item .top .image {
   left: 0;
   right: 0;
 }
+.wrap-service-item .top.lazy,.wrap-inner-say-about .image.lazy{
+  background-image: none !important;
+}
 
 @media screen and (min-width: 1800px) { }
 @media screen and (max-width: 1100px) { 

@@ -161,6 +161,9 @@ function remmember_scripts() {
 		wp_enqueue_script( 'remember-item-js', WP_THEME_URI . '/assets/js/home.js' );
 		slick_slider_scripts();
 	}
+	if(is_front_page() || is_home() || is_single() && 'remmember_page' == get_post_type()) {
+		wp_enqueue_script( 'custom-lazy-loading', WP_THEME_URI . '/assets/js/lazy-loading.js' );
+	}
 	if(is_single() && 'remmember_page' == get_post_type()) { 
 		wp_enqueue_script( 'qr_js', 'https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js');
 

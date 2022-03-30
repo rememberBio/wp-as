@@ -35,3 +35,27 @@ function remmember_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'remmember_pingback_header' );
+
+//change image's from acf url to bunny.net url
+function dome_acf_format_value( $value, $post_id, $field ) {
+
+    $domain = $_SERVER['SERVER_NAME'];
+    if(is_array($value)){
+		//replace webp
+        //$value['url'] = str_replace('.png', '.webp', $value['url']);
+        //$value['url'] = str_replace('.jpg', '.webp', $value['url']);
+        if(isset($value['sizes']) && !empty($value['sizes'])){
+            foreach($value['sizes'] as $key=>$size){
+				//replace webp
+                //$value['sizes'][$key] = str_replace('.png', '.webp', $value['sizes'][$key]);
+                //$value['sizes'][$key] = str_replace('.jpg', '.webp', $value['sizes'][$key]);
+            }
+        }
+    } else {
+		//replace webp
+        //$value = str_replace('.png', '.webp', $value);
+        //$value = str_replace('.jpg', '.webp', $value);
+    }
+	return $value;
+}
+//add_filter('acf/format_value/type=image', 'dome_acf_format_value',20,3);

@@ -52,7 +52,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
             <?php foreach ($how_repeater as $item) { ?>
                 <div class="wrap-how-item">
                     <div class="left">
-                        <img src="<?php echo($item['image']); ?>" alt="">
+                        <img class="lazy" src="" data-srcset="<?php echo($item['image']); ?>" alt="">
                     </div>
                     <div class="right">
                         <p><?php echo($item['text']); ?></p>
@@ -65,7 +65,9 @@ $say_about_items = get_field("home_say_about_us__items","option");
     <section id="about" class="about-us">
         <h2>About Us</h2>
         <div class="wrap-content">
-            <video controls src="<?php echo($about_video); ?>"></video>
+            <video controls class="lazy" >
+                <source src="" data-src="<?php echo($about_video); ?>">
+            </video>
         </div>
     </section>
     <section id="examples" class="example-of-remember-pages">
@@ -76,7 +78,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
                 $item_permalink = get_permalink($item_post_id);
             ?>
                 <a href="<?php echo($item_permalink); ?>" class="wrap-ex-item">
-                    <img src="<?php echo($item['image']); ?>" alt="">
+                    <img class="lazy" src="" data-srcset="<?php echo($item['image']); ?>" alt="">
                     <p class="ex_name"><?php echo($item['name']); ?></p>
                 </a>
             <?php } ?>
@@ -88,7 +90,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
         <div class="wrap-content">
             <?php foreach ($services_items as $item) { ?>
                 <div class="wrap-service-item">
-                    <div class="top" style="background-image:url(<?php echo($item['image']); ?>)"></div>
+                    <div class="top lazy" style="background-image:url(<?php echo($item['image']); ?>)"></div>
                     <p class="text"><?php echo($item['text']); ?></p>
                 </div>
             <?php } ?>
@@ -102,7 +104,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
                 <div class="wrap-say-about-item">
                     <div class="wrap-inner-say-about">
                         <div class="top">
-                            <div class="image" style="background-image:url(<?php echo($item['telling_image']); ?>)"></div>
+                            <div class="image lazy" style="background-image:url(<?php echo($item['telling_image']); ?>)"></div>
                             <span class="name"><?php echo($item['telling_name']); ?></span>
                             <span class="desc"><?php echo($item['telling_desc']); ?></span>
                         </div>
