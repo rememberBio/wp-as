@@ -22,6 +22,10 @@ if($current_tab == "")
 
 $post_id = get_the_ID();
 
+//Get counts of register emails to this post and other translated;
+$pages_ids = get_all_translated_post_ids($post_id);
+$emails_register_count = get_register_emails_for_remember_pages($pages_ids);
+
 $email = "";
 if(isset($_POST['email']))
 	{ 
@@ -44,7 +48,7 @@ if(isset($_POST['email']))
 		</div>
 		<?php if($current_tab == "") { ?>
 		<div class="remmber-footer-count-of-remmbers">
-			<span class="num"><?php echo get_register_email_to_spec_remmember_page($post_id); ?></span>
+			<span class="num"><?php echo $emails_register_count; ?></span>
 			<span class="text"><?php  _e('People remember', 'remmember'); ?></span>
 		</div>
 		<?php } ?>

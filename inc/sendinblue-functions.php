@@ -235,6 +235,17 @@ function get_register_email_to_spec_remmember_page($remember_post_id){
     return $contacts_count;
 }
 
+function get_register_emails_for_remember_pages($posts_ids) {
+    $count = 0;
+    if($posts_ids && is_array($posts_ids)) {
+        foreach ($posts_ids as $post_id) {
+            $emails_count = get_register_email_to_spec_remmember_page($post_id);
+            $count = $count + $emails_count;
+        }
+        
+    }
+    return $count;
+}
 
 
 //create_list_sendinblue_function('maurice-wohl',271);
