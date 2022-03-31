@@ -92,6 +92,7 @@ footer.site-footer.remmember-item-footer:not(.main-tab) {
     display: flex;
     gap: 5%;
     align-items: center;
+    position: sticky;
 }
 
 footer.site-footer.remmember-item-footer {
