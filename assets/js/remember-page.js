@@ -162,8 +162,8 @@ jQuery(document).ready(($)=>{
 
     //main tab gallery slider
     if($('#galley-main-slider').length) {
-        $('#galley-main-slider').slick({
-            //lazyLoad: 'ondemand',
+        const bodyRTL = jQuery("body.rtl");
+        let slickAttrs = {
             slidesToShow: 2,
             centerMode: false,
             variableWidth: true,
@@ -184,7 +184,9 @@ jQuery(document).ready(($)=>{
                     slidesToShow: 1
                 },
             }]
-        });
+        };
+        if(bodyRTL.length) slickAttrs['rtl'] = true;
+        $('#galley-main-slider').slick(slickAttrs);
     }
 
     //comments

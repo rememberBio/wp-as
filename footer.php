@@ -17,9 +17,9 @@ $name = get_bloginfo( 'name' );
 	<footer id="generalFooter" class="site-footer">
 		<div class="site-info">
 			<div class="part-1">
-				<span>remember pages</span>
+				<span><?php _e('remember pages', 'remmember'); ?></span>
 				<div class="wrap-serach">
-					<input type="text" placeholder="Search remember page">
+					<input type="text" placeholder="<?php _e('Search remember page', 'remmember'); ?>">
 				</div>
 			</div>
 			<div class="part-2">
@@ -28,7 +28,7 @@ $name = get_bloginfo( 'name' );
 				)); ?>
 			</div>
 			<div class="part-3">
-				<a href="">Create remember page</a>
+				<a href=""><?php  _e('Create remember page', 'remmember'); ?></a>
 				<div class="share-btns">
 					<a href="<?= 'mailto:?subject=' . $url ?>" target="_blank" class="email">
 						<img src="/wp-content/uploads/2022/03/Group-182.svg" alt="">

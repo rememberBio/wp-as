@@ -3,7 +3,7 @@
     $url = get_permalink();
     //get comments
     $comments = get_remember_post_comments($post_id);
-    
+   
     $after_submit_comment = false;
     if(isset($_GET["submit"])) { 
         $after_submit_comment = true;
@@ -11,26 +11,22 @@
 ?>
 
 <section class="comments">
-    <h1>Comments</h1>
+    <h1><?php _e('Comments', 'remmember'); ?></h1>
     <div class="write-comment <?php if($after_submit_comment) { echo "after-sub-comment opened"; } ?>">
-        <a href="" class="write-comment-btn" ><span>New Comment</span></a>
+        <a href="" class="write-comment-btn" ><span><?php _e('New Comment', 'remmember'); ?></span></a>
         <div class="wrap-write-comment-form">
             <form <?php if($after_submit_comment)  { echo "style=display:none"; } ?> action="<?php echo url() . '/wp-comments-post.php';  ?>" id="commentform" method="POST" enctype="multipart/form-data">
-                <input required type="text" placeholder="Name" id="name" name="name" size="30" maxlength="245">
-                <input required type="text" placeholder="Relationship" id="rel" name="rel">
-                <textarea maxlength="65525" required name="comment" id="comment" cols="30" rows="10" aria-required="true" placeholder="Write A Comment"></textarea>
-                <!-- <div class="attach-img">
-                    <label for="comment-img">Attach A Picture</label>
-                    <input accept=".jpg,.jpeg,.png" type="file" name="comment-img" id="comment-img">
-                </div> -->
+                <input required type="text" placeholder="<?php _e('Name', 'remmember'); ?>" id="name" name="name" size="30" maxlength="245">
+                <input required type="text" placeholder="<?php _e('Relationship', 'remmember'); ?>" id="rel" name="rel">
+                <textarea maxlength="65525" required name="comment" id="comment" cols="30" rows="10" aria-required="true" placeholder="<?php _e('Write A Comment', 'remmember'); ?>"></textarea>
                 <p class="comment-form-attachment attach-img">
-                    <label class="comment-form-attachment__label" for="attachment"> Attach A Picture </label>
-                    <label class="comment-form-attachment__label success" for="attachment"> Successfully Attached <a href="" onclick="cancelUploadFile(event)" class="cancel">cancel</a></label>
+                    <label class="comment-form-attachment__label" for="attachment"> <?php _e('Attach A Picture', 'remmember'); ?> </label>
+                    <label class="comment-form-attachment__label success" for="attachment"> <?php _e('Successfully Attached', 'remmember'); ?> <a href="" onclick="cancelUploadFile(event)" class="cancel"><?php _e('cancel', 'remmember'); ?></a></label>
                     <input class="comment-form-attachment__input" id="attachment" name="attachment" type="file" accept=".jpg,.jpeg,.jpe,.gif,.png,.bmp,.tiff,.tif,.webp,.ico,.heic">	
                     
                 </p>
 
-                <input type="submit" id="submit" value="Submit A Response">
+                <input type="submit" id="submit" value="<?php _e('Submit A Response', 'remmember'); ?>">
                 <input type="hidden" name="comment_post_ID" value="<?php echo $post_id; ?>" id="comment_post_ID">
                 <input type="hidden" name="comment_parent" id="comment_parent" value="0">
                 <input type="hidden" name="dome_redirect_to" value="<?php echo $url . '/?tab=comments&submit=true'; ?>"; />
@@ -38,8 +34,8 @@
             </form>
             <?php if($after_submit_comment)  { ?>
             <div class="wrap-after-submit-comment">
-                <span class="head">Thank You For Your Comment!</span>
-                <span class="text">The Comment Has Been Sent For Manager Approval And Will Be Displayed As Soon As Possible</span>
+                <span class="head"><?php _e('Thank You For Your Comment!', 'remmember'); ?></span>
+                <span class="text"><?php _e('The Comment Has Been Sent For Manager Approval And Will Be Displayed As Soon As Possible', 'remmember'); ?></span>
             </div>
             <?php } ?>
         </div>

@@ -10,7 +10,7 @@
 ?>
 
 <section class="places">
-    <h1>Places Of Commemoration</h1>
+    <h1><?php _e('Places Of Commemoration', 'remmember'); ?></h1>
     <div class="wrap-content">
         <?php foreach ($places as $place) { 
             //teake all place fields

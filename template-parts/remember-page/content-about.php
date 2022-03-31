@@ -15,18 +15,18 @@
 
 <section class="about">
     <div class="first-part">
-        <h1>About</h1>
+        <h1><?php _e('About', 'remmember'); ?></h1>
         <div class="wrap-content">
             <p class="text desktop-only"><?php echo($hero_desc); ?></p>
             <div class="wrap-desc">
                 <img src="<?php echo($hero_img); ?>" alt="">
                 <div class="wrap-dates">
                     <div class="date">
-                        <span class="date-desc">Date of birth:</span>
+                        <span class="date-desc"><?php _e('Date of birth:', 'remmember'); ?></span>
                         <span class="year"><?php echo($birthday); ?></span>
                     </div>
                     <div class="date">
-                        <span class="date-desc">Date of death:</span>
+                        <span class="date-desc"><?php _e('Date of death:', 'remmember'); ?></span>
                         <span class="year"><?php echo($day_of_death); ?></span>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
     <div class="second-part">
         <div class="circle country">
             <img src="/wp-content/uploads/2022/02/Group-106.svg" alt="">
-            <h2>Country:</h2>
+            <h2><?php _e('Country:', 'remmember'); ?></h2>
             <span><?php echo($country); ?></span>
         </div>
         <?php if($spouse['hasband_or_wife']) { ?>
@@ -48,7 +48,7 @@
             } ?>
             <?php if($spouse['hasband_or_wife'] == 'husband') { ?>
                 <img src="/wp-content/uploads/2022/03/husband.svg" alt="">
-                <h2>Husband:</h2>
+                <h2><?php _e('Husband:', 'remmember'); ?></h2>
                 <?php if($has_link) { ?>
                 <a href="<?= $has_link ?>">
                 <?php  }?>
@@ -58,7 +58,7 @@
                 <?php  }?>
             <?php } else { ?>
                 <img src="/wp-content/uploads/2022/03/wife.svg" alt="">
-                <h2>Wife:</h2>
+                <h2><?php _e('Wife:', 'remmember'); ?></h2>
                 <?php if($has_link) { ?>
                 <a href="<?= $has_link ?>">
                 <?php  }?>
@@ -71,7 +71,7 @@
         <?php } ?>
         <div class="circle parents">
             <img src="/wp-content/uploads/2022/02/Group-109.svg" alt="">
-            <h2>Parents:</h2>
+            <h2><?php _e('Parents:', 'remmember'); ?></h2>
             <?php foreach ($parents as $parent) { 
                 if($parent['link']) {
                     $parent_link = get_permalink($parent['link']);
@@ -84,7 +84,7 @@
         </div>
         <div class="circle children">
             <img src="/wp-content/uploads/2022/02/Group-110.svg" alt="">
-            <h2>Children:</h2>
+            <h2><?php _e('Children:', 'remmember'); ?></h2>
             <?php foreach ($children as $child) { 
                 if($child['link']) {
                     $child_link = get_permalink($child['link']);
@@ -130,11 +130,11 @@
            
             <div class="wrap-year mobile-only" style="height:<?php echo $year_diff ?>%">
                 <span class="year"><?php echo $year_birth; ?></span>
-                <span class="desc">born</span>
+                <span class="desc"><?php _e('born', 'remmember'); ?></span>
             </div>
             <div class="wrap-year desktop-only" style="width:<?php echo $year_diff ?>%">
                 <span class="year"><?php echo $year_birth; ?></span>
-                <span class="desc">born</span>
+                <span class="desc"><?php _e('born', 'remmember'); ?></span>
             </div>
             
             <?php for ($i=0; $i < count($about_timeline) ; $i++) {
@@ -178,7 +178,7 @@
             ?>
             <div class="wrap-year">
                 <span class="year"><?php echo $year_dead; ?></span>
-                <span class="desc">dead</span>
+                <span class="desc"><?php _e('dead', 'remmember'); ?></span>
             </div>
         </div>
     </div>

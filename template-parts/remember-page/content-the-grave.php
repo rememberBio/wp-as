@@ -15,7 +15,7 @@
 ?>
 
 <section class="the-grave">
-    <h1>The grave</h1>
+    <h1><?php _e('The grave', 'remmember'); ?></h1>
     <div class="wrap-content">
         <div class="top">
             <div class="wrap-gallery">

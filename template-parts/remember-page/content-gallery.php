@@ -16,11 +16,11 @@
 ?>
 
 <section class="gallery">
-    <h1>Gallery</h1>
+    <h1><?php _e('Gallery', 'remmember'); ?></h1>
     <div class="wrap-tabs">
-        <a class="btn-tab-1 current-gallery-tab" href="" onclick="switchGalleryTab(event,1)">Albums</a>
-        <a class="btn-tab-2" href="" onclick="switchGalleryTab(event,2)">Photos</a>
-        <a class="btn-tab-3" href="" onclick="switchGalleryTab(event,3)">Videos</a>
+        <a class="btn-tab-1 current-gallery-tab" href="" onclick="switchGalleryTab(event,1)"><?php _e('Albums', 'remmember'); ?></a>
+        <a class="btn-tab-2" href="" onclick="switchGalleryTab(event,2)"><?php _e('Photos', 'remmember'); ?></a>
+        <a class="btn-tab-3" href="" onclick="switchGalleryTab(event,3)"><?php _e('Videos', 'remmember'); ?></a>
     </div>
     <div class="wrap-content tab-1">
         <?php foreach ($gallery_items as $gallery_item) { 

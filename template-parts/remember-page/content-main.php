@@ -74,7 +74,7 @@ if($google_maps_details) {
             <div class="wrap-form-footer">
                 <span class="text"><?=  $remember_too_text ?></span>
                 <form method="post" name="registerForm" id="registerForm" action="">
-                    <input type="email" name="email" value="" id="email" placeholder="<?= get_field("enter_email_text","option"); ?>" >
+                    <input type="email" name="email" value="" id="email" placeholder="<?php  _e('enter your email', 'remmember'); ?>" >
                     <button type="submit"><img src="/wp-content/uploads/2022/03/remember-1.svg" alt=""></button>
                 </form>
             </div>
@@ -95,35 +95,35 @@ if($google_maps_details) {
         <img src="/wp-content/uploads/2022/03/Group-963.svg" alt="">
         <div class="right-btn">
             <span class="num"><?php echo $num_of_candles; ?></span>
-            <span class="desc">Candles</span>
-            <span class="text">have been lit until now</span>
-            <div class="main-cf-btn pointer">light a candle</div>
+            <span class="desc"><?php _e('Candles', 'remmember'); ?></span>
+            <span class="text"><?php _e('have been lit until now', 'remmember'); ?></span>
+            <div class="main-cf-btn pointer"><?php _e('light a candle', 'remmember'); ?></div>
         </div>
     </a>
     <a href="<?php echo $url . '/?tab=candle-and-flowers' ?>" class="write-candles-flowers-btn">
         <img src="/wp-content/uploads/2022/03/Group-965.svg" alt="">
         <div class="right-btn">
             <span class="num"><?php echo $num_of_flowers; ?></span>
-            <span class="desc">Flowers</span>
-            <span class="text">have been Sent until now</span>
-            <div class="main-cf-btn">send a flower</div>
+            <span class="desc"><?php _e('Flowers', 'remmember'); ?></span>
+            <span class="text"><?php _e('have been Sent until now', 'remmember'); ?></span>
+            <div class="main-cf-btn"><?php _e('send a flower', 'remmember'); ?></div>
         </div>
     </a>
 </section>
 <?php if($about_country && $about_country !== "" || $about_day_of_death && $about_day_of_death !== "" || $about_birthday && $about_birthday !== "" ||  $about_children && count($about_children) > 0 || $about_parents && count($about_parents) > 0) { ?>
 <section class="main-about">
-    <h2 class="main-heading">About</h2>
+    <h2 class="main-heading"><?php _e('About', 'remmember'); ?></h2>
     <div class="wrap-content">
         <p class="text"><?php echo($about_desc); ?></p>
         <div class="wrap-dates">
             <?php if($about_birthday && $about_birthday !== "") { ?>
             <a href="<?= $url . '/?tab=about' ?>" class="date">
-                <span class="date-desc">Date of birth:</span>
+                <span class="date-desc"><?php _e('Date of birth:', 'remmember'); ?></span>
                 <span class="year"><?php echo($about_birthday); ?></span>
             </a>
             <?php } if($about_day_of_death && $about_day_of_death !== "") { ?>
             <a href="<?= $url . '/?tab=about' ?>" class="date">
-                <span class="date-desc">Date of death:</span>
+                <span class="date-desc"><?php _e('Date of death:', 'remmember'); ?></span>
                 <span class="year"><?php echo($about_day_of_death); ?></span>
             </a>
             <?php } ?>
@@ -132,7 +132,7 @@ if($google_maps_details) {
             <?php if($about_country && $about_country !== "") { ?>
             <div class="circle country">
                 <img src="/wp-content/uploads/2022/02/Group-106.svg" alt="">
-                <h3>Country:</h3>
+                <h3><?php _e('Country:', 'remmember'); ?></h3>
                 <span><?php echo($about_country); ?></span>
             </div>
             <?php } if($about_spouse && $about_spouse['hasband_or_wife'] ) {  ?>
@@ -143,13 +143,13 @@ if($google_maps_details) {
             } ?>
             <?php if($spouse['hasband_or_wife'] == 'husband') { ?>
                     <img src="/wp-content/uploads/2022/03/husband.svg" alt="">
-                    <h3>Husband:</h3>
+                    <h3><?php _e('Husband:', 'remmember'); ?></h3>
                     <?php if($has_link) {  echo '<a href="' . $has_link .'">'; }?>
                     <span><?php echo($about_spouse['husband_name']); ?></span>
                     <?php if($has_link) { echo("</a>"); } ?>
             <?php } else { ?>
                     <img src="/wp-content/uploads/2022/03/wife.svg" alt="">
-                    <h3>Wife:</h3>
+                    <h3><?php _e('Wife:', 'remmember'); ?></h3>
                     <?php if($has_link) {  echo '<a href="' . $has_link .'">'; }?>
                         <span><?php echo($about_spouse['wifes_name']); ?></span>
                     <?php if($has_link) { echo("</a>"); } ?>
@@ -159,7 +159,7 @@ if($google_maps_details) {
             <?php } if($about_parents && count($about_parents) > 0 ) {  ?>
             <div class="circle parents">
                 <img src="/wp-content/uploads/2022/02/Group-109.svg" alt="">
-                <h3>Parents:</h3>
+                <h3><?php _e('Parents:', 'remmember'); ?></h3>
                 <div class="wrap-parents flex">
                     <?php foreach ($about_parents as $parent) { 
                         if($parent['link']) {
@@ -175,7 +175,7 @@ if($google_maps_details) {
             <?php } if($about_children && count($about_children) > 0) { ?>
             <div class="circle children">
                 <img src="/wp-content/uploads/2022/02/Group-110.svg" alt="">
-                <h3>Children:</h3>
+                <h3><?php _e('Children:', 'remmember'); ?></h3>
                 <div class="wrap-children flex">
                     <?php foreach ($about_children as $child) { 
                         if($child['link']) {
@@ -192,13 +192,13 @@ if($google_maps_details) {
         </div>
     </div>
     <div class="wrap-bottom-link-main">
-        <a href="<?= $url . '/?tab=about' ?>" class="main-link-main">Read More ></a>
+        <a href="<?= $url . '/?tab=about' ?>" class="main-link-main"><?php _e('Read More >', 'remmember'); ?></a>
     </div>
 </section>
 <?php } ?>
 <?php if($main_stories && count($main_stories) > 0) {  ?>
 <section class="main-stories">
-    <h2 class="main-heading">Stories</h2>
+    <h2 class="main-heading"><?php _e('Stories', 'remmember'); ?></h2>
     <div class="wrap-content">
         <?php 
         $stories_count = 0;
@@ -216,18 +216,18 @@ if($google_maps_details) {
         ?>
             <a href="<?= $url . '/?tab=stories' ?>" class="wrap-story">
                 <p class="short-text"><?php echo(wp_trim_words($story['text'], $pres_count, '...')); ?></p>
-                <span class="read-more">Read ></span>
+                <span class="read-more"><?php _e('Read >', 'remmember'); ?></span>
             </a>
         <?php } ?>
     </div>
     <div class="wrap-bottom-link-main">
-        <a href="<?= $url . '/?tab=stories' ?>" class="main-link-main">More Stories ></a>
+        <a href="<?= $url . '/?tab=stories' ?>" class="main-link-main"><?php _e('More Stories >', 'remmember'); ?></a>
     </div>
 </section>
 <?php } ?>
 <?php if($gallery_items && count($gallery_items) > 0) {  ?>
 <section class="main-gallery">
-    <h2 class="main-heading">Gallery</h2>
+    <h2 class="main-heading"><?php _e('Gallery', 'remmember'); ?></h2>
     <div class="wrap-content" id="galley-main-slider">
         <?php foreach ($gallery_items as $gallery_item) {  
             $albums = $gallery_item['albums'];
@@ -252,13 +252,13 @@ if($google_maps_details) {
         } ?>
     </div>
     <div class="wrap-bottom-link-main">
-        <a href="<?= $url . '/?tab=gallery' ?>" class="main-link-main">To The Gallery ></a>
+        <a href="<?= $url . '/?tab=gallery' ?>" class="main-link-main"><?php _e('To The Gallery >', 'remmember'); ?></a>
     </div>
 </section>
 <?php } ?>
 
 <section class="main-comments">
-    <h2 class="main-heading">Comments</h2>
+    <h2 class="main-heading"><?php _e('Comments', 'remmember'); ?></h2>
     <div class="wrap-content">
         <?php 
         $comments_count = 0;
@@ -281,13 +281,13 @@ if($google_maps_details) {
         <?php } ?>
     </div>
     <div class="wrap-bottom-link-main">
-        <a href="<?= $url . '/?tab=comments' ?>" class="main-link-main">Write A Comment ></a>
+        <a href="<?= $url . '/?tab=comments' ?>" class="main-link-main"><?php _e('Write A Comment >', 'remmember'); ?></a>
     </div>
 </section>
 
 <?php if($places && count($places) > 0) {  ?>
 <section class="main-places">
-    <h2 class="main-heading">Places Of Commemoration</h2>
+    <h2 class="main-heading"><?php _e('Places Of Commemoration', 'remmember'); ?></h2>
     <div class="wrap-content">
         <?php 
         $places_count = 0;
@@ -309,13 +309,13 @@ if($google_maps_details) {
         <?php } ?>
     </div>
     <div class="wrap-bottom-link-main">
-        <a href="<?= $url . '/?tab=places-of-commemoration' ?>" class="main-link-main">View More ></a>
+        <a href="<?= $url . '/?tab=places-of-commemoration' ?>" class="main-link-main"><?php _e('View More >', 'remmember'); ?></a>
     </div>
 </section>
 <?php } ?>
 <?php if($google_maps_details && $google_maps_details !== "") {  ?>
 <section class="main-tomb">
-    <h2 class="main-heading">The Tomb</h2>
+    <h2 class="main-heading"><?php _e('The Tomb', 'remmember'); ?></h2>
     <div class="wrap-content">
             <?php if($google_maps_details) { ?>
                 <div class="acf-map" data-zoom="16">
@@ -327,7 +327,7 @@ if($google_maps_details) {
                 <span class="street"><?php echo $tomb_street . ","; ?></span>
                 <span class="city"><?php echo $tomb_city. ","; ?></span>
                 <span class="country"><?php echo $tomb_country; ?></span>
-                <div class="pointer">View ></div>
+                <div class="pointer"><?php _e('View >', 'remmember'); ?></div>
             </a>
     </div>
 </section>

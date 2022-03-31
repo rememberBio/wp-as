@@ -175,6 +175,7 @@ section.comments .wrap-content {
     display: flex;
     gap: 3vw;
     flex-wrap: wrap;
+    direction: initial;
 }
 
 section.comments .wrap-content .wrap-comment {

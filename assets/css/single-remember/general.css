@@ -426,6 +426,9 @@ section h1 {
 }
 
 @media screen and (max-width:767px) {
+    form#registerForm input[type=email] {
+        padding: 12px;
+    }
     form#registerForm input[type=submit] {font-size: 11px;}
 
     footer.site-footer.remmember-item-footer.main-tab {

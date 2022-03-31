@@ -32,11 +32,11 @@ $create_remember_page_link = "";
 				<img src="<?php the_field("remmember_item_header_logo","option"); ?>" alt="">
 			</a>
 			<div class="wrap-serach">
-				<input type="text" placeholder="Search remember page">
+				<input type="text" placeholder="<?php  _e('Search remember page', 'remmember'); ?>">
 			</div>
 			<div class="wrap-btns">
-				<a href="" class="login">log in</a>
-				<a href="<?php echo $create_remember_page_link;  ?>" class="create">Create remeber page</a>
+				<a href="" class="login"><?php  _e('log in', 'remmember'); ?></a>
+				<a href="<?php echo $create_remember_page_link;  ?>" class="create"><?php  _e('Create remeber page', 'remmember'); ?></a>
 			</div>
 
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="/wp-content/uploads/2022/02/Group-543.svg" alt=""></button>

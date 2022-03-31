@@ -47,7 +47,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
     
     </section>
     <section id="howWork" class="how-it-works">
-        <h2>How It Works</h2>
+        <h2><?php  _e('How It Works', 'remmember'); ?></h2>
         <div class="wrap-content" id="howSlider">
             <?php foreach ($how_repeater as $item) { ?>
                 <div class="wrap-how-item">
@@ -63,7 +63,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
         </div>
     </section>
     <section id="about" class="about-us">
-        <h2>About Us</h2>
+        <h2><?php  _e('About Us', 'remmember'); ?></h2>
         <div class="wrap-content">
             <video controls class="lazy" >
                 <source src="" data-src="<?php echo($about_video); ?>">
@@ -71,7 +71,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
         </div>
     </section>
     <section id="examples" class="example-of-remember-pages">
-        <h2>Example Of Remember Pages</h2>
+        <h2><?php _e('Example Of Remember Pages', 'remmember'); ?></h2>
         <div class="wrap-content">
             <?php foreach ($ex_items as $item) { 
                 $item_post_id = $item['link'];
@@ -82,11 +82,11 @@ $say_about_items = get_field("home_say_about_us__items","option");
                     <p class="ex_name"><?php echo($item['name']); ?></p>
                 </a>
             <?php } ?>
-            <a href="">View all</a>
+            <a href=""><?php  _e('View all', 'remmember'); ?></a>
         </div>
     </section>
     <section id="services" class="our-services">
-        <h2>Our Services</h2>
+        <h2><?php  _e('Our Services', 'remmember'); ?></h2>
         <div class="wrap-content">
             <?php foreach ($services_items as $item) { ?>
                 <div class="wrap-service-item">
@@ -94,11 +94,11 @@ $say_about_items = get_field("home_say_about_us__items","option");
                     <p class="text"><?php echo($item['text']); ?></p>
                 </div>
             <?php } ?>
-            <a href="<?php $create_remember_page_link ?>">Create remember page</a>
+            <a href="<?php $create_remember_page_link ?>"><?php  _e('Create remember page', 'remmember'); ?></a>
         </div>
     </section>
     <section id="sayAbout" class="say-about-us">
-        <h2>Say About Us</h2>
+        <h2><?php  _e('Say About Us', 'remmember'); ?></h2>
         <div class="wrap-content" id="sayAboutSlider">
             <?php foreach ($say_about_items as $item) { ?>
                 <div class="wrap-say-about-item">

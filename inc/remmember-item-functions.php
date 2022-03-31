@@ -27,10 +27,14 @@ add_filter( 'comment_post_redirect', 'dome_comment_redirect' );
 
 //return all post comments
 function get_remember_post_comments($post_id) {
+    $my_current_lang = apply_filters( 'wpml_current_language', NULL );
+
     $args = array(
         'post_id' => $post_id,   // Use post_id, not post_ID
         'status'       => 'approve',
+        'lang' => $my_current_lang
     );
+    
     $comments = get_comments( $args );
     return $comments;
 }

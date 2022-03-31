@@ -43,14 +43,14 @@ if(isset($_GET["tab"])) {
 			<nav id="site-navigation" class="main-navigation">
 				<div class="menu-menu-1-container">
 					<ul id="primary-menu" class="menu nav-menu">
-						<li id="menu-item-1" class="menu-item <?php if(!$current_tab || $current_tab == '') echo("current"); ?>"><a href="<?= $url ?>">Main</a></li>
-						<li id="menu-item-2" class="menu-item <?php if($current_tab == 'about') echo("current"); ?>"><a href="<?= $url ?>?tab=about">About</a></li>
-						<li id="menu-item-3" class="menu-item <?php if($current_tab == 'stories') echo("current"); ?>"><a href="<?= $url ?>?tab=stories">Stories</a></li>
-						<li id="menu-item-4" class="menu-item <?php if($current_tab == 'gallery') echo("current"); ?>"><a href="<?= $url ?>?tab=gallery">Gallery</a></li>
-						<li id="menu-item-5" class="menu-item <?php if($current_tab == 'comments') echo("current"); ?>"><a href="<?= $url ?>?tab=comments">Comments</a></li>
-						<li id="menu-item-6" class="menu-item <?php if($current_tab == 'places-of-commemoration') echo("current"); ?>"><a href="<?= $url ?>?tab=places-of-commemoration">Places Of Commemoration</a></li>
-						<li id="menu-item-7" class="menu-item <?php if($current_tab == 'candle-and-flowers') echo("current"); ?>"><a href="<?= $url ?>?tab=candle-and-flowers">Candle And Flowers</a></li>
-						<li id="menu-item-8" class="menu-item <?php if($current_tab == 'the-grave') echo("current"); ?>"><a href="<?= $url ?>?tab=the-grave">The Grave</a></li>
+						<li id="menu-item-1" class="menu-item <?php if(!$current_tab || $current_tab == '') echo("current"); ?>"><a href="<?= $url ?>"><?php  _e('Main', 'remmember'); ?></a></li>
+						<li id="menu-item-2" class="menu-item <?php if($current_tab == 'about') echo("current"); ?>"><a href="<?= $url ?>?tab=about"><?php  _e('About', 'remmember'); ?></a></li>
+						<li id="menu-item-3" class="menu-item <?php if($current_tab == 'stories') echo("current"); ?>"><a href="<?= $url ?>?tab=stories"><?php  _e('Stories', 'remmember'); ?></a></li>
+						<li id="menu-item-4" class="menu-item <?php if($current_tab == 'gallery') echo("current"); ?>"><a href="<?= $url ?>?tab=gallery"><?php  _e('Gallery', 'remmember'); ?></a></li>
+						<li id="menu-item-5" class="menu-item <?php if($current_tab == 'comments') echo("current"); ?>"><a href="<?= $url ?>?tab=comments"><?php  _e('Comments', 'remmember'); ?></a></li>
+						<li id="menu-item-6" class="menu-item <?php if($current_tab == 'places-of-commemoration') echo("current"); ?>"><a href="<?= $url ?>?tab=places-of-commemoration"><?php  _e('Places Of Commemoration', 'remmember'); ?></a></li>
+						<li id="menu-item-7" class="menu-item <?php if($current_tab == 'candle-and-flowers') echo("current"); ?>"><a href="<?= $url ?>?tab=candle-and-flowers"><?php  _e('Candle And Flowers', 'remmember'); ?></a></li>
+						<li id="menu-item-8" class="menu-item <?php if($current_tab == 'the-grave') echo("current"); ?>"><a href="<?= $url ?>?tab=the-grave"><?php  _e('The Grave', 'remmember'); ?></a></li>
 					<?php 
 					$count_row = 1;
 					$header_links = get_field("header-links","option");

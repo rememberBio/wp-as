@@ -15,10 +15,10 @@ if(isset($_GET["tab"])) {
 
 $remmember_submit_url = get_field("remmember_form_submit_img","option");
 
-$remmember_too_text = get_field("want_to_remmember_text_for_inner_pages","option");
+$remmember_too_text = __('Love? Want to remember?', 'remmember');
 
 if($current_tab == "")
-	$remmember_too_text = get_field("want_to_remmember_text_for_home","option");
+	$remmember_too_text = __('Want to remember too?', 'remmember');
 
 $post_id = get_the_ID();
 
@@ -38,14 +38,14 @@ if(isset($_POST['email']))
 		<span class="text"><?=  $remmember_too_text ?></span>
 		<div class="wrap-form-footer">
 			<form method="post" name="registerForm" id="registerForm" action="">
-				<input type="email" name="email" value="" id="email" placeholder="<?= get_field("enter_email_text","option"); ?>" >
+				<input type="email" name="email" value="" id="email" placeholder="<?php  _e('enter your email', 'remmember'); ?>" >
 				<button type="submit"><img src="/wp-content/uploads/2022/03/remember-1.svg" alt=""></button>
 			</form>
 		</div>
 		<?php if($current_tab == "") { ?>
 		<div class="remmber-footer-count-of-remmbers">
 			<span class="num"><?php echo get_register_email_to_spec_remmember_page($post_id); ?></span>
-			<span class="text"><?= get_field("people_remmember_text","option"); ?></span>
+			<span class="text"><?php  _e('People remember', 'remmember'); ?></span>
 		</div>
 		<?php } ?>
 	</footer><!-- #colophon -->

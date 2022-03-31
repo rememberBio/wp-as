@@ -10,7 +10,7 @@
 ?>
 
 <section class="stories">
-    <h1>Stories</h1>
+    <h1><?php _e('Stories', 'remmember'); ?></h1>
     <div class="wrap-content">
         <?php foreach ($stories as $story) { 
             //take excerpt of story text
@@ -32,8 +32,8 @@
                             <span class="name"><?php echo($story['telling_name']); ?></span>
                         </div>
                     </div>
-                    <a href="" onclick="showMoreStoryText(event)" class="read-more-btn">Read</a>
-                    <a href="" onclick="hideMoreStoryText(event)" class="read-less-btn" style="display:none;">Less</a>
+                    <a href="" onclick="showMoreStoryText(event)" class="read-more-btn"><?php _e('Read', 'remmember'); ?></a>
+                    <a href="" onclick="hideMoreStoryText(event)" class="read-less-btn" style="display:none;"><?php _e('Less', 'remmember'); ?></a>
                 </div>
                 
             </div>
