@@ -1,12 +1,16 @@
 <?php
     $post_id = get_the_ID();
     $url = get_permalink();
-    //get comments
-    $candles_flowers = db_get_remember_page_payments($post_id);
-    $num_of_candles = 0;
-    $num_of_flowers = 0;
+
     $hero_img = get_field("main_image_of_the_deceased",$post_id);
     $hero_name = get_field("full_name_of_the_deceased",$post_id);
+
+    //get candles and flowers to this post and other translated;
+    $pages_ids = get_all_translated_post_ids($post_id); 
+    $candles_flowers = db_get_remember_pages_payments($posts_ids);
+
+    $num_of_candles = 0;
+    $num_of_flowers = 0;
 
     if($candles_flowers && is_array($candles_flowers)) {
         //functions for array filter

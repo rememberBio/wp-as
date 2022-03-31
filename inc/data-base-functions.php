@@ -102,3 +102,16 @@ function db_get_remember_page_payments($remember_page_id) {
     $rows = $wpdb->get_results("SELECT *  FROM $table WHERE remember_page_id='$remember_page_id'");
     return $rows;
 }
+
+function db_get_remember_pages_payments($remember_pages_arr) {
+  $candles_flowers_array = array();
+  if($remember_pages_arr && is_array($remember_pages_arr)) {
+      foreach ($remember_pages_arr as $post_id) {
+          $cf_arr = db_get_remember_page_payments($post_id);
+          if($cf_arr && is_array($cf_arr) && count($cf_arr) > 0) 
+            $candles_flowers_array = array_merge($candles_flowers_array,$cf_arr);
+      }
+      
+  }
+  return $candles_flowers_array;
+}

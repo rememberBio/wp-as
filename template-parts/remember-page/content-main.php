@@ -12,7 +12,9 @@ $hero_desc = get_field("a_few_words_about_the_deceased",$post_id);
 $remember_too_text = get_field("want_to_remmember_text_for_home","option");
 
 //candles and flowers
-$candles_flowers = get_remember_post_candles_flowers($post_id);
+//get candles and flowers to this post and other translated;
+$pages_ids = get_all_translated_post_ids($post_id); 
+$candles_flowers = db_get_remember_pages_payments($pages_ids);
 $num_of_candles = 0;
 $num_of_flowers = 0;
 
@@ -20,12 +22,12 @@ if($candles_flowers && is_array($candles_flowers)) {
     //functions for array filter
     function is_candle($value)
     {
-        return $value['type'] == 'candle';
+        return $value->type == 'candle';
     }
 
     function is_flower($value)
     {
-        return $value['type'] == 'flower';
+        return $value->type == 'flower';
     }
 
     $candles = array_filter($candles_flowers,"is_candle");

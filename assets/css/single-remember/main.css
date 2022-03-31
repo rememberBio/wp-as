@@ -164,7 +164,7 @@ section.main-about .text {
     color: black;
     padding: 31px 0px 22px;
     margin: 0;
-    line-height: 20px;
+    line-height: 1.5;
 }
 section.main-about .second-part .circle a {
     text-decoration: underline;
@@ -248,7 +248,7 @@ section.main-stories .wrap-content>a {
     border-radius: 15px;
     color: black;
     font-size: 16px;
-    line-height: 20px;
+    line-height: 1.5;
     padding: 40px 0px;
     align-items: center;
 }
@@ -390,6 +390,7 @@ section.main-places .wrap-content {
     display: flex;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 section.main-places .wrap-content>a {
@@ -398,7 +399,7 @@ section.main-places .wrap-content>a {
     z-index: 0;
     border-radius: 15px;
     display: inline-flex;
-
+    max-width: 23%;
 }
 
 section.main-places .wrap-content>a .wrap-place-bottom {
@@ -598,7 +599,7 @@ div#galley-main-slider a {
         border-width: 1px;
         font-size: 13px;
     }
-    section.main-about .text {padding: 10px 0px 15px;font-size: 13px;line-height: 17px;}
+    section.main-about .text {padding: 10px 0px 15px;font-size: 13px;}
 
     section.main-about .wrap-dates .date {
         width: 97px;
@@ -663,7 +664,6 @@ div#galley-main-slider a {
     section.main-stories .wrap-content>a {
         width: 100%;
         font-size: 13px;
-        line-height: 17px;
         padding: 20px 0px;
     }
 
@@ -734,6 +734,7 @@ div#galley-main-slider a {
     
     section.main-places .wrap-content>a {
         display: inline-flex;
+        max-width: 45%;
     }
     
     

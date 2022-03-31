@@ -46,6 +46,7 @@ section.about .second-part .circle {
     flex-direction: column;
     text-align: center;
     align-items: center;
+    max-width: 25%;
 }
 
 section.about .second-part {
@@ -128,7 +129,7 @@ section.about .third-part .numbers-line .wrap-year span {
     section.about .first-part .wrap-content>.text {
         width: unset;
         font-size: 12px;
-        line-height: 1.3;
+        line-height: 1.5;
     }
     
     section.about .first-part .wrap-content {
