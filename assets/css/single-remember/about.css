@@ -2,9 +2,10 @@ section.about .first-part .wrap-content {
     display: flex;
     gap: 3%;
     padding: 0px 30px;
+    justify-content: space-between;
 }
 
-section.about .first-part .wrap-content>.text {width: 59%;}
+section.about .first-part .wrap-content>.text {width: 50%;}
 
 section.about .first-part .wrap-content p {
     margin: 0;

@@ -954,6 +954,9 @@ form#registerForm button[type=submit] {
 .wrap-content.tab-album span.top-item-gallery .prev-to-page {
     transform: rotate(180deg);
 }
+section.about .third-part .numbers-line .wrap-year span {
+    text-align: right !important;
+}
 @media screen and (min-width: 1101px) {
 
 	.menu-toggle {
