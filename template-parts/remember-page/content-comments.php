@@ -3,7 +3,20 @@
     $url = get_permalink();
     //get comments
     $comments = get_remember_post_comments($post_id);
-   
+    $comments_desktop = array();
+    $comments_left = array();
+    $comments_right = array();
+    $flag = true;
+    foreach ($comments as $comment) {
+        if($flag) {
+            $flag = false;
+            $comments_left[] = $comment;
+        } else {
+            $flag = true;
+            $comments_right[] = $comment;
+        }
+    }
+
     $after_submit_comment = false;
     if(isset($_GET["submit"])) { 
         $after_submit_comment = true;
@@ -40,13 +53,92 @@
             <?php } ?>
         </div>
     </div>
-    <div class="wrap-content">
+    <div class="wrap-content desktop-only">
+        <div class="left-col">
+            <?php foreach ($comments_left as $comment) { 
+
+                $text = $comment->comment_content;
+            
+                $img_id = get_comment_meta( $comment->comment_ID, 'attachment_id', true );
+                $img = wp_get_attachment_url($img_id);
+                
+                $owner_name = get_field("name_of_the_author_of_the_comment",$comment);
+                $owner_rel = get_field("relationship_of_the_author_of_the_comment",$comment);
+
+                //manipulate comment date
+                $comment_date = $comment->comment_date;  
+                $date = date_create($comment_date);
+                //$date = date_timezone_set($date, timezone_open('Asia/Jerusalem'));
+                $date = date_format($date,"d/m/Y");
+
+            ?>
+                <div class="wrap-comment">
+                    <div class="wrap-top-comment">
+                        <div class="wrap-img">
+                            <img src="<?php echo($img); ?>" alt="">
+                        </div>
+                        <p class="text" ><?php echo($text); ?></p>
+                    </div>
+                    <div class="wrap-bottom-comment">
+                        <div class="wrap-desc-comment">
+                            <div class="wrap-desc-date-story">
+                                <span class="name"><?php echo($owner_name); ?></span>
+                                <span class="rel"><?php echo($owner_rel); ?></span>
+                            </div>
+                        </div>
+                        <span class="date"><?php echo($date); ?></span>
+                    </div>
+                    
+                </div>
+            <?php } ?>
+        </div>
+        <div class="right-col">
+            <?php foreach ($comments_right as $comment) { 
+
+                $text = $comment->comment_content;
+            
+                $img_id = get_comment_meta( $comment->comment_ID, 'attachment_id', true );
+                $img = wp_get_attachment_url($img_id);
+                
+                $owner_name = get_field("name_of_the_author_of_the_comment",$comment);
+                $owner_rel = get_field("relationship_of_the_author_of_the_comment",$comment);
+
+                //manipulate comment date
+                $comment_date = $comment->comment_date;  
+                $date = date_create($comment_date);
+                //$date = date_timezone_set($date, timezone_open('Asia/Jerusalem'));
+                $date = date_format($date,"d/m/Y");
+
+            ?>
+                <div class="wrap-comment">
+                    <div class="wrap-top-comment">
+                        <div class="wrap-img">
+                            <img src="<?php echo($img); ?>" alt="">
+                        </div>
+                        <p class="text" ><?php echo($text); ?></p>
+                    </div>
+                    <div class="wrap-bottom-comment">
+                        <div class="wrap-desc-comment">
+                            <div class="wrap-desc-date-story">
+                                <span class="name"><?php echo($owner_name); ?></span>
+                                <span class="rel"><?php echo($owner_rel); ?></span>
+                            </div>
+                        </div>
+                        <span class="date"><?php echo($date); ?></span>
+                    </div>
+                    
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+    <div class="wrap-content mobile-only">
         <?php foreach ($comments as $comment) { 
 
             $text = $comment->comment_content;
            
-            $img = get_comment_meta( $comment->comment_ID, 'attachment_id', true );
-            $img = wp_get_attachment_url($img);
+            $img_id = get_comment_meta( $comment->comment_ID, 'attachment_id', true );
+            $img = wp_get_attachment_url($img_id);
+            
             $owner_name = get_field("name_of_the_author_of_the_comment",$comment);
             $owner_rel = get_field("relationship_of_the_author_of_the_comment",$comment);
 
@@ -81,7 +173,7 @@
 
 <script>
     jQuery(document).ready( ($)=> {
-        if($(window).width() > 1100 && $(".wrap-comment").length) {
+        /*if($(window).width() > 1100 && $(".wrap-comment").length) {
             let magicGrid = new MagicGrid({
                 container: '.wrap-content',
                 animate: false,
@@ -92,6 +184,6 @@
             });
 
             magicGrid.listen();
-        }
+        }*/
     });
 </script>

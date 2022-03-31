@@ -1,3 +1,6 @@
+.mobile-only {
+    display: none !important;
+}
 .wrap-write-comment-form {
     width: 550px;
     height: 390px;
@@ -278,7 +281,27 @@ section.comments .wrap-content .wrap-comment {
 .write-comment.after-sub-comment.opened .wrap-write-comment-form {
     height: max-content;
 }
+section.comments .wrap-content.desktop-only>div {
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 49%;
+}
+section.comments .wrap-content.desktop-only .wrap-comment {
+    width: 100%;
+}
+section.comments .wrap-content.desktop-only {
+    justify-content: space-between;
+    gap: inherit;
+}
 @media screen and (max-width: 1100px) { 
+    .mobile-only {
+        display: flex !important;
+    }
+    .desktop-only {
+        display: none !important;
+    }
     a.write-comment-btn:before {
         width: 28px;
         height: 28px;
