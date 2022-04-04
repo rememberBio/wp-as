@@ -52,12 +52,7 @@ if(isset($_GET["tab"])) {
 						<li id="menu-item-6" class="menu-item <?php if($current_tab == 'places-of-commemoration') echo("current"); ?>"><a href="<?= $url ?>?tab=places-of-commemoration"><?php  _e('Places Of Commemoration', 'remmember'); ?></a></li>
 						<li id="menu-item-7" class="menu-item <?php if($current_tab == 'candle-and-flowers') echo("current"); ?>"><a href="<?= $url ?>?tab=candle-and-flowers"><?php  _e('Candle And Flowers', 'remmember'); ?></a></li>
 						<li id="menu-item-8" class="menu-item <?php if($current_tab == 'the-grave') echo("current"); ?>"><a href="<?= $url ?>?tab=the-grave"><?php  _e('The Grave', 'remmember'); ?></a></li>
-					<?php 
-					$count_row = 1;
-					$header_links = get_field("header-links","option");
-					foreach ( $header_links as $header_link) { ?>
-						<li id="menu-item-<?= $count_row ?>" class="menu-item <?php if($current_tab == $header_link['tab-name']) echo("current"); ?>"><a href="<?= $url ?>"><?= $header_link['text'] ?></a></li>
-					<?php $count_row  = $count_row  + 1; } ?>
+					
 					</ul>
 				</div>
 				

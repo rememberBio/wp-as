@@ -1019,7 +1019,7 @@ section.candles-flowers .wrap-candles_flower {
 .custom-switchers.opened .wrap-drop-down .lang-menu-item.current {
     border-bottom: 1px solid #E8E8E8;
     padding-bottom: 6.5px;
-	font-weight: bold;
+	font-family: 'Rubik Medium';
 }
 
 .custom-switchers.opened .wrap-drop-down>span.current {
@@ -1043,7 +1043,7 @@ section.candles-flowers .wrap-candles_flower {
 .custom-switchers {
     height: 28px;
     position: relative;
-    padding-right: 10px;
+    padding-left: 1vw;
     margin-top: 5px;
 }
 
@@ -1052,6 +1052,11 @@ span#toggle-menu-item {
     height: 28px;
     background: white;
     border-radius: 50%;
+}
+@media screen and (min-width: 1800px) {
+	.custom-switchers {
+		padding-left: calc(3.5% - 10px);
+	}
 }
 @media screen and (min-width: 1101px) {
 

@@ -75,7 +75,7 @@ ul#primary-menu li {display: block;}
 .menu-menu-1-container {
     width: 100%;
     display: block;
-    margin: 0px 3vw;
+    margin: 0px 1.5vw;
 }
 
 /* Footer */
@@ -246,7 +246,7 @@ section h1 {
         max-width: unset;
     }
     .menu-menu-1-container {
-        margin: 0px 10%;
+        margin: 0px 5%;
     }
 }
 /* End Footer */

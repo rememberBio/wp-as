@@ -83,7 +83,7 @@ section.hero.main-hero h1 {
     margin: 3.5vh auto;
     justify-content: space-between;
     height: inherit;
-    gap: 10px;
+    gap: 20px;
 }
 .wrap-left-hero>.desktop-only .text {
     max-width: 500px;
