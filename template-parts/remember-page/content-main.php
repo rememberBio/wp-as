@@ -217,11 +217,12 @@ if($google_maps_details) {
                 $count = count(explode(" ",$text));
                 $pres_count = 100;
                 if($count > 1) {
-                    $pres_count =  ( $count / 3 );
+                    $pres_count =  ( $count / 6 );
+                    if( $count < 60 ) $pres_count = ($count - 5);
                 }
         ?>
             <a href="<?= $url . '/?tab=stories' ?>" class="wrap-story">
-                <p class="short-text"><?php echo(wp_trim_words($story['text'], $pres_count, '...')); ?></p>
+                <p class="short-text"><?php echo(force_balance_tags( html_entity_decode(wp_trim_words(htmlentities($story['text']), $pres_count, '...')))); ?></p>
                 <span class="read-more"><?php _e('Read >', 'remmember'); ?></span>
             </a>
         <?php } ?>

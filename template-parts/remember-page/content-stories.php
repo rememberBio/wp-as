@@ -18,11 +18,12 @@
             $count = count(explode(" ",$text));
             $pres_count = 100;
             if($count > 1) {
-                $pres_count =  ( $count / 3 );
+                $pres_count =  ( $count / 5 );
+                if( $count < 60 ) $pres_count = ($count - 5);
             }
         ?>
             <div class="wrap-story">
-                <p class="short-text"><?php echo(wp_trim_words($story['text'], $pres_count, '...')); ?></p>
+                <p class="short-text"><?php echo(force_balance_tags( html_entity_decode(wp_trim_words(htmlentities($story['text']), $pres_count, '...')))); ?></p>
                 <p class="text" style="display:none;"><?php echo($story['text']); ?></p>
                 <div class="wrap-bottom-story">
                     <div class="wrap-desc-story">
