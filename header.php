@@ -38,7 +38,7 @@ $create_remember_page_link = "";
 				<a href="" class="login"><?php  _e('log in', 'remmember'); ?></a>
 				<a href="<?php echo $create_remember_page_link;  ?>" class="create"><?php  _e('Create remeber page', 'remmember'); ?></a>
 			</div>
-
+			<?php echo custom_switcher(); ?>
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="/wp-content/uploads/2022/02/Group-543.svg" alt=""></button>
 		</div>
 	</header><!-- #masthead -->

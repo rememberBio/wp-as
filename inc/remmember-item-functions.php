@@ -38,6 +38,24 @@ function get_remember_post_comments($post_id) {
     return $comments;
 }
 
+//return all comments from all posts
+function get_remember_translated_post_comments($post_id) {
+    $comments = array();
+    $translated_posts = get_all_translated_post_ids($post_id);
+    if($translated_posts && is_array($translated_posts)) {
+        foreach ($translated_posts as $translate_post_id) {
+            $translated_comments = get_remember_post_comments($translate_post_id);
+            if($translated_comments) $comments = array_merge($comments,$translated_comments);
+        }
+        
+
+    } else {
+        $comments = get_remember_post_comments($post_id);
+    }
+   
+    return $comments;
+}
+
 //set candle or flower by order id
 function set_remember_post_candles_flowers($remmember_post_id,$type,$name,$message,$order_id) {
     $cf_list = get_post_meta( $remmember_post_id, '_cf_by', true );

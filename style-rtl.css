@@ -899,9 +899,6 @@ header#generalHeader .wrap-btns a.create:before,footer#generalFooter .site-info 
     margin-right: 0px;
     margin-left: 7px;
 }
-.wrap-home-page .hero {
-    flex-direction: row-reverse;
-}
 .stories .wrap-bottom-story>a:after {
     margin-left: 0;
     margin-right: 6px;
@@ -985,6 +982,76 @@ section.candles-flowers .wrap-candles_flower {
 	padding-left: 5px !important;
     padding-right: 35px !important;
 }
+/* wpml lung swachers*/
+.custom-switchers span#toggle-menu-item {
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+}
+
+.custom-switchers:not(.opened) .wrap-drop-down {
+    display: none;
+}
+
+.custom-switchers span#toggle-menu-item img {
+    width: 28px;
+}
+
+.custom-switchers.opened .wrap-drop-down {
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    min-width: 141px;
+    position: absolute;
+    top: 29px;
+    padding: 15px 0 0px;
+	box-shadow: 0px 3px 6px #00000029;
+}
+
+.custom-switchers.opened .wrap-drop-down a, .custom-switchers.opened .wrap-drop-down .lang-menu-item {
+    color: var(--custom-blue);
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.custom-switchers.opened .wrap-drop-down .lang-menu-item.current {
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 6.5px;
+	font-weight: bold;
+}
+
+.custom-switchers.opened .wrap-drop-down>span.current {
+    padding: 0px 16px;
+}
+
+.custom-switchers.opened .wrap-drop-down span.lang-menu-item:not(.current) {
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.custom-switchers.opened .wrap-drop-down a {
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    line-height: 35px;
+    padding: 0px 16px;
+}
+
+.custom-switchers {
+    height: 28px;
+    position: relative;
+    padding-right: 10px;
+    margin-top: 5px;
+}
+
+span#toggle-menu-item {
+    width: 28px;
+    height: 28px;
+    background: white;
+    border-radius: 50%;
+}
 @media screen and (min-width: 1101px) {
 
 	.menu-toggle {
@@ -996,6 +1063,37 @@ section.candles-flowers .wrap-candles_flower {
 	}
 }
 @media screen and (max-width: 1100px) {
+	a#qr-code-download {
+		margin-right: 5px;
+	}
+	nav#site-navigation {
+		left: 0;
+		right: unset !important;
+	}
+	.custom-switchers.opened .wrap-drop-down {
+		top: 24px;
+	}
+	.custom-switchers span#toggle-menu-item img {
+		height: 20px;
+	}
+	
+	.custom-switchers span#toggle-menu-item {
+		width: 20px;
+		height: 20px;
+		display: flex;
+	}
+	
+	.custom-switchers{
+		margin-top: 0;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		padding-right: 0px;
+	}
+	button.menu-toggle {
+		margin-left: 0 !important;
+		margin-right: 10px !important;
+	}
 	.current-image>.caption {
 		padding-right: 8px !important;
 	}
@@ -1040,7 +1138,7 @@ section.candles-flowers .wrap-candles_flower {
 	}
 	/* header site */
 
-	header#generalHeader .wrap-header-content div:not(.site-branding) {
+	header#generalHeader .wrap-header-content div:not(.site-branding):not(.custom-switchers):not(.wrap-drop-down) {
 		display: none;
 	}
 	header#generalHeader .wrap-header-content {

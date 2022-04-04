@@ -51,7 +51,7 @@ $main_stories = get_field("stories_repeater",$post_id);
 //gallery
 $gallery_items = get_field("gallery_items",$post_id);
 //comments
-$comments = get_remember_post_comments($post_id);
+//$comments = get_remember_translated_post_comments($post_id);
 
 //places
 $places = get_field("places_list",$post_id);
@@ -261,17 +261,17 @@ if($google_maps_details) {
 </section>
 <?php } ?>
 
-<section class="main-comments">
+<!-- <section class="main-comments">
     <h2 class="main-heading"><?php _e('Comments', 'remmember'); ?></h2>
     <div class="wrap-content">
         <?php 
-        $comments_count = 0;
+        /*$comments_count = 0;
         foreach ($comments as $comment) {
             if($comments_count > 2)  break;
             $comment_text = $comment->comment_content;
             $comment_owner_name = get_field("name_of_the_author_of_the_comment",$comment);
             $comment_owner_rel = get_field("relationship_of_the_author_of_the_comment",$comment);
-            $comments_count = $comments_count + 1;
+            $comments_count = $comments_count + 1;*/
         ?>
             <a href="<?= $url . '/?tab=comments' ?>" class="wrap-comment">
                 <div class="wrap-left-comment">
@@ -282,12 +282,12 @@ if($google_maps_details) {
                     <p class="text" ><?php echo($comment_text); ?></p>
                 </div>
             </a>
-        <?php } ?>
+        <?php// } ?>
     </div>
     <div class="wrap-bottom-link-main">
-        <a href="<?= $url . '/?tab=comments' ?>" class="main-link-main"><?php _e('Write A Comment >', 'remmember'); ?></a>
+        <a href="<?php //echo $url . '/?tab=comments'; ?>" class="main-link-main"><?php //_e('Write A Comment >', 'remmember'); ?></a>
     </div>
-</section>
+</section> -->
 
 <?php if($places && count($places) > 0) {  ?>
 <section class="main-places">

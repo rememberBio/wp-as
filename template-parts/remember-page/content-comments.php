@@ -2,7 +2,7 @@
     $post_id = get_the_ID();
     $url = get_permalink();
     //get comments
-    $comments = get_remember_post_comments($post_id);
+    $comments = get_remember_translated_post_comments($post_id);
     $comments_desktop = array();
     $comments_left = array();
     $comments_right = array();
@@ -99,7 +99,6 @@
             
                 $img_id = get_comment_meta( $comment->comment_ID, 'attachment_id', true );
                 $img = wp_get_attachment_url($img_id);
-                
                 $owner_name = get_field("name_of_the_author_of_the_comment",$comment);
                 $owner_rel = get_field("relationship_of_the_author_of_the_comment",$comment);
 

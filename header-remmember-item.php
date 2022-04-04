@@ -9,8 +9,8 @@
  * @package remmember
  */
 
- $url = get_permalink();
- $name = get_the_title();
+$url = get_permalink();
+$name = get_the_title();
 
 $current_tab = "";
 if(isset($_GET["tab"])) { 
@@ -40,6 +40,7 @@ if(isset($_GET["tab"])) {
 				<img src="<?php the_field("remmember_item_header_logo","option"); ?>" alt="">
 				
 			</a>
+			
 			<nav id="site-navigation" class="main-navigation">
 				<div class="menu-menu-1-container">
 					<ul id="primary-menu" class="menu nav-menu">
@@ -47,7 +48,7 @@ if(isset($_GET["tab"])) {
 						<li id="menu-item-2" class="menu-item <?php if($current_tab == 'about') echo("current"); ?>"><a href="<?= $url ?>?tab=about"><?php  _e('About', 'remmember'); ?></a></li>
 						<li id="menu-item-3" class="menu-item <?php if($current_tab == 'stories') echo("current"); ?>"><a href="<?= $url ?>?tab=stories"><?php  _e('Stories', 'remmember'); ?></a></li>
 						<li id="menu-item-4" class="menu-item <?php if($current_tab == 'gallery') echo("current"); ?>"><a href="<?= $url ?>?tab=gallery"><?php  _e('Gallery', 'remmember'); ?></a></li>
-						<li id="menu-item-5" class="menu-item <?php if($current_tab == 'comments') echo("current"); ?>"><a href="<?= $url ?>?tab=comments"><?php  _e('Comments', 'remmember'); ?></a></li>
+						<!-- <li id="menu-item-5" class="menu-item <?php /*if($current_tab == 'comments') echo("current");*/ ?>"><a href="<?php  /*echo $url; */ ?>?tab=comments"><?php /* _e('Comments', 'remmember'); */?></a></li> -->
 						<li id="menu-item-6" class="menu-item <?php if($current_tab == 'places-of-commemoration') echo("current"); ?>"><a href="<?= $url ?>?tab=places-of-commemoration"><?php  _e('Places Of Commemoration', 'remmember'); ?></a></li>
 						<li id="menu-item-7" class="menu-item <?php if($current_tab == 'candle-and-flowers') echo("current"); ?>"><a href="<?= $url ?>?tab=candle-and-flowers"><?php  _e('Candle And Flowers', 'remmember'); ?></a></li>
 						<li id="menu-item-8" class="menu-item <?php if($current_tab == 'the-grave') echo("current"); ?>"><a href="<?= $url ?>?tab=the-grave"><?php  _e('The Grave', 'remmember'); ?></a></li>
@@ -61,7 +62,7 @@ if(isset($_GET["tab"])) {
 				</div>
 				
 			</nav><!-- #site-navigation -->
-
+			<?php echo custom_switcher(); ?>
 			<div class="share-btn">
 				<a href="<?= 'mailto:?subject=' . $url ?>" target="_blank" class="email">
 					<img src="/wp-content/uploads/2022/02/Group-133.svg" alt="">
