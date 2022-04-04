@@ -954,6 +954,7 @@ footer#generalFooter .site-info .part-2 {
     height: 100%;
     line-height: 35px;
     padding: 0px 16px;
+	outline: none;
 }
 
 .custom-switchers {

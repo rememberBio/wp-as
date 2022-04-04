@@ -68,10 +68,13 @@ if($google_maps_details) {
 ?>
 <section class="hero main-hero">
     <div class="wrap-left-hero">
-        <div class="text desktop-only">
-            <h1 class="name"><?= $hero_name ?></h1>
-            <span class="desc"><?= $hero_desc ?></span>
-            <a href="<?= $url . '/?tab=about' ?>"><?php _e('Read More >>','remmember') ?></a>
+        <div class="desktop-only">
+            <div class="text">
+                <h1 class="name"><?= $hero_name ?></h1>
+                <span class="desc"><?= $hero_desc ?></span>
+                <a href="<?= $url . '/?tab=about' ?>"><?php _e('Read More >>','remmember') ?></a>
+            </div>
+            <img class="main-hero-img desktop-only" src="<?php echo $hero_img; ?>" alt="">
         </div>
         <div class="form">
             <div class="wrap-form-footer">
@@ -91,7 +94,6 @@ if($google_maps_details) {
         </div>
         <img class="main-hero-img" src="<?php echo $hero_img; ?>" alt="">
     </div>
-    <img class="main-hero-img desktop-only" src="<?php echo $hero_img; ?>" alt="">
 
 </section>
 <section class="main-candles-and-flowers">

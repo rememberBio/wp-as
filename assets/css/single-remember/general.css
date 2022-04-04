@@ -200,8 +200,8 @@ footer.site-footer.remmember-item-footer:not(.main-tab)>.wrap-form-footer {
 form#registerForm button[type=submit] {width: 20%;}
 
 form#registerForm button[type=submit] img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
 }
 .wrap-remmember-page {
     padding: 91px 0px 106px;
@@ -461,5 +461,6 @@ section h1 {
     form#registerForm button[type=submit] img {
         width: 100%;
         height: auto !important;
+        max-width: unset;
     }
 }
