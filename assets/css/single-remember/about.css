@@ -53,7 +53,7 @@ section.about .second-part .circle {
 section.about .second-part {
     display: flex;
     padding-left: 30px;
-    width: 40%;
+    width: 50%;
     justify-content: space-between;
     margin-top: 25px;
 }
