@@ -148,12 +148,20 @@ add_action( 'widgets_init', 'remmember_widgets_init' );
  * Enqueue scripts and styles.
  */
 function remmember_scripts() {
+
+	$template_name  = basename(get_page_template());
+
 	wp_enqueue_style( 'remmember-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'remmember-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'remmember-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'remmember-general', get_template_directory_uri() . '/assets/js/general.js', array(), _S_VERSION, true );
 
+	if ($template_name == 'search-template.php') {
+		//google_maps_scripts();
+		wp_enqueue_style ( 'search-css', WP_THEME_URI . '/assets/css/search.css' );
+
+	}
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -191,7 +199,7 @@ add_action( 'wp_enqueue_scripts', 'remmember_scripts' );
 
 
 function google_maps_scripts() {
-	wp_enqueue_script( 'google-maps-js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAk5oOe33Nmwh6X_PbL13W50atji4wcUfo');
+	wp_enqueue_script( 'google-maps-js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAk5oOe33Nmwh6X_PbL13W50atji4wcUfo&libraries=places');
 	wp_enqueue_script( 'custom-google-maps-js', WP_THEME_URI . '/assets/js/google-maps.js' ); 
 }
 function slick_slider_scripts() {
@@ -238,6 +246,8 @@ require  get_template_directory() . '/inc/sendinblue-functions.php';
 require  get_template_directory() . '/inc/data-base-functions.php';
 
 require  get_template_directory() . '/inc/wpml-functions.php';
+
+require  get_template_directory() . '/inc/search-functions.php';
 
 //Add custom type
 function create_posttypes() {
@@ -286,6 +296,14 @@ function my_acf_google_map_api( $api ){
 	$api['key'] = 'AIzaSyAk5oOe33Nmwh6X_PbL13W50atji4wcUfo';
 	return $api;
 }
+
+//filter breadcrumbs arrow
+function filter_wpseo_breadcrumb_separator($this_options_breadcrumbs_sep) {
+    return '<span class="breadcrumb_arrow">></span>';
+};
+
+// add the filter
+add_filter('wpseo_breadcrumb_separator', 'filter_wpseo_breadcrumb_separator', 10, 1);
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 //Allow SVG
 function cc_mime_types($mimes) {

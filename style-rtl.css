@@ -1053,6 +1053,13 @@ span#toggle-menu-item {
     background: white;
     border-radius: 50%;
 }
+
+p#breadcrumbs {margin: 0;font-size: 14px;}
+
+p#breadcrumbs a,span.breadcrumb_arrow {color: var(--custom-blue);}
+
+span.breadcrumb_last,p#breadcrumbs a:last-of-type+span {color: #9F9F9F;}
+
 @media screen and (min-width: 1800px) {
 	.custom-switchers {
 		padding-left: calc(3.5% - 10px);
