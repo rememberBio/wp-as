@@ -419,7 +419,6 @@ section.main-places .wrap-content {
     margin-top: 28px;
     margin-bottom: 61px;
     display: flex;
-    justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
 }

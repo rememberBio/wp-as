@@ -217,7 +217,7 @@ if($google_maps_details) {
                 $count = count(explode(" ",$text));
                 $pres_count = 100;
                 if($count > 1) {
-                    $pres_count =  ( $count / 6 );
+                    $pres_count =  ( $count / 4 );
                     if( $count < 60 ) $pres_count = ($count - 5);
                 }
         ?>

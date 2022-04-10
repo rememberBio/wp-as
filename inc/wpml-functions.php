@@ -22,8 +22,9 @@ function get_all_translated_post_ids($post_id) {
 }
 
 function custom_switcher() {
-    // uncomment this to find your theme's menu location
-    //echo "args:<pre>"; print_r($args); echo "</pre>";
+
+    $template_name  = basename(get_page_template());
+    
 
     // get languages
     $languages = apply_filters( 'wpml_active_languages', NULL, 'skip_missing=1' );
@@ -38,8 +39,14 @@ function custom_switcher() {
         if(!empty($languages)){
 
             foreach($languages as $l){
-                //var_dump($l); echo 👍;
                 $name = $l['native_name'] . " ("  . $l['language_code'] .") ";
+
+                //in search result page, redirect user to search page when switch lang
+                if($template_name == 'search-results-template.php') { 
+                    $search_permalink = apply_filters( 'wpml_permalink', get_site_url() . '/search', $l['language_code'],true ); 
+                    $l['url'] = $search_permalink;
+                }
+
                 if(!$l['active']){
                     // flag with native name
                     $other_lang_items = $other_lang_items . '

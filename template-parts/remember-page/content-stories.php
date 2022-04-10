@@ -18,7 +18,8 @@
             $count = count(explode(" ",$text));
             $pres_count = 100;
             if($count > 1) {
-                $pres_count =  ( $count / 5 );
+                $pres_count =  ( $count / 4 );
+                if( $pres_count < 100 || $pres_count > 100 ) $pres_count = 100;
                 if( $count < 60 ) $pres_count = ($count - 5);
             }
         ?>
@@ -36,7 +37,6 @@
                     <a href="" onclick="showMoreStoryText(event)" class="read-more-btn"><?php _e('Read', 'remmember'); ?></a>
                     <a href="" onclick="hideMoreStoryText(event)" class="read-less-btn" style="display:none;"><?php _e('Less', 'remmember'); ?></a>
                 </div>
-                
             </div>
         <?php } ?>
     </div>

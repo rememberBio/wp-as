@@ -5,7 +5,7 @@
 .wrap-map-search {
     display: block;
 }
-.wrap-search-page {width: 75%;margin: auto;padding: 56px 0px 92px;}
+.wrap-search-page {width: 75%;margin: auto;padding: 94px 0px 92px;}
 
 .wrap-search-page h1 {padding: 56px 0px 47.5px;margin: 0;color: var(--custom-blue);font-size: 33px;line-height: 32px;}
 
@@ -84,7 +84,7 @@ body.rtl .wrap-serach-forms .wrap-form form>select {background-position: 9%;}
 
     .wrap-map-search {border-radius: 26px;border: 1px solid var(--custom-light-blue);}
 
-    .wrap-search-page {width: 100%;padding: 30px 0px;}
+    .wrap-search-page {width: 100%;padding: 48px 0px;}
 
     .wrap-search-name {padding: 46px 41px 49px 24.5px;border-radius: 0;}
 

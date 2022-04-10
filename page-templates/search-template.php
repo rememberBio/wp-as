@@ -5,6 +5,15 @@
 
 get_header();
 
+$url = get_site_url();
+$action = "/search-results";
+
+$current_lang = apply_filters( 'wpml_current_language', NULL );
+if($current_lang !== 'en') {
+    $action = apply_filters( 'wpml_permalink', get_site_url() . $action, $current_lang,true ); 
+    //$action = str_replace($url, "",$action);
+}
+
 ?>
 
 <script>
@@ -117,7 +126,7 @@ function initAutocomplete() {
                 <?php _e('Find a memorial page of a deceased person by name','search'); ?>
             </span>
             <div class="wrap-form">
-                <form action="/search-results" method="POST" id="searchNameForm">
+                <form action="<?php echo $action; ?>" method="POST" id="searchNameForm">
                     <input type="text" required name="byName" id="byName">
                     <input type="submit" value="<?php _e('search','search'); ?>">
                 </form>
@@ -137,7 +146,7 @@ function initAutocomplete() {
                 <?php _e('Find a memorial page of a deceased person by Tomb location on the map','search'); ?>
             </span>
             <div class="wrap-form">
-                <form action="/search-results" id="searchLocationForm" method="POST">
+                <form action="<?php echo $action; ?>" id="searchLocationForm" method="POST">
                     <input type="text" required name="pac-input" id="pac-input" placeholder="<?php _e('enter location','search'); ?>">
                     <input type="hidden" name="lng" id="lng-input">
                     <input type="hidden" name="lat" id="lat-input">
@@ -166,8 +175,8 @@ function initAutocomplete() {
                 <?php _e('Find a memorial page of a deceased person by Date of death','search'); ?>
             </span>
             <div class="wrap-form">
-                <form action="/search-results" id="searchDateForm" method="POST">
-                    <select name="byDaetY" id="Y" required>
+                <form action="<?php echo $action; ?>" id="searchDateForm" method="POST">
+                    <select name="byDaetY" id="byDaetY" required>
                         <option value=""><?php _e('select year','search'); ?></option>
                         <?php 
                             for ($i = date("Y"); $i > 0; $i--) {  ?>

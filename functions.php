@@ -162,6 +162,9 @@ function remmember_scripts() {
 		wp_enqueue_style ( 'search-css', WP_THEME_URI . '/assets/css/search.css' );
 
 	}
+	else if ($template_name == 'search-results-template.php') {
+		wp_enqueue_style ( 'search-results-css', WP_THEME_URI . '/assets/css/search-results.css' );
+	}
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

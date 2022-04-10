@@ -843,6 +843,9 @@ footer#generalFooter {
     background: var(--custom-blue);
     color: white;
     padding: 48px 65px;
+	position: absolute;
+    left: 0;
+    right: 0;
 }
 
 footer#generalFooter .site-info {
