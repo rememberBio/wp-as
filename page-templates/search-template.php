@@ -17,12 +17,34 @@ if($current_lang !== 'en') {
 ?>
 
 <script>
-function initAutocomplete() {
+
+/*function initAutocomplete() {
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            initMap(position.coords.latitude, position.coords.longitude)
+        },
+        function errorCallback(error) {
+            console.log(error)
+        }
+    );
+}*/
+
+function /*initMap(lat, lng)*/initAutocomplete() {
+    /*var myLatLng = {
+      lat,
+      lng
+   };*/
     const mapDomEl = document.getElementById("map");
     const map = new google.maps.Map(mapDomEl, {
-      //zoom: 13,
+      zoom: 15,
       mapTypeId: "roadmap",
+      //center: myLatLng
     });
+    
+   /* var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+    });*/
     // Create the search box and link it to the UI element.
     const input = document.getElementById("pac-input");
     const searchBox = new google.maps.places.SearchBox(input);
@@ -62,6 +84,7 @@ function initAutocomplete() {
         lngDomEl.value = lng;
 
         // Clear out the old markers.
+        //marker.setMap(null);
         markers.forEach((marker) => {
             marker.setMap(null);
         });
@@ -153,7 +176,7 @@ function initAutocomplete() {
                     <input type="submit" value="<?php _e('search','search'); ?>">
                 </form>
                 <div class="wrap-map-search">
-                    <div id="map" style="display:none;"></div>
+                    <div id="map"></div>
                 </div>
                 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
                <script
