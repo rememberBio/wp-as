@@ -29,15 +29,14 @@ function custom_switcher() {
     // get languages
     $languages = apply_filters( 'wpml_active_languages', NULL, 'skip_missing=1' );
 
-    $items = "<div class='custom-switchers'>";
-    $first_item = "";
-    $current_lang_item = "";
-    $other_lang_items = "";
+   
 
     if ( $languages) {
-        
-        if(!empty($languages)){
-
+        if(!empty($languages) && count($languages) > 1){
+            $items = "<div class='custom-switchers'>";
+            $first_item = "";
+            $current_lang_item = "";
+            $other_lang_items = "";
             foreach($languages as $l){
                 $name = $l['native_name'] . " ("  . $l['language_code'] .") ";
 
@@ -65,8 +64,10 @@ function custom_switcher() {
             $other_lang_items = $current_lang_item . $other_lang_items; 
             $other_lang_items = "<div class='wrap-drop-down'>" . $other_lang_items . '</div>';
             $items =  $items . $first_item . $other_lang_items;
+            $items = $items . "</div>";
+            return $items;
         }
+       
     }
-    $items = $items . "</div>";
-    return $items;
+    
 }
