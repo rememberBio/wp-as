@@ -162,7 +162,7 @@ function remmember_scripts() {
 		wp_enqueue_style ( 'search-css', WP_THEME_URI . '/assets/css/search.css' );
 
 	}
-	else if ($template_name == 'search-results-template.php') {
+	else if ($template_name == 'search-results-template.php' ||  is_category()) {
 		wp_enqueue_style ( 'search-results-css', WP_THEME_URI . '/assets/css/search-results.css' );
 	}
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -269,7 +269,7 @@ function create_posttypes() {
 			'show_in_rest' => true,
 			'rest_base'             => 'remember_page',
 			'rest_controller_class' => 'WP_REST_Posts_Controller',
-			'taxonomies'          => array('categories' ),
+			'taxonomies'          => array('category' ),
 			'supports' => array(
 				'title',
 				'comments'
@@ -281,8 +281,16 @@ function create_posttypes() {
   // Hooking up our function to theme setup
   add_action( 'init', 'create_posttypes' );
 
-
-  
+//Add custom post type to category php
+function namespace_add_custom_types( $query ) {
+	if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
+		$query->set( 'post_type', array(
+			'post', 'nav_menu_item', 'remmember_page'
+		));
+		return $query;
+	}
+}
+  add_filter( 'pre_get_posts', 'namespace_add_custom_types' );
 //Add option page
 
 if( function_exists('acf_add_options_page') ) {
