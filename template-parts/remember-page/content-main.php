@@ -147,7 +147,7 @@ if($google_maps_details) {
             if($about_spouse['link_to_the_spouses_remember_page']) { 
                 $has_link = get_permalink( $about_spouse['link_to_the_spouses_remember_page'] );
             } ?>
-            <?php if($spouse['hasband_or_wife'] == 'husband') { ?>
+            <?php if($about_spouse['hasband_or_wife'] == 'husband') { ?>
                     <img src="/wp-content/uploads/2022/03/husband.svg" alt="">
                     <h3><?php _e('Husband:', 'remmember'); ?></h3>
                     <?php if($has_link) {  echo '<a href="' . $has_link .'">'; }?>
