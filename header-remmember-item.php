@@ -17,6 +17,12 @@ if(isset($_GET["tab"])) {
     $current_tab = $_GET["tab"];
 }
 
+$site_link = get_site_url();
+$current_lang = apply_filters( 'wpml_current_language', NULL );
+if($current_lang !== 'en') {
+    $site_link = $site_link . "/" . $current_lang;
+}
+
 
 ?>
 <!doctype html>
@@ -36,7 +42,7 @@ if(isset($_GET["tab"])) {
 
 	<header id="masthead" class="site-header remmember-item">
 		<div class="wrap-header-content">
-			<a href="<?php echo get_site_url(); ?>" class="site-branding">
+			<a href="<?php echo $site_link; ?>" class="site-branding">
 				<img src="<?php the_field("remmember_item_header_logo","option"); ?>" alt="">
 				
 			</a>

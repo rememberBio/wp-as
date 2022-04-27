@@ -78,6 +78,9 @@ section.about .second-part .circle span {
 section.about .third-part {
     padding: 0px 30px;
     margin-top: 55px;
+    width: 100%;
+    overflow-x: auto;
+    padding-top: 6px;
 }
 
 section.about .third-part .numbers-line {
@@ -89,6 +92,8 @@ section.about .third-part .numbers-line {
     padding-top: 15px;
     padding-bottom: 57px;
     gap: 10px;
+    width: max-content;
+    min-width: 100%;
 }
 
 section.about .third-part .numbers-line .wrap-year {
@@ -182,6 +187,7 @@ section.about .third-part .numbers-line .wrap-year span {
     section.about .third-part {
         margin-top: 25px;
         margin-bottom: 80px;
+        overflow: unset;
     }
     
     section.about .third-part .numbers-line {
@@ -192,9 +198,12 @@ section.about .third-part .numbers-line .wrap-year span {
         padding-top: 10px;
         gap: 25px;
         font-size: 12px;
+        min-height: 450px;
         height: 450px;
     }
-    
+    section.about .third-part .numbers-line.mobile-more-9 {
+        height: max-content;
+    }
     
     section.about .third-part .numbers-line .wrap-year:before {
         top: 0;

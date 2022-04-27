@@ -97,7 +97,7 @@
         </div>
     </div>
     <div class="third-part">
-        <div class="numbers-line">
+        <div class="numbers-line <?php if(count($about_timeline) >= 9) echo 'mobile-more-9'; ?>" >
             <?php
                 //extract year from date field
                 $year_birth = $birthday;
