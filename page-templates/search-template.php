@@ -38,6 +38,7 @@ function initAutocomplete() {
     const submitLocationInput = document.getElementById("submitLocationForm");
     input.addEventListener("change", function(){
         submitLocationInput.disabled = true;
+        mapDomEl.classList.add("no-map");
     });
 
     let markers = [];
@@ -52,9 +53,8 @@ function initAutocomplete() {
         if (places.length == 0) {
             return;
         }
-        submitLocationInput.disabled = false
-        ;
-
+        submitLocationInput.disabled = false;
+        mapDomEl.classList.remove("no-map")
         //set lat and lng to inputs
         const latDomEl = document.getElementById("lat-input");
         const lngDomEl = document.getElementById("lng-input");
@@ -163,7 +163,7 @@ function initAutocomplete() {
                     <input id="submitLocationForm" type="submit" value="<?php _e('search','search'); ?>">
                 </form>
                 <div class="wrap-map-search">
-                    <div id="map"></div>
+                    <div id="map" class="no-map"></div>
                 </div>
                 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
                <script
