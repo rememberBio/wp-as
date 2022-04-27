@@ -45,8 +45,6 @@ section.about .wrap-dates {
 section.about .second-part .circle {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    align-items: center;
     max-width: 25%;
 }
 
@@ -67,7 +65,7 @@ section.about .second-part .circle img {
 }
 
 section.about .second-part .circle h2 {
-    margin: 20px auto 4px auto;
+    margin: 20px 0 4px 0;
     font-size: 16px;
 }
 
