@@ -7,8 +7,7 @@
 
     //get candles and flowers to this post and other translated;
     $pages_ids = get_all_translated_post_ids($post_id); 
-    $candles_flowers = db_get_remember_pages_payments($posts_ids);
-
+    $candles_flowers = db_get_remember_pages_payments($pages_ids);
     $num_of_candles = 0;
     $num_of_flowers = 0;
 

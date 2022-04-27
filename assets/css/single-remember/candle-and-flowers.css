@@ -123,7 +123,7 @@ form#cfform,.wrap-thank-section {
     box-shadow: 3px 3px 6px #00000029;
     border-radius: 19px;
     padding: 30px 30px 53px;
-    position: relative;
+    position: relative !important;
 }
 
 form#cfform>a>img {
