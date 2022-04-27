@@ -48,25 +48,29 @@ function search_remember_page_by_death_date($year,$month) {
     return $wp_query -> posts;
 }
 function search_remember_page_by_location($location_name,$lat,$lng) {
-    $args = array(
-        'post_type'		=> 'remmember_page',
-        'post_status' => 'publish',
-        'posts_per_page' => '-1',
-        'meta_query' => array(
-            'relation' => 'AND',
-            array(
-                'key'       => 'the_grave_in_google_maps',
-                'value'     => $lng,
-                'compare'   => 'LIKE',
-            ),
-            array(
-                'key'       => 'the_grave_in_google_maps',
-                'value'     => $lat,
-                'compare'   => 'LIKE',
+    if($lat != "" && $lng != "") {
+        $args = array(
+            'post_type'		=> 'remmember_page',
+            'post_status' => 'publish',
+            'posts_per_page' => '-1',
+            'meta_query' => array(
+                'relation' => 'AND',
+                array(
+                    'key'       => 'the_grave_in_google_maps',
+                    'value'     => $lng,
+                    'compare'   => 'LIKE',
+                ),
+                array(
+                    'key'       => 'the_grave_in_google_maps',
+                    'value'     => $lat,
+                    'compare'   => 'LIKE',
+                )
             )
-        )
-        
-    );
-    $wp_query = new WP_Query($args);
-    return $wp_query -> posts;
+            
+        );
+        $wp_query = new WP_Query($args);
+        return $wp_query -> posts;
+    } else {
+        return array();
+    }
 }

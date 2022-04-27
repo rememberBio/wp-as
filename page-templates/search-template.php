@@ -18,50 +18,33 @@ if($current_lang !== 'en') {
 
 <script>
 
-/*function initAutocomplete() {
-    navigator.geolocation.getCurrentPosition(
-        function (position) {
-            initMap(position.coords.latitude, position.coords.longitude)
-        },
-        function errorCallback(error) {
-            console.log(error)
-        }
-    );
-}*/
-
-function /*initMap(lat, lng)*/initAutocomplete() {
-    /*var myLatLng = {
-      lat,
-      lng
-   };*/
+function initAutocomplete() {
+   
     const mapDomEl = document.getElementById("map");
     const map = new google.maps.Map(mapDomEl, {
       zoom: 15,
       mapTypeId: "roadmap",
-      //center: myLatLng
+     
     });
     
-   /* var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-    });*/
     // Create the search box and link it to the UI element.
     const input = document.getElementById("pac-input");
     const searchBox = new google.maps.places.SearchBox(input);
-  
-    //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
     // Bias the SearchBox results towards current map's viewport.
     map.addListener("bounds_changed", () => {
       searchBox.setBounds(map.getBounds());
     });
-  
+    const submitLocationInput = document.getElementById("submitLocationForm");
+    input.addEventListener("change", function(){
+        submitLocationInput.disabled = true;
+    });
+
     let markers = [];
   
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener("places_changed", () => {
-        
         //hide map element
         mapDomEl.style.display = "none";
 
@@ -69,6 +52,9 @@ function /*initMap(lat, lng)*/initAutocomplete() {
         if (places.length == 0) {
             return;
         }
+        submitLocationInput.disabled = false
+        ;
+
         //set lat and lng to inputs
         const latDomEl = document.getElementById("lat-input");
         const lngDomEl = document.getElementById("lng-input");
@@ -128,6 +114,7 @@ function /*initMap(lat, lng)*/initAutocomplete() {
         mapDomEl.style.display = "block";
     });
 }
+
 </script>
 
 <div class="wrap-search-page">
@@ -166,14 +153,14 @@ function /*initMap(lat, lng)*/initAutocomplete() {
                 </span>
             </div>
             <span class="instructions">
-                <?php _e('Find a memorial page of a deceased person by Tomb location on the map','search'); ?>
+                <?php _e('Find a memorial page of a deceased person by exact location of the tomb on the map','search'); ?>
             </span>
             <div class="wrap-form">
                 <form action="<?php echo $action; ?>" id="searchLocationForm" method="POST">
                     <input type="text" required name="pac-input" id="pac-input" placeholder="<?php _e('enter location','search'); ?>">
-                    <input type="hidden" name="lng" id="lng-input">
-                    <input type="hidden" name="lat" id="lat-input">
-                    <input type="submit" value="<?php _e('search','search'); ?>">
+                    <input type="hidden" pattern="[1-9]{*}[.][1-9]{*}" required name="lng" id="lng-input">
+                    <input type="hidden"  pattern="[1-9]{*}[.][1-9]{*}" required name="lat" id="lat-input">
+                    <input id="submitLocationForm" type="submit" value="<?php _e('search','search'); ?>">
                 </form>
                 <div class="wrap-map-search">
                     <div id="map"></div>
