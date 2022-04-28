@@ -42,7 +42,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
         <div class="wrap-content">
             <h1><?php echo($hero_head); ?></h1>
             <p><?php echo($hero_text); ?></p>
-            <a href="<?php echo $create_remember_page_link; ?>"><?php echo($hero_link_text); ?></a>
+            <a class="home-link" href="<?php echo $create_remember_page_link; ?>"><?php echo($hero_link_text); ?></a>
         </div>
     
     </section>
@@ -56,7 +56,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
                     </div>
                     <div class="right">
                         <p><?php echo($item['text']); ?></p>
-                        <a href="<?php echo $create_remember_page_link; ?>"><?php echo($item['link_text']); ?></a>
+                        <a class="home-link" href="<?php echo $create_remember_page_link; ?>"><?php echo($item['link_text']); ?></a>
                     </div>
                 </div>
             <?php } ?>
@@ -82,7 +82,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
                     <p class="ex_name"><?php echo($item['name']); ?></p>
                 </a>
             <?php } ?>
-            <a href=""><?php  _e('View all', 'remmember'); ?></a>
+            <a class="home-link" href=""><?php  _e('View all', 'remmember'); ?></a>
         </div>
     </section>
     <section id="services" class="our-services">
@@ -94,7 +94,7 @@ $say_about_items = get_field("home_say_about_us__items","option");
                     <p class="text"><?php echo($item['text']); ?></p>
                 </div>
             <?php } ?>
-            <a href="<?php $create_remember_page_link ?>"><?php  _e('Create remember page', 'remmember'); ?></a>
+            <a class="home-link" href="<?php $create_remember_page_link ?>"><?php  _e('Create remember page', 'remmember'); ?></a>
         </div>
     </section>
     <section id="sayAbout" class="say-about-us">

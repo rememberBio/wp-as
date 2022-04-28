@@ -287,7 +287,7 @@ section.say-about-us .wrap-content .wrap-say-about-item .top {
 
 section.say-about-us .wrap-content .wrap-say-about-item .top .desc {
   font-weight: normal;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 section.say-about-us .wrap-content .wrap-say-about-item .top .image {
@@ -307,14 +307,24 @@ section.say-about-us .wrap-content .wrap-say-about-item .top .image {
 .wrap-service-item .top.lazy,.wrap-inner-say-about .image.lazy{
   background-image: none !important;
 }
-
+body.home a.home-link {
+  width: max-content !important;
+  height: unset !important;
+  border-radius: 19px !important;
+  padding: 10px 40px !important; 
+  font-size: 16px !important;
+  line-height: 24px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (min-width: 1800px) { }
 @media screen and (max-width: 1100px) { 
   section.example-of-remember-pages .wrap-content p.ex_name {top: 30px;left: 0;right: 0;margin: auto;}
   .wrap-home-page .hero {background-position: bottom;flex-direction: column;/* justify-content: unset; *//* padding-top: 173px; */}
 
 .wrap-home-page .hero h1 {
-    font-size: 27px;
+    font-size: 32px;
     line-height: 32px;
     width: 100%;
     margin: auto;
@@ -322,8 +332,8 @@ section.say-about-us .wrap-content .wrap-say-about-item .top .image {
 
 .wrap-home-page .hero p {
     width: 100%;
-    font-size: 12px;
-    line-height: 19px;
+    font-size: 15px;
+    line-height: 1.5;
     margin: 15px 0 33px;
 }
 
@@ -371,8 +381,8 @@ section.say-about-us .wrap-content .wrap-say-about-item .top .image {
   }
 
   section.how-it-works .wrap-how-item p {
-      font-size: 12px;
-      line-height: 17px;
+      font-size: 15px;
+      line-height: 1.5;
       margin-bottom: 16px;
   }
 
@@ -471,8 +481,8 @@ section.say-about-us .wrap-content .wrap-say-about-item .top .image {
   }
 
   section.say-about-us .wrap-content .wrap-say-about-item .bottom p {
-          font-size:12px;
-          line-height: 15px;
+          font-size:15px;
+          line-height: 1.5;
           margin-bottom:0;
           margin-top: 5px;
   }
@@ -484,7 +494,7 @@ section.say-about-us .wrap-content .wrap-say-about-item .top .image {
   }
 
   section.say-about-us .wrap-content .wrap-say-about-item .top .name {
-      font-size: 14px;
+      font-size: 17px;
   }
 
   section.say-about-us .wrap-content>button {
@@ -507,8 +517,15 @@ section.say-about-us .wrap-content .wrap-say-about-item .top .image {
     max-width: 480px;
   }
   section.our-services .wrap-content .wrap-service-item p {
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  body.home a.home-link {
+    padding: 9px 22px !important;
+    font-size: 15px !important;
+    line-height: 23px !important;
+    font-family: 'rubik medium' !important;
+    border-radius: 30px !important;
   }
 }
 @media screen and (max-width: 767px) { }

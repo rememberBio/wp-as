@@ -1308,7 +1308,7 @@ span.breadcrumb_last,p#breadcrumbs a:last-of-type+span {color: #9F9F9F;}
 	}
 	
 	footer#generalFooter .site-info .part-1 {
-		font-size: 12px;
+		font-size: 14px;
 		gap: 18px;
 		grid-column: 2;
 		margin-left: 0;
@@ -1335,7 +1335,7 @@ span.breadcrumb_last,p#breadcrumbs a:last-of-type+span {color: #9F9F9F;}
 	}
 	
 	footer#generalFooter .site-info ul.menu a {
-		font-size: 12px;
+		font-size: 14px;
 	}
 	
 	footer#generalFooter .site-info a.create-link {
