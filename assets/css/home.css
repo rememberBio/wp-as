@@ -9,11 +9,11 @@
     background-size: cover;
     background-position: right;
 }
+
 .wrap-home-page .hero p {
     max-width: 660px;
     min-width: 35%;
     font-size: 18px;
-    line-height: 24px;
     margin-top: 25px;
     margin-bottom: 60px;
 }
@@ -80,9 +80,8 @@ section.how-it-works .wrap-content {
 
 section.how-it-works .wrap-how-item p {
     margin-top: 0;
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 22px;
-    line-height: 20px;
 }
 
 section.how-it-works .wrap-how-item img {
@@ -210,8 +209,7 @@ section.our-services .wrap-content .wrap-service-item {
 
 section.our-services .wrap-content .wrap-service-item p {
   margin: 0;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 18px;
 }
 
 section.our-services .wrap-content .wrap-service-item .top {
@@ -273,8 +271,7 @@ section.say-about-us .wrap-content .wrap-inner-say-about {
   padding: 42px 45px 20px;
   border-radius: 6px;
   text-align: center;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 18px;
   box-shadow: 0px 3px 6px #00000029;
   display: flex;
   flex-direction: column;
@@ -313,6 +310,7 @@ section.say-about-us .wrap-content .wrap-say-about-item .top .image {
 
 @media screen and (min-width: 1800px) { }
 @media screen and (max-width: 1100px) { 
+  section.example-of-remember-pages .wrap-content p.ex_name {top: 30px;left: 0;right: 0;margin: auto;}
   .wrap-home-page .hero {background-position: bottom;flex-direction: column;/* justify-content: unset; *//* padding-top: 173px; */}
 
 .wrap-home-page .hero h1 {
