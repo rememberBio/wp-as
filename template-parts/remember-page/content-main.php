@@ -248,11 +248,13 @@ if($google_maps_details) {
                 }
                 if($album_videos && is_array($album_videos)) {
                     foreach ($album_videos as $video) { ?>
-                        <a class="gallery-video" href="<?= $url . '/?tab=gallery' ?>">
-                            <video class="lazy">
-                                <source src="" data-src="<?= $video['video'] ?>">
-                            </video>
-                        </a>
+                        <?php if($video['video']) { ?>
+                            <a class="gallery-video" href="<?= $url . '/?tab=gallery' ?>">
+                                <video class="lazy">
+                                    <source src="" data-src="<?= $video['video'] ?>">
+                                </video>
+                            </a>
+                        <?php } ?>
                 <?php }
                 }
             }
