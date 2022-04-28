@@ -24,15 +24,21 @@ $post_id = get_the_ID();
 
 //Get counts of register emails to this post and other translated;
 $pages_ids = get_all_translated_post_ids($post_id);
-$emails_register_count = get_register_emails_for_remember_pages($pages_ids);
+$emails_register_count = db_get_uniqe_remember_pages_register($pages_ids);
 
 $email = "";
 if(isset($_POST['email']))
 	{ 
 		$email = $_POST['email'];
 		if($email != "" && strpos($email, "@") && strpos($email, ".") ) {
+			//save customer in sendinblue
 			register_email_to_spec_remmember_page($email,$post_id);
+			//save customer and rememebr page to our db
 			db_add_customer_remember_page($email,$post_id);
+			//save customer to our db
+			db_create_customer($email,'','From lead');
+			//after complete reoland page
+			header('Location: '.$_SERVER['REQUEST_URI']);
 		}
 	}
 

@@ -67,7 +67,8 @@ function db_create_customer($email,$phone,$name) {
     $table = $wpdb->prefix . 'tb_customers';
     $rows = $wpdb->get_results("SELECT *  FROM $table WHERE email='$email'");
     if(count($rows) > 0) {
-        db_update_customer($email,$phone,$name);
+        if('From lead' !== $name) //don't clear customer's details that lead from rememebr form
+          db_update_customer($email,$phone,$name);
     } else {
         $data = array('email' => $email, 'phone' => $phone , "name" =>  $name);
         $format = array('%s', '%d', '%s');
@@ -114,4 +115,20 @@ function db_get_remember_pages_payments($remember_pages_arr) {
       
   }
   return $candles_flowers_array;
+}
+
+function db_get_uniqe_remember_pages_register($remember_pages_arr){
+
+  create_db_customers_and_remember_page_table();
+  $emails = array();
+
+  if($remember_pages_arr && is_array($remember_pages_arr) && count($remember_pages_arr) > 0) {
+    global $wpdb;
+    $table = $wpdb->prefix . 'tb_customers_and_remember_page';
+    $sql_pages_arr = implode(',', $remember_pages_arr);
+    $query = "SELECT DISTINCT customer_email FROM $table WHERE remember_page_id IN ($sql_pages_arr)";
+    $emails = $wpdb->get_results($query);
+
+  }
+  return count($emails);
 }
