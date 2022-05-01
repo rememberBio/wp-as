@@ -1,6 +1,6 @@
 <?php
     $post_id = get_the_ID();
-
+    $want_hebrew_dates =  get_field("settings_want_hebrew_dates",$post_id);
     //get custom fields
     $hero_img = get_field("main_image_of_the_deceased",$post_id);
     $hero_desc = get_field("about_description",$post_id);
@@ -11,6 +11,19 @@
     $birthday = get_field("about_birth_day",$post_id);
     $day_of_death = get_field("about_death_day",$post_id);
     $about_timeline = get_field("about_timeline",$post_id);
+
+    //hebrew dates
+    $about_birthday_he = "";
+    $about_day_of_death_he = "";
+    if($want_hebrew_dates) {
+        if($day_of_death) {
+            $about_day_of_death_he = convert_acf_date_to_he_str_date($day_of_death);
+        }
+        if($birthday) {
+            $about_birthday_he = convert_acf_date_to_he_str_date($birthday);
+        }
+    }
+    
 ?>
 
 <section class="about">
@@ -23,10 +36,16 @@
                 <div class="wrap-dates">
                     <div class="date">
                         <span class="date-desc"><?php _e('Date of birth:', 'remmember'); ?></span>
+                        <?php if($want_hebrew_dates && $birthday) { ?>
+                            <span class="year"><?php echo($about_birthday_he); ?></span>
+                        <?php } ?>
                         <span class="year"><?php echo($birthday); ?></span>
                     </div>
                     <div class="date">
                         <span class="date-desc"><?php _e('Date of death:', 'remmember'); ?></span>
+                        <?php if($want_hebrew_dates && $day_of_death) { ?>
+                            <span class="year"><?php echo($about_day_of_death_he); ?></span>
+                        <?php } ?>
                         <span class="year"><?php echo($day_of_death); ?></span>
                     </div>
                 </div>
@@ -126,6 +145,8 @@
                     if($years_range == 0) $years_range = 1;
                     $year_diff = ($year_diff / $years_range ) * 100;
                 }
+
+                if($want_hebrew_dates && $year_birth) $year_birth .= ' | ' .  convert_acf_date_to_he_str_date($birthday,true);
             ?>
            
             <div class="wrap-year mobile-only" style="height:<?php echo $year_diff ?>%">
@@ -164,7 +185,9 @@
                 //echo(' $year ' . $year . ' $next_year ' .$next_year. ' $year_diff ' . $year_diff);
 
             ?>
-             <?php if($year && $year != "") { ?>
+             <?php if($year && $year != "") { 
+                if($want_hebrew_dates && $year) $year.= ' | ' . convert_acf_date_to_he_str_date($line['year'],true);
+            ?>
              <div class="wrap-year mobile-only" style="height:<?php echo $year_diff ?>%;">
                 <span class="year"><?php echo $year; ?></span>
                 <span class="desc"><?php echo $line['short_description']; ?></span>
@@ -175,6 +198,7 @@
             </div>
             <?php } ?>
             <?php } 
+            if($want_hebrew_dates && $year_dead) $year_dead .= ' | ' . convert_acf_date_to_he_str_date($day_of_death,true);
             ?>
             <div class="wrap-year">
                 <span class="year"><?php echo $year_dead; ?></span>

@@ -252,6 +252,8 @@ require  get_template_directory() . '/inc/wpml-functions.php';
 
 require  get_template_directory() . '/inc/search-functions.php';
 
+require  get_template_directory() . '/inc/custom-date-functions.php';
+
 //Add custom type
 function create_posttypes() {
 	//post type

@@ -10,7 +10,9 @@ section.stories .wrap-story .wrap-telling-image {
     background-repeat: no-repeat;
     background-size: 31px;
 }
-
+.wrap-desc-date-story .date {
+    margin-top: 2.5px;
+}
 section.stories .wrap-story p {
     font-size: 16px;
     color: var(--custom-black);
@@ -81,5 +83,12 @@ section.stories {
     
     .wrap-story {
         margin-bottom: 20px;
+    }
+    .wrap-desc-date-story .date {
+        display: flex;
+        flex-direction: column;
+    }
+    .wrap-desc-date-story .date-space {
+        display: none;
     }
 }

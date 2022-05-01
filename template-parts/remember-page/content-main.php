@@ -10,6 +10,7 @@ $hero_img = get_field("main_image_of_the_deceased",$post_id);
 $hero_name = get_field("full_name_of_the_deceased",$post_id);
 $hero_desc = get_field("a_few_words_about_the_deceased",$post_id);
 $remember_too_text = get_field("want_to_remmember_text_for_home","option");
+$want_hebrew_dates =  get_field("settings_want_hebrew_dates",$post_id);
 
 //candles and flowers
 //get candles and flowers to this post and other translated;
@@ -43,7 +44,17 @@ $about_parents = get_field("about_parents",$post_id);
 $about_children = get_field("about_children",$post_id);
 $about_birthday = get_field("about_birth_day",$post_id);
 $about_day_of_death = get_field("about_death_day",$post_id);
+$about_birthday_he = "";
+$about_day_of_death_he = "";
 $about_spouse = get_field("about__-_husband__wife",$post_id);
+if($want_hebrew_dates) {
+    if($about_day_of_death) {
+        $about_day_of_death_he = convert_acf_date_to_he_str_date($about_day_of_death);
+    }
+    if($about_birthday) {
+        $about_birthday_he = convert_acf_date_to_he_str_date($about_birthday);
+    }
+}
 
 //stories
 $main_stories = get_field("stories_repeater",$post_id);
@@ -125,11 +136,18 @@ if($google_maps_details) {
             <?php if($about_birthday && $about_birthday !== "") { ?>
             <a href="<?= $url . '/?tab=about' ?>" class="date">
                 <span class="date-desc"><?php _e('Date of birth:', 'remmember'); ?></span>
+                <?php if($want_hebrew_dates && $about_birthday) { ?>
+                    <span class="year"><?php echo($about_birthday_he); ?></span>
+                <?php } ?>
                 <span class="year"><?php echo($about_birthday); ?></span>
+                
             </a>
             <?php } if($about_day_of_death && $about_day_of_death !== "") { ?>
             <a href="<?= $url . '/?tab=about' ?>" class="date">
                 <span class="date-desc"><?php _e('Date of death:', 'remmember'); ?></span>
+                <?php if($want_hebrew_dates && $about_day_of_death) { ?>
+                    <span class="year"><?php echo($about_day_of_death_he); ?></span>
+                <?php } ?>
                 <span class="year"><?php echo($about_day_of_death); ?></span>
             </a>
             <?php } ?>
@@ -222,8 +240,10 @@ if($google_maps_details) {
                 }
         ?>
             <a href="<?= $url . '/?tab=stories' ?>" class="wrap-story">
-                <p class="short-text"><?php echo(force_balance_tags( html_entity_decode(wp_trim_words(htmlentities($story['text']), $pres_count, '...')))); ?></p>
-                <span class="read-more"><?php _e('Read >', 'remmember'); ?></span>
+                <div>
+                    <p class="short-text"><?php echo(force_balance_tags( html_entity_decode(wp_trim_words(htmlentities($story['text']), $pres_count, '...')))); ?></p>
+                    <span class="read-more"><?php _e('Read >', 'remmember'); ?></span>
+                </div>
             </a>
         <?php } ?>
     </div>

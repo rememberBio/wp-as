@@ -13,6 +13,7 @@
         //videos - repeater
             //video
     $gallery_items_copy = array();
+    $want_hebrew_dates =  get_field("settings_want_hebrew_dates",$post_id);
 ?>
 
 <section class="gallery">
@@ -33,17 +34,35 @@
                 $gallery_item['end_year'] = $end_year;
 
             }
+            $start_year_he = '';
+            $end_year_he = '';
+            //he dates
+            if($want_hebrew_dates) {
+                $start_year_he = get_year_str_converted_hebrew_date(gregorian_to_hebrew($start_year,1,1));
+                $end_year_he = get_year_str_converted_hebrew_date(gregorian_to_hebrew($end_year,1,1));
+            }
             $albums = $gallery_item['albums'];
             $gallery_item['photos_arr'] = array(); 
             $gallery_item['videos_arr'] = array(); 
         ?>
            <div class="wrap-item-gallery">
                <span class="top-item-gallery">
-                    <span class="year"><?php echo $start_year; ?></span>
-                    <?php if($end_year !== "") { ?>
-                        <span>-</span>
-                        <span class="year"><?php echo $end_year; ?></span>
+                    <?php if($want_hebrew_dates) { ?>
+                        <span class="wrap-he-dates">
+                            <span class="year"><?php echo $start_year_he; ?></span>
+                            <?php if($end_year !== "") { ?>
+                                <span>-</span>
+                                <span class="year"><?php echo $end_year_he; ?></span>   
+                            <?php } ?>
+                            <span class="space">|</span>
+                        </span>
                     <?php } ?>
+                    <?php if($end_year !== "") { ?>
+                        <span class="year"><?php echo $end_year; ?></span>
+                        <span>-</span>
+                    <?php } ?>
+                    <span class="year"><?php echo $start_year; ?></span>
+                  
                </span>
                 <?php foreach ($albums as $album) { 
                     
@@ -55,6 +74,21 @@
                         $album_end_year = ""; 
                     } else {
                         $album_years = $album_years . " - " . $album_end_year;
+                    }
+
+                    $album_end_year_he = '';
+                    $album_start_year_he = '';
+                    //he dates
+                    if($want_hebrew_dates) {
+                        $album_start_year_he = get_year_str_converted_hebrew_date(gregorian_to_hebrew($album_start_year,1,1));
+                        $album_end_year_he = get_year_str_converted_hebrew_date(gregorian_to_hebrew($album_end_year,1,1));
+                        
+                        $album_years_he =  $album_start_year_he;
+
+                        if($album_end_year !== $album_start_year && $album_end_year !== "")  {
+                            $album_years_he .= " - " . $album_end_year_he ;
+                        }
+                        $album_years = $album_years . ' | ' . $album_years_he;
                     }
 
                     $album_photos = $album['photos'];
@@ -73,11 +107,23 @@
                        <div class="wrap-album-bottom">
                            <span class="name"><?php echo $album['name_of_album']; ?></span>
                            <div class="wrap-date">
-                                <span class="year"><?php echo $album_start_year; ?></span>
-                                <?php if($album_end_year !== "") { ?>
-                                    <span>-</span>
-                                    <span class="year"><?php echo $album_end_year; ?></span>
+                                <?php if($want_hebrew_dates) { ?>
+                                    <span class="wrap-he-dates">
+                                        <span class="year"><?php echo $album_start_year_he; ?></span>
+                                        <?php if($album_end_year !== "") { ?>
+                                            <span>-</span>
+                                            <span class="year"><?php echo $album_end_year_he; ?></span>
+                                        <?php } ?>
+                                           
+                                        <span class="space">|</span>
+                                    </span>
                                 <?php } ?>
+                                <?php if($album_end_year !== "") { ?>
+                                    <span class="year"><?php echo $album_end_year; ?></span>
+                                    <span>-</span>
+                                <?php } ?>
+                                <span class="year"><?php echo $album_start_year; ?></span>
+                                
                             </div>
                         </div>
                     </div>
@@ -100,16 +146,37 @@
             $start_year = $gallery_item['start_year'];
             $end_year = $gallery_item['end_year'];
             $photos = $gallery_item['photos_arr'];
+
+            //he dates
+            $start_year_he = '';
+            $end_year_he = '';
+            
+            if($want_hebrew_dates) {
+                $start_year_he = get_year_str_converted_hebrew_date(gregorian_to_hebrew($start_year,1,1));
+                $end_year_he = get_year_str_converted_hebrew_date(gregorian_to_hebrew($end_year,1,1));
+            }
             if($photos)
                 $all_photos = array_merge($all_photos,$photos);
         ?>
            <div class="wrap-item-gallery">
                <span class="top-item-gallery">
-                    <span class="year"><?php echo $start_year; ?></span>
-                    <?php if($end_year !== "") { ?>
-                        <span>-</span>
-                        <span class="year"><?php echo $end_year; ?></span>
+                    <?php if($want_hebrew_dates) { ?>
+                        <span class="wrap-he-dates">
+                            <span class="year"><?php echo $start_year_he; ?></span>
+                            <?php if($end_year !== "") { ?>
+                                <span>-</span>
+                                <span class="year"><?php echo $end_year_he; ?></span>
+                            <?php } ?>
+                            <span class="space">|</span>
+                        </span>
                     <?php } ?>
+                    <?php if($end_year !== "") { ?>
+                        
+                        <span class="year"><?php echo $end_year; ?></span>
+                        <span>-</span>
+                    <?php } ?>
+                    <span class="year"><?php echo $start_year; ?></span>
+                   
                </span>
                 <?php foreach ($photos as $photo) {  ?>
                     <div class="wrap-photo-item  <?php if($photo['caption'] !== "") { echo 'has-caption'; } ?>">
@@ -132,16 +199,40 @@
         <?php foreach ($gallery_items as $gallery_item) { 
             $start_year = $gallery_item['start_year'];
             $end_year = $gallery_item['end_year'];
+
+            //he dates
+            $start_year_he = '';
+            $end_year_he = '';
+            
+            if($want_hebrew_dates) {
+                $start_year_he = get_year_str_converted_hebrew_date(gregorian_to_hebrew($start_year,1,1));
+                $end_year_he = get_year_str_converted_hebrew_date(gregorian_to_hebrew($end_year,1,1));
+            }
+
             $videos = $gallery_item['videos_arr'];
+
         ?>
             <?php if(is_array($videos)) { ?>
                 <div class="wrap-item-gallery">
                     <span class="top-item-gallery">
-                            <span class="year"><?php echo $start_year; ?></span>
-                            <?php if($end_year !== "") { ?>
-                                <span>-</span>
-                                <span class="year"><?php echo $end_year; ?></span>
+                            <?php if($want_hebrew_dates) { ?>
+                                <span class="wrap-he-dates">
+                                   
+                                    <span class="year"><?php echo $start_year_he; ?></span>
+                                    <?php if($end_year !== "") { ?>
+                                        <span>-</span>
+                                        <span class="year"><?php echo $end_year_he; ?></span>
+                                    <?php } ?>
+                                    <span class="space">|</span>
+                                </span>
                             <?php } ?>
+                            <?php if($end_year !== "") { ?>
+                                
+                                <span class="year"><?php echo $end_year; ?></span>
+                                <span>-</span>
+                            <?php } ?>
+                            <span class="year"><?php echo $start_year; ?></span>
+                           
                     </span>
                         <?php foreach ($videos as $video) {  ?>
                             <a href="" onclick="openVideoGalleryPopup(event,'<?= $video['video'] ?>')" class="wrap-video-item">
@@ -159,7 +250,6 @@
                 <span class="years">
                     <span class="album-name"></span>
                     <span class="year"></span>
-                </span>
                 </span>
             </span>
         </div>

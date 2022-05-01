@@ -3,10 +3,8 @@
 
     //get custom fields
     $stories = get_field("stories_repeater",$post_id);
-    //telling_image
-    //text
-    //telling_name
-    //date
+
+    $want_hebrew_dates =  get_field("settings_want_hebrew_dates",$post_id);
 ?>
 
 <section class="stories">
@@ -17,6 +15,8 @@
             $text = $story['text'];
             $count = count(explode(" ",$text));
             $pres_count = 100;
+            $date = $story['date'];
+            if($want_hebrew_dates && $date) $date = '<span class="ge-date">' . convert_acf_date_to_he_str_date($date) . '</span><span class="date-space"> | </span><sapn class="he-date">' . $date . '</span>';
             if($count > 1) {
                 $pres_count =  ( $count / 4 );
                 if( $pres_count < 100 || $pres_count > 100 ) $pres_count = 100;
@@ -30,7 +30,7 @@
                     <div class="wrap-desc-story">
                         <div class="wrap-telling-image" style="background-image:url(<?php echo($story['telling_image']); ?>)"></div>
                         <div class="wrap-desc-date-story">
-                            <span class="date"><?php echo($story['date']); ?></span>
+                            <span class="date"><?php echo($date); ?></span>
                             <span class="name"><?php echo($story['telling_name']); ?></span>
                         </div>
                     </div>

@@ -116,6 +116,7 @@ function centerMap( map ) {
 
 // Render maps on page load.
 $(document).ready(function(){
+    if($('.acf-map').length)
     $('.acf-map').each(function(){
         var map = initMap( $(this) );
     });
