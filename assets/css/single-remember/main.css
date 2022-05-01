@@ -463,6 +463,7 @@ section.main-places .wrap-content>a .wrap-place-bottom .name {
 }
 section.main-places {
     margin-bottom: 83px;
+    margin-top: 82px;
 }
 section.main-places .wrap-content>a img {
     border-radius: 15px;
@@ -804,6 +805,7 @@ div#galley-main-slider a {
     
     section.main-places {
         margin-bottom: 39px;
+        margin-top: 39px;
     }
     
     section.main-tomb .acf-map {

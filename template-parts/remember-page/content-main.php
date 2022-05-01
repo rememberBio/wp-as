@@ -328,7 +328,7 @@ if($google_maps_details) {
             $address = $place['address'];
             $name = $place['name'];
         ?>
-            <a <?= $url . '/?tab=places-of-commemoration' ?> class="wrap-place">
+            <a href="<?php echo $url . '/?tab=places-of-commemoration' ?>" class="wrap-place">
                 <img class="lazy" src="" data-srcset="<?= $img ?>" alt="">
                 <div class="wrap-place-bottom">
                     <span class="name"><?= $name ?></span>
