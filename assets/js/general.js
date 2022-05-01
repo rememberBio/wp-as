@@ -11,13 +11,19 @@ jQuery(document).ready(($)=>{
             }
         }
 
-        if($('header#generalHeader .custom-switchers.opened').length) {
+        if($('.custom-switchers.opened').length) {
             if(!$(event.target).is('#toggle-menu-item') && !$(event.target).is('#toggle-menu-item img')) {
-                $('header#generalHeader .custom-switchers.opened').removeClass("opened");
+                $('.custom-switchers.opened').removeClass("opened");
+            }
+        }
+
+        if($('header#masthead #site-navigation.toggled').length) {
+            if(!$(event.target).is('.button.menu-toggle') && !$(event.target).is('button.menu-toggle img')) {
+                $('header#masthead #site-navigation.toggled').removeClass("toggled");
             }
         }
     });
-    $('header#generalHeader #site-navigation.toggled,header#generalHeader .custom-switchers.opened').on('click touch', function(event) {
+    $('#site-navigation.toggled,#site-navigation.toggled,.custom-switchers.opened').on('click touch', function(event) {
         event.stopPropagation();
     });
 });

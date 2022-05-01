@@ -676,6 +676,10 @@ textarea {
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
+body:not(.home,.single,.remmember_page-template-default) #page {
+    background: #FBFBFB;
+}
+body:not(.home) header#generalHeader {background: white !important;border-bottom: 1px solid #707070;}
 
 /* Navigation
 --------------------------------------------- */
@@ -821,6 +825,7 @@ header#generalHeader .wrap-btns a.login {
     background: transparent;
     color: white;
 	border-color: white;
+	border-width: 2px;
 }
 
 header#generalHeader .wrap-btns a.create:before {
@@ -1046,7 +1051,7 @@ section.candles-flowers .wrap-candles_flower {
     width: 28px;
 }
 
-.custom-switchers.opened .wrap-drop-down,nav#site-navigation.toggled ul {
+.custom-switchers.opened .wrap-drop-down,#generalHeader nav#site-navigation.toggled ul {
     background: white;
     border-radius: 10px;
     display: flex;
@@ -1057,6 +1062,7 @@ section.candles-flowers .wrap-candles_flower {
     padding: 15px 0 0px;
 	box-shadow: 0px 3px 6px #00000029;
 }
+header#generalHeader #site-navigation ul {top: 41px !important;width: 332px;border-radius: 0;max-width: 89vw;box-shadow: none !important;}
 
 .custom-switchers.opened .wrap-drop-down a, .custom-switchers.opened .wrap-drop-down .lang-menu-item {
     color: var(--custom-blue);
@@ -1124,6 +1130,10 @@ span.breadcrumb_last,p#breadcrumbs a:last-of-type+span {color: #9F9F9F;}
 	}
 }
 @media screen and (max-width: 1100px) {
+	header#generalHeader #site-navigation ul {
+		top: -25px !important;
+		border-radius: 0 !important;
+	}
 	span.close-menu.mobile-only img {
 		filter: brightness(0);
 		width: 12px;
@@ -1174,7 +1184,6 @@ span.breadcrumb_last,p#breadcrumbs a:last-of-type+span {color: #9F9F9F;}
 	
 	button.menu-toggle-header {height: 20px;}
 	
-	header#generalHeader #site-navigation ul {top: -25px;width: 332px;border-radius: 0;max-width: 89vw;box-shadow: none;}
 	
 	header#generalHeader #site-navigation li a {padding: 27.5px 45px 23.5px;}
 	footer#generalFooter .wrap-menus.mobile-only .part-3 {margin-left: auto;margin-right: auto;}
@@ -1217,6 +1226,10 @@ span.breadcrumb_last,p#breadcrumbs a:last-of-type+span {color: #9F9F9F;}
 		display: flex;
 		align-items: center;
 		padding-right: 0px;
+	}
+	header#masthead .custom-switchers {
+		margin-right: auto;
+		margin-left: 0px;
 	}
 	button.menu-toggle {
 		margin-left: 0 !important;

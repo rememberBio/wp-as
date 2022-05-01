@@ -430,7 +430,7 @@ section.main-places .wrap-content>a {
     z-index: 0;
     border-radius: 15px;
     display: inline-flex;
-    max-width: 23%;
+    height: 218px;
 }
 
 section.main-places .wrap-content>a .wrap-place-bottom {
@@ -798,7 +798,7 @@ div#galley-main-slider a {
     
     section.main-places .wrap-content>a {
         display: inline-flex;
-        max-width: 45%;
+        height: 150px;
     }
     
     
