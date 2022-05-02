@@ -57,11 +57,12 @@
         $card_year_ex = date("Y",strtotime($card_date));
         $card_month_ex = date("m",strtotime($card_date));
         $result = stripe_create_payment_method($card_number,$card_month_ex,$card_year_ex,$card_cvc,$phone,$email);
+        
         if($result['result'] == 'error') {
             $payment_error = $result['error'];
         } else {
             $payment_method_id = $result['id'];
-            //create stripe customer
+            //create or update stripe customer
             $customer_id = stripe_create_or_update_customer($phone,$email);
 
             if($customer_id) {

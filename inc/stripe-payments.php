@@ -214,7 +214,7 @@ function stripe_create_invoice($customer_id) {
             CURLOPT_URL => "https://api.stripe.com/v1/invoices",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "customer=$customer_id&metadata[remember_page_url]=create invoice",
+            CURLOPT_POSTFIELDS => "customer=$customer_id&metadata[more_details]=create invoice",
             CURLOPT_HTTPHEADER => [
                 "Authorization: Bearer sk_test_51KfKMZAZSRIVhKs4wMjF3OKwtGPWEh1AoWERCUOMUwtsVIP08SXKfDeodLvVlO7kFtMfhnYgoekabQVFEAQ9UEMG00XsvhTKe7"
             ],
@@ -315,11 +315,5 @@ function stripe_create_payment_and_invoice($customer_id,$price_id,$payment_metho
     $result_pay_invoice = stripe_pay_the_invoice($invoice_id,$payment_method_id);
     if($result_pay_invoice['result'] == 'error') return $result_pay_invoice;
 
-    //send the invoice
-    /*$result_pay_invoice = stripe_send_invoice($invoice_id);
-    if($result_pay_invoice['result'] == 'error') return $result_pay_invoice;*/
-    
     return ["result" => 'success' , 'id' => $invoice_id ];
 }
-//stripe_create_customer("0500000000",'test@test.com');
-//stripe_get_customer_by_email("tova@shal3v.com");
