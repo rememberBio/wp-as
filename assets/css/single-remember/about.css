@@ -75,11 +75,11 @@ section.about .second-part .circle span {
 }
 
 section.about .third-part {
-    padding: 0px 30px;
+    margin: 0px 30px;
     margin-top: 55px;
-    width: 100%;
     overflow-x: auto;
     padding-top: 6px;
+    transform: rotateX(180deg);
 }
 
 section.about .third-part .numbers-line {
@@ -93,7 +93,24 @@ section.about .third-part .numbers-line {
     gap: 10px;
     width: max-content;
     min-width: 100%;
+    transform: rotateX(180deg);
+    margin-bottom: 51px;
 }
+section.about .third-part::-webkit-scrollbar {
+    height: 6px; 
+}
+/* Track */
+section.about .third-part::-webkit-scrollbar-track {
+    border: 6px solid #E5EAED;
+    height:2px;
+    border-radius: 10px;
+}
+   
+/* Handle */
+section.about .third-part::-webkit-scrollbar-thumb {
+    background: var(--custom-light-blue); 
+    border-radius: 10px;
+}  
 
 section.about .third-part .numbers-line .wrap-year {
     display: flex;
@@ -179,15 +196,16 @@ section.about .third-part .numbers-line .wrap-year span {
     }
     
     section.about .second-part {
-        width: unset;
+        width: 100%;
         justify-content: flex-start;
         gap: 30px;
+        padding-top: 28px !important;
+        margin-top: 0;
     }
     
     section.about .third-part {
-        margin-top: 25px;
-        margin-bottom: 80px;
         overflow: unset;
+        margin: 25px 0px 80px;
     }
     
     section.about .third-part .numbers-line {
@@ -200,6 +218,7 @@ section.about .third-part .numbers-line .wrap-year span {
         font-size: 12px;
         min-height: 450px;
         height: 450px;
+        width: 100%;
     }
     section.about .third-part .numbers-line.mobile-more-9 {
         height: max-content;

@@ -1113,6 +1113,10 @@ p#breadcrumbs {margin: 0;font-size: 14px;}
 p#breadcrumbs a,span.breadcrumb_arrow {color: var(--custom-blue);}
 
 span.breadcrumb_last,p#breadcrumbs a:last-of-type+span {color: #9F9F9F;}
+section.about .second-part {
+    padding-left: 0px;
+    padding-right: 30px;
+}
 
 @media screen and (min-width: 1800px) {
 	.custom-switchers {
