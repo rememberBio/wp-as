@@ -138,7 +138,9 @@ function initAutocomplete() {
             <div class="wrap-form">
                 <form action="<?php echo $action; ?>" method="POST" id="searchNameForm">
                     <input type="text" required name="byName" id="byName">
-                    <input type="submit" value="<?php _e('search','search'); ?>">
+                    <input type="submit" class="desktop-only" value="<?php _e('search','search'); ?>">
+                    <button type="submit" class="mobile-only"> <img src="/wp-content/uploads/2022/05/Group-1225-1.svg" alt=""></button>
+
                 </form>
             </div>
 
@@ -160,7 +162,8 @@ function initAutocomplete() {
                     <input type="text" required name="pac-input" id="pac-input" placeholder="<?php _e('enter location','search'); ?>">
                     <input type="hidden" pattern="[1-9]{*}[.][1-9]{*}" required name="lng" id="lng-input">
                     <input type="hidden"  pattern="[1-9]{*}[.][1-9]{*}" required name="lat" id="lat-input">
-                    <input id="submitLocationForm" type="submit" value="<?php _e('search','search'); ?>">
+                    <input type="submit" id="submitLocationForm" class="desktop-only" value="<?php _e('search','search'); ?>">
+                    <button type="submit" id="submitLocationForm" class="mobile-only"> <img src="/wp-content/uploads/2022/05/Group-1225-1.svg" alt=""></button>
                 </form>
                 <div class="wrap-map-search">
                     <div id="map" class="no-map"></div>
@@ -199,7 +202,8 @@ function initAutocomplete() {
                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                         <?php } ?>
                     </select>
-                    <input type="submit" value="<?php _e('search','search'); ?>">
+                    <input type="submit" class="desktop-only" value="<?php _e('search','search'); ?>">
+                    <button type="submit" class="mobile-only"> <img src="/wp-content/uploads/2022/05/Group-1225-1.svg" alt=""></button>
                 </form>
             </div>
         </div>

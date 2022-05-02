@@ -1045,6 +1045,8 @@ span.breadcrumb_last,p#breadcrumbs a:last-of-type+span {color: #9F9F9F;}
 	}
 }
 @media screen and (max-width: 1100px) {
+	header#generalHeader a.login.mobile-only {width: 20px;}
+
 	header#generalHeader #site-navigation ul {
 		top: -25px !important;
 		border-radius: 0 !important;

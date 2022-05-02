@@ -51,7 +51,7 @@ if(is_front_page() || is_home()) $is_home = true;
 					<a href="<?php echo $create_remember_page_link;  ?>" class="create"><?php  _e('Create remeber page', 'remmember'); ?></a>
 				</div>
 				<a href="" class="login mobile-only">
-					<img src="<?php if($is_home) { echo '/wp-content/uploads/2022/04/user-1.svg'; } else { echo '/wp-content/uploads/2022/04/user-1.svg'; } ?>" alt="">
+					<img src="<?php if($is_home) { echo '/wp-content/uploads/2022/04/user-1.svg'; } else { echo '/wp-content/uploads/2022/05/user-2.svg'; } ?>" alt="">
 				</a>
 				<?php echo custom_switcher(); ?>
 				<button class="menu-toggle-header" aria-controls="primary-menu" aria-expanded="false">
