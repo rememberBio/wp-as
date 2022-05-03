@@ -170,6 +170,7 @@ section.main-candles-and-flowers {
     width: 75%;
     gap: 25px;
     padding: 60px 0px 66px;
+    flex-wrap: wrap;
 }
 
 .wrap-remmber-item-main h2 {
@@ -570,7 +571,7 @@ div#galley-main-slider a {
     section.main-candles-and-flowers {
         padding: 31px 0px 42px;
         width: 100vw;
-        gap: 2%;
+        gap: 10px;
         justify-content: center;
     }
 
@@ -842,6 +843,9 @@ div#galley-main-slider a {
     }
 }
 @media screen and (max-width: 767px) {
+    section.main-candles-and-flowers {
+        gap: 3px;
+    }
     section.hero.main-hero {
         height: calc(100vh - 15px);
     }

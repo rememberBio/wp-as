@@ -18,6 +18,16 @@ $pages_ids = get_all_translated_post_ids($post_id);
 $candles_flowers = db_get_remember_pages_payments($pages_ids);
 $num_of_candles = 0;
 $num_of_flowers = 0;
+$dynamic_products = get_field("settings_dynamic_profucts",$post_id);
+
+//dynamic products functions
+function get_dp_donations_per_dp_id($dp_id,$candles_flowers) {
+    $dp_ids = get_all_translated_post_ids($dp_id,'dynamic_products');
+    $array = array_filter($candles_flowers,function($value) use($dp_ids){
+        return in_array($value->type,$dp_ids);
+    });
+    return $array;
+}
 
 if($candles_flowers && is_array($candles_flowers)) {
     //functions for array filter
@@ -108,24 +118,43 @@ if($google_maps_details) {
 
 </section>
 <section class="main-candles-and-flowers">
-    <a href="<?php echo $url . '/?tab=candle-and-flowers' ?>" class="write-candles-flowers-btn">
-        <img src="/wp-content/uploads/2022/03/Group-963.svg" alt="">
-        <div class="right-btn">
-            <span class="num"><?php echo $num_of_candles; ?></span>
-            <span class="desc"><?php _e('Candles', 'remmember'); ?></span>
-            <span class="text"><?php _e('have been lit until now', 'remmember'); ?></span>
-            <div class="main-cf-btn pointer"><?php _e('light a candle', 'remmember'); ?></div>
-        </div>
-    </a>
-    <a href="<?php echo $url . '/?tab=candle-and-flowers' ?>" class="write-candles-flowers-btn">
-        <img src="/wp-content/uploads/2022/03/Group-965.svg" alt="">
-        <div class="right-btn">
-            <span class="num"><?php echo $num_of_flowers; ?></span>
-            <span class="desc"><?php _e('Flowers', 'remmember'); ?></span>
-            <span class="text"><?php _e('have been Sent until now', 'remmember'); ?></span>
-            <div class="main-cf-btn"><?php _e('send a flower', 'remmember'); ?></div>
-        </div>
-    </a>
+    <?php if(!$dynamic_products || !count($dynamic_products)) { ?>
+
+        <a href="<?php echo $url . '/?tab=candle-and-flowers' ?>" class="write-candles-flowers-btn">
+            <img src="/wp-content/uploads/2022/03/Group-963.svg" alt="">
+            <div class="right-btn">
+                <span class="num"><?php echo $num_of_candles; ?></span>
+                <span class="desc"><?php _e('Candles', 'remmember'); ?></span>
+                <span class="text"><?php _e('have been lit until now', 'remmember'); ?></span>
+                <div class="main-cf-btn pointer"><?php _e('light a candle', 'remmember'); ?></div>
+            </div>
+        </a>
+        <a href="<?php echo $url . '/?tab=candle-and-flowers' ?>" class="write-candles-flowers-btn">
+            <img src="/wp-content/uploads/2022/03/Group-965.svg" alt="">
+            <div class="right-btn">
+                <span class="num"><?php echo $num_of_flowers; ?></span>
+                <span class="desc"><?php _e('Flowers', 'remmember'); ?></span>
+                <span class="text"><?php _e('have been Sent until now', 'remmember'); ?></span>
+                <div class="main-cf-btn"><?php _e('send a flower', 'remmember'); ?></div>
+            </div>
+        </a>
+    <?php } else { ?>
+            <?php foreach ($dynamic_products as $dp) { 
+                $dp_id = $dp['product']->ID;
+                $name = get_field('dp_name',$dp_id);
+                $image = get_field('dp_image',$dp_id);
+            ?>
+                <a href="<?php echo $url . '/?tab=candle-and-flowers' ?>" class="write-candles-flowers-btn">
+                    <img src="<?php echo $image ?>" alt="">
+                    <div class="right-btn">
+                        <span class="num"><?php echo count(get_dp_donations_per_dp_id($dp_id,$candles_flowers)); ?></span>
+                        <span class="desc"><?php echo $name ?></span>
+                        <span class="text"><?php _e('have been donated until now', 'remmember'); ?></span>
+                        <div class="main-cf-btn pointer"><?php _e('donate a ', 'remmember');  echo $name; ?></div>
+                    </div>
+                </a>
+        <?php } //End foreach ?>
+    <?php } // End if dynamic products?>
 </section>
 <?php if($about_country && $about_country !== "" || $about_day_of_death && $about_day_of_death !== "" || $about_birthday && $about_birthday !== "" ||  $about_children && count($about_children) > 0 || $about_parents && count($about_parents) > 0) { ?>
 <section class="main-about">

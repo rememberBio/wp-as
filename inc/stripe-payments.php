@@ -178,22 +178,28 @@ function stripe_create_payment_intend($payment_method_id,$customer_id,$amount,$r
 }
 
 //invoice and payment function
-function stripe_create_invoice_item($customer_id,$price_id) {
-    if($customer_id && $price_id) {
+function stripe_create_invoice_item($customer_id,$price_id,$is_dynamic_product = false,$dynamic_price_data=array()) {
+    if($customer_id && ($price_id || $is_dynamic_product)) {
         $curl = curl_init();
+        $CURLOPT_POSTFIELDS = "customer=$customer_id&price=$price_id";
+        if($is_dynamic_product) {
+            $currency = $dynamic_price_data['currency'];
+            $unit_amount = $dynamic_price_data['unit_amount'];
+            $product = $dynamic_price_data['product'];
+            $CURLOPT_POSTFIELDS = "customer=$customer_id&price_data[currency]=$currency&price_data[unit_amount]=$unit_amount&price_data[product]=$product";
+        }
         curl_setopt_array($curl, [
             CURLOPT_URL => "https://api.stripe.com/v1/invoiceitems",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "customer=$customer_id&price=$price_id&metadata[remember_page_url]=create invoice item",
+            CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
             CURLOPT_HTTPHEADER => [
                 "Authorization: Bearer sk_test_51KfKMZAZSRIVhKs4wMjF3OKwtGPWEh1AoWERCUOMUwtsVIP08SXKfDeodLvVlO7kFtMfhnYgoekabQVFEAQ9UEMG00XsvhTKe7"
             ],
         ]);
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
-
+        var_dump($response);
         curl_close($curl);
 
         if ($err) {
@@ -207,14 +213,18 @@ function stripe_create_invoice_item($customer_id,$price_id) {
         }
     } else return["result" => 'error' , 'error' => ['message' => "missing information in create invoice item"] ];
 }
-function stripe_create_invoice($customer_id) {
+function stripe_create_invoice($customer_id,$is_dynamic_product = false,$dynamic_product_name="") {
     if($customer_id) {
         $curl = curl_init();
+        $CURLOPT_POSTFIELDS = "customer=$customer_id&metadata[more_details]=create invoice";
+        if($is_dynamic_product) {
+            $CURLOPT_POSTFIELDS = "customer=$customer_id&metadata[product_name]=" . $dynamic_product_name;
+        }
         curl_setopt_array($curl, [
             CURLOPT_URL => "https://api.stripe.com/v1/invoices",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "customer=$customer_id&metadata[more_details]=create invoice",
+            CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
             CURLOPT_HTTPHEADER => [
                 "Authorization: Bearer sk_test_51KfKMZAZSRIVhKs4wMjF3OKwtGPWEh1AoWERCUOMUwtsVIP08SXKfDeodLvVlO7kFtMfhnYgoekabQVFEAQ9UEMG00XsvhTKe7"
             ],
@@ -292,23 +302,30 @@ function stripe_send_invoice($invoice_id) {
         }
     } else return["result" => 'error' , 'error' => ['message' => "missing information in send invoice"] ];
 }
-function stripe_create_payment_and_invoice($customer_id,$price_id,$payment_method_id) {
+function stripe_create_payment_and_invoice($customer_id,$price_id,$payment_method_id,$is_dynamic_product=false,$dynamic_price_data,$dynamic_product_name) {
     //attach payment method to customer
     $result_attach_payment_method = stripe_attach_payment_method_to_customer($customer_id,$payment_method_id);
     if($result_attach_payment_method['result'] == 'error') {
         //$result_attach_payment_method['error'] = 'Error in create payment, please try later';
         return $result_attach_payment_method;
     }
-    //create invoice item
-    $result_create_invoice_item = stripe_create_invoice_item($customer_id,$price_id);
+    if(!$is_dynamic_product) {
+        //create invoice item
+        $result_create_invoice_item = stripe_create_invoice_item($customer_id,$price_id);
+    } else {
+        $result_create_invoice_item = stripe_create_invoice_item($customer_id,$price_id,$is_dynamic_product,$dynamic_price_data);
+    }
     if($result_create_invoice_item['result'] == 'error') {
         //$result_create_invoice_item['error'] = 'Error in create payment, please try later';
         return $result_create_invoice_item;
     } 
     //create invoice
-    $result_create_invoice = stripe_create_invoice($customer_id);
+    if(!$is_dynamic_product) {
+        $result_create_invoice = stripe_create_invoice($customer_id);
+    } else {
+        $result_create_invoice = stripe_create_invoice($customer_id,$is_dynamic_product,$dynamic_product_name);
+    }
     if($result_create_invoice['result'] == 'error') return $result_create_invoice;
-
     $invoice_id = $result_create_invoice['id'];
 
     //pay for invoice

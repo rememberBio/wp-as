@@ -262,8 +262,8 @@ function create_posttypes() {
 	// CPT Options
 		array(
 			'labels' => array(
-				'name' => __( 'remember pages' ),
-				'singular_name' => __( 'remember_page' )
+				'name' => __( 'Remember Pages' ),
+				'singular_name' => __( 'Remember Page' )
 			),
 			'public' => true,
 			'has_archive' => true,
@@ -272,6 +272,28 @@ function create_posttypes() {
 			'rest_base'             => 'remember_page',
 			'rest_controller_class' => 'WP_REST_Posts_Controller',
 			'taxonomies'          => array('category' ),
+			'supports' => array(
+				'title',
+				'comments'
+			)
+		)
+	);
+
+	///remember dynamic product
+	register_post_type( 'dynamic_products',
+	// CPT Options
+		array(
+			'labels' => array(
+				'name' => __( 'Dynamic Products' ),
+				'singular_name' => __( 'dynamic product' )
+			),
+			'public' => true,
+			'has_archive' => true,
+			'rewrite' => array('slug' => 'dynamic_products'),
+			'show_in_rest' => true,
+			'rest_base'             => 'dynamic_products',
+			'rest_controller_class' => 'WP_REST_Posts_Controller',
+			//'taxonomies'          => array('category' ),
 			'supports' => array(
 				'title',
 				'comments'

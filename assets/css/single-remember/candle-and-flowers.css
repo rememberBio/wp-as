@@ -59,13 +59,16 @@ section.candles-flowers .wrap-content {
     gap: 14px 14px;
 }
 
-.write-candles-flowers-btn:first-child {
-    margin-right: 24px;
+.write-candles-flowers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
 }
 
 .write-candles-flowers-btn>img {
     width: 75px;
     height: 75px;
+    border-radius: 50%;
 }
 
 .write-candles-flowers.opened .wrap-write-candles-flowers-form {display: flex;}
@@ -96,6 +99,7 @@ section.candles-flowers .wrap-content {
 
 .wrap-candles_flower img {
     width: 40px;
+    border-radius: 50%;
 }
 
 .wrap-right-candles_flower .name {
@@ -226,8 +230,9 @@ form#cfform input[type=radio] {
     content: "";
     background-repeat: none;
     background-image: url(/wp-content/uploads/2022/03/Group-425-1.svg);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
 }
 .wrap-top-form .wrap-radio:last-child:not(.current) label:before {background-image: url(/wp-content/uploads/2022/03/Group-424.svg) !important;}
 
@@ -267,6 +272,7 @@ form#cfform input:focus, form#cfform textarea:focus {
     left: 0;
     right: 0;
     margin: auto;
+    border-radius: 50%;
 }
 
 .wrap-top-form .thanks {
@@ -424,10 +430,9 @@ input#card_cvv::placeholder {
     }
     .write-candles-flowers {
         justify-content: center;
-        display: flex;
         margin-bottom: 29px;
         padding-left: 0;
-        gap: 2%;
+        gap: 10px;
     }
     
     section.candles-flowers h1 {
@@ -642,9 +647,12 @@ input#card_cvv::placeholder {
     }
 }
 @media screen and (max-width: 767px) {
+    .write-candles-flowers {
+        gap: 3px;
+    }
     .write-candles-flowers-btn { 
         gap: 3%;
-        padding: 15px 8px 12px;
+        padding: 15px 6px 12px;
     }
     .write-candles-flowers-btn .text {
         font-size: 9px;

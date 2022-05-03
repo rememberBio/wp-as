@@ -23,6 +23,7 @@ if($current_lang !== 'en') {
     $site_link = $site_link . "/" . $current_lang;
 }
 
+$dynamic_products = get_field("settings_custom_products",$post_id);
 
 ?>
 <!doctype html>
@@ -56,7 +57,17 @@ if($current_lang !== 'en') {
 						<li id="menu-item-4" class="menu-item <?php if($current_tab == 'gallery') echo("current"); ?>"><a href="<?= $url ?>?tab=gallery"><?php  _e('Gallery', 'remmember'); ?></a></li>
 						<!-- <li id="menu-item-5" class="menu-item <?php /*if($current_tab == 'comments') echo("current");*/ ?>"><a href="<?php  /*echo $url; */ ?>?tab=comments"><?php /* _e('Comments', 'remmember'); */?></a></li> -->
 						<li id="menu-item-6" class="menu-item <?php if($current_tab == 'places-of-commemoration') echo("current"); ?>"><a href="<?= $url ?>?tab=places-of-commemoration"><?php  _e('Places Of Commemoration', 'remmember'); ?></a></li>
-						<li id="menu-item-7" class="menu-item <?php if($current_tab == 'candle-and-flowers') echo("current"); ?>"><a href="<?= $url ?>?tab=candle-and-flowers"><?php  _e('Candle And Flowers', 'remmember'); ?></a></li>
+						<li id="menu-item-7" class="menu-item <?php if($current_tab == 'candle-and-flowers') echo("current"); ?>">
+							<a href="<?= $url ?>?tab=candle-and-flowers">
+							<?php if($dynamic_products && count($dynamic_products)) {
+									_e('Donations', 'remmember'); 
+
+								} else {
+									_e('Candle And Flowers', 'remmember'); 
+								}
+							?>
+							</a>
+						</li>
 						<li id="menu-item-8" class="menu-item <?php if($current_tab == 'the-grave') echo("current"); ?>"><a href="<?= $url ?>?tab=the-grave"><?php  _e('The Grave', 'remmember'); ?></a></li>
 					
 					</ul>

@@ -100,17 +100,23 @@ jQuery(document).ready(($)=>{
         let wrapRadios = $(this).parents(".write-candles-flowers").find(".step-1 .wrap-radio");
         let candleRadio = wrapRadios.first();
         let flowerRadio = wrapRadios.last();
-
+        
         if(dataProduct == "flower") { 
             candleRadio.removeClass("current");
             candleRadio.find("input").attr('checked', false);
             flowerRadio.addClass("current");
             flowerRadio.find("input").attr('checked', true);
-        } else {
+        } else if(dataProduct == "candle") {
             flowerRadio.removeClass("current");
             flowerRadio.find("input").attr('checked', false);
             candleRadio.addClass("current");
             candleRadio.find("input").attr('checked', true);
+        } else {
+            wrapRadios.removeClass("current");
+            wrapRadios.find("input").attr('checked', false);
+            let dynamicProductRadio = $(this).parents(".write-candles-flowers").find(".step-1 .wrap-radio:has(label[for='"+ dataProduct +"'])");
+            dynamicProductRadio.addClass("current");
+            dynamicProductRadio.find("input").attr('checked', true);
         }
 
         $(this).parents(".write-candles-flowers").addClass("opened");
@@ -144,16 +150,25 @@ jQuery(document).ready(($)=>{
         } else {
             error_container.hide();
             let is_candle = true;
+            let is_dynamic = false;
             let checked_radio = parent.find("input[type=radio]:checked");
-            if(checked_radio.val() == 'flower' ) is_candle = false;
+            if(checked_radio.val() == 'flower' ) { 
+                is_candle = false;
+            } else if(checked_radio.val() != 'candle') {
+                is_dynamic = true;
+                is_candle = false;
+            }
             parent.hide();
             part2 = parent.next('.step-2');
             if(is_candle) {
                 part2.find(".flower-image").hide();
                 part2.find(".price-flower").hide();
-            } else {
+            } else if(!is_dynamic) {
                 part2.find(".candle-image").hide();
                 part2.find(".price-candle").hide();
+            } else {
+                part2.find("[class*='-image'],[class*='price-'").hide();
+                part2.find("[class*='" + checked_radio.val() + "-image'],[class*='price-" + checked_radio.val() + "'").show();
             }
             part2.show();
         }
