@@ -199,7 +199,7 @@ function stripe_create_invoice_item($customer_id,$price_id,$is_dynamic_product =
         ]);
         $response = curl_exec($curl);
         $err = curl_error($curl);
-        var_dump($response);
+        //var_dump($response);
         curl_close($curl);
 
         if ($err) {
