@@ -117,7 +117,7 @@ function initAutocomplete() {
 
 </script>
 
-<div class="wrap-search-page">
+<div class="wrap-search-page main-site-page">
     <?php if ( function_exists('yoast_breadcrumb') ) {
         yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
     } ?>

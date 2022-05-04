@@ -4,6 +4,15 @@
  */
 $search_results = array();
 $search_text = "";
+
+//dynamic products functions
+function get_dp_donations_per_dp_id($dp_id,$candles_flowers) {
+    $dp_ids = get_all_translated_post_ids($dp_id,'dynamic_products');
+    $array = array_filter($candles_flowers,function($value) use($dp_ids){
+        return in_array($value->type,$dp_ids);
+    });
+    return $array;
+}
 //var_dump($_POST);
 if(isset($_POST)) {
     //search by name
@@ -35,13 +44,13 @@ function is_flower($value)
 }
 get_header();
 ?>
-<div class="wrap-search-results">
+<div class="wrap-archive-page">
     <?php if ( function_exists('yoast_breadcrumb') ) {
         yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
     } ?>
     <h1><?php _e('search results','search'); ?></h1>
-    <?php if($search_text !== "") echo '<span class="search-by-text">' . $search_text . '</span>'; ?>
-    <div class="serch-results-container">
+    <?php if($search_text !== "") echo '<span class="search-by-text archive-meta">' . $search_text . '</span>'; ?>
+    <div class="archive-page-container">
         <?php
         if(count($search_results) > 0) {
             $post_count = 1;
@@ -61,26 +70,50 @@ get_header();
                 $posts_ids = get_all_translated_post_ids($post_id); 
                 $candles_flowers = db_get_remember_pages_payments($posts_ids);
 
+                $dynamic_products = get_field("settings_dynamic_profucts",$post_id);
+               
                 $num_of_candles = 0;
                 $num_of_flowers = 0;
-
-                if($candles_flowers && is_array($candles_flowers)) {
-                    $candles = array_filter($candles_flowers,"is_candle");
-                    if(is_array($candles)) $num_of_candles = count($candles);
-                    $flowers = array_filter($candles_flowers,"is_flower");
-                    if(is_array($flowers)) $num_of_flowers = count($flowers);
-                } ?>
-                <a href="<?php echo $url; ?>" class="wrap-result-item">
-                    <span class="image" style="background-image:url(<?php echo $img; ?>);"></span>
-                    <span class="name"><?php echo $name; ?></span>
+                if(!$dynamic_products || !count($dynamic_products)) { 
+                    if($candles_flowers && is_array($candles_flowers)) {
+                        $candles = array_filter($candles_flowers,"is_candle");
+                        if(is_array($candles)) $num_of_candles = count($candles);
+                        $flowers = array_filter($candles_flowers,"is_flower");
+                        if(is_array($flowers)) $num_of_flowers = count($flowers);
+                    } 
+                }?>
+                <a href="<?php echo $url; ?>" class="wrap-archive-item">
+                    <div class="top-part">
+                        <span class="image" style="background-image:url(<?php echo $img; ?>);"></span>
+                        <span class="name"><?php echo $name; ?></span>
+                    </div>
                     <span class="date"><?php echo $date_of_death; ?></span>
-                    <span class="wrap-cf">
-                        <span class="candle"><?php echo $num_of_candles; ?></span>
-                        <span class="flower"><?php echo $num_of_flowers; ?></span>
-                    </span>
-                    <span class="link">
-                        <?php _e('visit site','search'); ?>
-                    </span>
+                    <div class="bottom-part">
+                        <span class="wrap-cf">
+                            <?php if($dynamic_products && count($dynamic_products)) { ?>
+                                <?php foreach ($dynamic_products as $dp) { 
+                                    $dp_id = $dp['product']->ID;
+                                    $num_of_dynamic_products = count(get_dp_donations_per_dp_id($dp_id,$candles_flowers));
+                                    $image = get_field('dp_image',$dp_id); 
+                                    $image_contrast = get_field('dp_image_contrast',$dp_id);
+                                    if(!$image_contrast || $image_contrast == '') $image_contrast = $image;
+                                ?>
+                                    <span class="dp-<?php echo $dp_id; ?>"><?php echo $num_of_dynamic_products; ?></span>
+                                    <style>
+                                        <?php echo "a.wrap-archive-item .wrap-cf>span.dp-$dp_id::before {
+                                            background-image: url($image_contrast);
+                                        }"; ?>
+                                    </style>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <span class="candle"><?php echo $num_of_candles; ?></span>
+                                <span class="flower"><?php echo $num_of_flowers; ?></span>
+                            <?php } ?>
+                        </span>
+                        <span class="link">
+                            <?php _e('visit site','search'); ?>
+                        </span>
+                    </div>
                 </a>
                 <?php if ($post_count%3 == 0) { 
                     $class = 'blue';
@@ -105,7 +138,7 @@ get_header();
 <?php
 get_footer();
 function play_panel($class="blue") { ?>
-    <a href="" class="wrap-result-item play-panel <?php echo $class; ?>">
+    <a href="" class="wrap-archive-item play-panel <?php echo $class; ?>">
         <p>
             <?php _e('Would you like to remember your loved ones','search'); ?>
         </p>

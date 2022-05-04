@@ -694,7 +694,13 @@ textarea {
 	padding-left: 0;
 }
 body:not(.home,.single,.remmember_page-template-default) #page {
-    background: #FBFBFB;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #fbfbfb;
+}
+.wrap-home-page,.main-site-page {
+	flex: 1;
 }
 body:not(.home) header#generalHeader {background: white !important;border-bottom: 1px solid #707070;}
 
@@ -891,9 +897,7 @@ footer#generalFooter {
     background: var(--custom-blue);
     color: white;
     padding: 48px 65px;
-	position: absolute;
-    left: 0;
-    right: 0;
+	width: 100%;
 }
 
 footer#generalFooter .site-info {
@@ -1287,11 +1291,6 @@ span.breadcrumb_last,p#breadcrumbs a:last-of-type+span {color: #9F9F9F;}
 --------------------------------------------- */
 .sticky {
 	display: block;
-}
-
-.post,
-.page {
-	margin: 0 0 1.5em;
 }
 
 .updated:not(.published) {
