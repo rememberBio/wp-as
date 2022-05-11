@@ -46,14 +46,14 @@ section.about .wrap-dates {
 section.about .second-part .circle {
     display: flex;
     flex-direction: column;
-    max-width: 25%;
+    width: 25%;
 }
 
 section.about .second-part {
     display: flex;
     padding-left: 30px;
-    width: 50%;
-    justify-content: space-between;
+    max-width: 50%;
+    gap: 60px;
     margin-top: 25px;
 }
 section.about .second-part .circle a {
@@ -201,6 +201,7 @@ section.about .third-part .numbers-line .wrap-year span {
         gap: 30px;
         padding-top: 28px !important;
         margin-top: 0;
+        max-width: unset;
     }
     
     section.about .third-part {

@@ -188,7 +188,7 @@ if($google_maps_details) {
                 <h3><?php _e('Country:', 'remmember'); ?></h3>
                 <span><?php echo($about_country); ?></span>
             </div>
-            <?php } if($about_spouse && $about_spouse['hasband_or_wife'] ) {  ?>
+            <?php } if($about_spouse && $about_spouse['hasband_or_wife'] && ( $about_spouse['husband_name'] ||  $about_spouse['wifes_name'] ) ) {  ?>
                 <div class="circle spouse">
             <?php $has_link = false;
             if($about_spouse['link_to_the_spouses_remember_page']) { 

@@ -59,7 +59,7 @@
             <h2><?php _e('Country:', 'remmember'); ?></h2>
             <span><?php echo($country); ?></span>
         </div>
-        <?php if($spouse['hasband_or_wife']) { ?>
+        <?php if($spouse['hasband_or_wife'] && ( $spouse['husband_name'] ||  $spouse['wifes_name'] )) { ?>
         <div class="circle spouse">
             <?php $has_link = false;
             if($spouse['link_to_the_spouses_remember_page']) { 
@@ -101,19 +101,21 @@
             <?php if($parent_link) { echo("</a>"); $parent_link = null; } ?>
             <?php } ?>
         </div>
-        <div class="circle children">
-            <img src="/wp-content/uploads/2022/02/Group-110.svg" alt="">
-            <h2><?php _e('Children:', 'remmember'); ?></h2>
-            <?php foreach ($children as $child) { 
-                if($child['link']) {
-                    $child_link = get_permalink($child['link']);
-                }
-            ?>
-                <?php if($child_link) {  echo '<a href="' . $child_link .'">'; }?>
-                <span><?php echo($child['name_of_child']); ?></span>
-                <?php if($child_link) { echo("</a>");  $child_link = null; } ?>
-            <?php } ?>
-        </div>
+        <?php if($children && count($children) > 0) { ?>
+            <div class="circle children">
+                <img src="/wp-content/uploads/2022/02/Group-110.svg" alt="">
+                <h2><?php _e('Children:', 'remmember'); ?></h2>
+                <?php foreach ($children as $child) { 
+                    if($child['link']) {
+                        $child_link = get_permalink($child['link']);
+                    }
+                ?>
+                    <?php if($child_link) {  echo '<a href="' . $child_link .'">'; }?>
+                    <span><?php echo($child['name_of_child']); ?></span>
+                    <?php if($child_link) { echo("</a>");  $child_link = null; } ?>
+                <?php } ?>
+            </div>
+        <?php } ?>
     </div>
     <div class="third-part">
         <div class="numbers-line <?php if(count($about_timeline) >= 9) echo 'mobile-more-9'; ?>" >
