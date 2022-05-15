@@ -95,13 +95,11 @@ get_header();
                                     $dp_id = $dp['product']->ID;
                                     $num_of_dynamic_products = count(get_dp_donations_per_dp_id($dp_id,$candles_flowers));
                                     $image = get_field('dp_image',$dp_id); 
-                                    $image_contrast = get_field('dp_image_contrast',$dp_id);
-                                    if(!$image_contrast || $image_contrast == '') $image_contrast = $image;
                                 ?>
                                     <span class="dp-<?php echo $dp_id; ?>"><?php echo $num_of_dynamic_products; ?></span>
                                     <style>
                                         <?php echo "a.wrap-archive-item .wrap-cf>span.dp-$dp_id::before {
-                                            background-image: url($image_contrast);
+                                            background-image: url($image);
                                         }"; ?>
                                     </style>
                                 <?php } ?>

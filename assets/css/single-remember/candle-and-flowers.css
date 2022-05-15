@@ -348,7 +348,10 @@ form#cfform input:focus, form#cfform textarea:focus {
     cursor: pointer;
     position: relative;
 }
-
+.rtl .step-2 input[type=checkbox] {
+    margin-right: 0;
+    margin-left: 6px;
+}
 .wrap-field.checkbox {
     display: flex;
 }

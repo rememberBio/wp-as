@@ -6,8 +6,7 @@
     $hero_name = get_field("full_name_of_the_deceased",$post_id);
 
     $dynamic_products = get_field("settings_dynamic_profucts",$post_id);
-    //price
-    //image_contrast
+   
     //get candles and flowers to this post and other translated;
     $pages_ids = get_all_translated_post_ids($post_id); 
     $candles_flowers = db_get_remember_pages_payments($pages_ids);
@@ -208,8 +207,6 @@
                                 $dp_id = $dp['product']->ID;
                                 $name = get_field('dp_name',$dp_id);
                                 $image = get_field('dp_image',$dp_id); 
-                                $image_contrast = get_field('dp_image_contrast',$dp_id);
-                                if(!$image_contrast || $image_contrast == '') $image_contrast = $image;
                                 //price of image
                                 $price = $default_donation_price;
                                 $dp_price = get_field('dp_price',$dp_id);
@@ -227,7 +224,7 @@
                                 </div>
                                 <style>
                                     label[for='<?php echo $dp_id; ?>']:before {
-                                        background-image:url(<?php echo $image_contrast; ?>) !important;
+                                        background-image:url(<?php echo $image; ?>) !important;
                                     }
                                     .wrap-top-form .wrap-radio.current label:before {
                                         border: 3.5px solid var(--custom-light-blue);
@@ -284,8 +281,7 @@
                                     $current_post_field = get_dynamic_product_by_id($dp_id,$dynamic_products); 
                                     $name = get_field('dp_name',$dp_id);
                                     $image = get_field('dp_image',$dp_id);
-                                    $image_contrast = get_field('dp_image_contrast',$dp_id); 
-                                    if(!$image_contrast) $image_contrast = $image;
+                                    
                                     //price
                                     $price = $default_donation_price;
                                     $dp_price = get_field('dp_price',$dp_id);
@@ -296,15 +292,13 @@
                                         $price =  '$' . $dp_price;
                                     }  
                                 ?>
-                                    <img class="circle" src="<?php echo $image_contrast; ?>" alt="">
+                                    <img class="circle" src="<?php echo $image; ?>" alt="">
                                     <span class="price"><?= $price ?></span>
                                 <?php } else { ?>
                                     <?php foreach ($dynamic_products as $dp) {
                                         $dp_id = $dp['product']->ID;
                                         $name = get_field('dp_name',$dp_id);
                                         $image = get_field('dp_image',$dp_id);
-                                        $image_contrast = get_field('dp_image_contrast',$dp_id); 
-                                        if(!$image_contrast) $image_contrast = $image;
                                         //price of image
                                         $price = $default_donation_price;
                                         $dp_price = get_field('dp_price',$dp_id);
@@ -315,7 +309,7 @@
                                             $price =  '$' . $dp_price;
                                         }  
                                     ?>
-                                        <img class="circle <?php echo $dp_id; ?>-image" src="<?php echo $image_contrast; ?>" alt="">
+                                        <img class="circle <?php echo $dp_id; ?>-image" src="<?php echo $image; ?>" alt="">
                                         <span class="price-<?php echo $dp_id; ?>"><?php echo $price; ?></span>
                                     <?php } ?>
 
@@ -362,10 +356,9 @@
                         $current_post_field = get_dynamic_product_by_id($dp_id,$dynamic_products); 
                         $name = get_field('dp_name',$dp_id);
                         $image = get_field('dp_image',$dp_id);
-                        $image_contrast = get_field('dp_image_contrast',$dp_id);
-                        if(!$image_contrast) $image_contrast = $image;
+                        
                     ?>
-                        <img class="circle candle-<?php echo $dp_id ?>" src="<?php echo $image_contrast; ?>" alt="">
+                        <img class="circle candle-<?php echo $dp_id ?>" src="<?php echo $image; ?>" alt="">
                         <span class="thanks"><?php _e('Thanks', 'remmember'); ?></span>
                         <img src="<?php echo $hero_img; ?>" alt="" class="main-image">
                         <span class="text text_<?php echo $dp_id ?>"><?php _e("You're donate a ", 'remmember');echo $name; ?></span>

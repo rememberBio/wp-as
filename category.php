@@ -16,7 +16,7 @@ function is_flower($value)
 get_header();
 // get the current taxonomy term
 $term = get_queried_object();
-$image = get_field("category_image",$term);
+$image = get_field("category_image_category_page",$term);
 
 //dynamic products functions
 function get_dp_donations_per_dp_id($dp_id,$candles_flowers) {
@@ -93,14 +93,13 @@ function get_dp_donations_per_dp_id($dp_id,$candles_flowers) {
                                     $dp_id = get_post_meta($post_id,'settings_dynamic_profucts_' . $i .'_product');
                                     if($dp_id && count($dp_id)) $dp_id = $dp_id[0];
                                     $num_of_dynamic_products = count(get_dp_donations_per_dp_id($dp_id,$candles_flowers));
-                                    $image = get_field('dp_image',$dp_id); 
-                                    $image_contrast = get_field('dp_image_contrast',$dp_id);
-                                    if(!$image_contrast || $image_contrast == '') $image_contrast = $image;
+                                    $image = get_field('dp_image',$dp_id);
+                                    
                                 ?>
                                     <span class="dp-<?php echo $dp_id; ?>"><?php echo $num_of_dynamic_products; ?></span>
                                     <style>
                                         <?php echo "a.wrap-archive-item .wrap-cf>span.dp-$dp_id::before {
-                                            background-image: url($image_contrast);
+                                            background-image: url($image);
                                         }"; ?>
                                     </style>
                                 <?php } ?>
