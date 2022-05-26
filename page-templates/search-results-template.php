@@ -59,6 +59,9 @@ get_header();
                 $post_id = $res -> ID;
                 $name = get_field('full_name_of_the_deceased',$post_id);
                 $img = get_field('main_image_of_the_deceased',$post_id);
+                $img_url = get_field("main_image_of_the_deceased_url",$post_id);
+                if($img_url) $img = $img_url;
+
                 $date_of_death = get_field('about_death_day',$post_id);
                 
                 if($date_of_death && $date_of_death !== "") {

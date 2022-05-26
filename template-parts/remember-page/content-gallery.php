@@ -3,6 +3,7 @@
 
     //get custom fields
     $gallery_items = get_field("gallery_items",$post_id);
+    //print_r($gallery_items);
     //start_year
     //end_year
     //albums - repeater
@@ -91,10 +92,32 @@
                         $album_years = $album_years . ' | ' . $album_years_he;
                     }
 
+                    //take album photos and videos
+                    //save on one variable to prevent duplicate loop
+                    //care in videos and photos that come from api
                     $album_photos = $album['photos'];
+                    $album_photos_urls = $album['photos_urls'];
+                    if($album_photos) {
+                        if($album_photos_urls)
+                            $album_photos = array_merge($album_photos,$album_photos_urls);
+                    }
+                    else if($album_photos_urls) $album_photos = $album_photos_urls;
+
                     $album_videos = $album['videos'];
-                    $gallery_item['photos_arr'] = array_merge($gallery_item['photos_arr'],$album_photos);
-                    $gallery_item['videos_arr'] = array_merge($gallery_item['videos_arr'],$album_videos);
+                    $album_videos_urls = $album['videos_urls'];
+                    
+                    if($album_videos && !(count($album_videos) == 1 && $album_videos[0]['video'] == "")) {
+                        if($album_videos_urls)
+                            $album_videos = array_merge($album_videos,$album_videos_urls);
+                    }
+                    else if($album_videos_urls)
+                        $album_videos = $album_videos_urls;
+
+                    if($album_photos)
+                        $gallery_item['photos_arr'] = array_merge($gallery_item['photos_arr'],$album_photos);
+                    if($album_videos)
+                        $gallery_item['videos_arr'] = array_merge($gallery_item['videos_arr'],$album_videos);
+
                     $album_photos_json = urlencode(json_encode($album_photos));
                     $album_videos_json = urlencode(json_encode($album_videos));
                 ?>
@@ -179,10 +202,10 @@
                    
                </span>
                 <?php foreach ($photos as $photo) {  ?>
-                    <div class="wrap-photo-item  <?php if($photo['caption'] !== "") { echo 'has-caption'; } ?>">
+                    <div class="wrap-photo-item  <?php if($photo['caption'] && $photo['caption'] !== "") { echo 'has-caption'; } ?>">
                         <?php if($photo && !empty( $photo )) { ?>
                             <img data-index="<?= $index_img ?>" src="<?php echo $photo['url']; ?>" alt="">
-                            <?php if($photo['caption'] !== "") { ?>
+                            <?php if($photo['caption'] && $photo['caption'] !== "") { ?>
                             <span class="caption" style="display:none;"><?php echo $photo['caption']; ?></span>
                             <?php } ?>
                         <?php } ?>

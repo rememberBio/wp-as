@@ -16,6 +16,9 @@
             $count = count(explode(" ",$text));
             $pres_count = 100;
             $date = $story['date'];
+            $img = $story['telling_image'];
+            $img_url = $story['telling_image_url'];
+            if($img_url) $img = $img_url;
             if($want_hebrew_dates && $date) $date = '<span class="ge-date">' . convert_acf_date_to_he_str_date($date) . '</span><span class="date-space"> | </span><sapn class="he-date">' . $date . '</span>';
             if($count > 1) {
                 $pres_count =  ( $count / 4 );
@@ -28,7 +31,7 @@
                 <p class="text" style="display:none;"><?php echo($story['text']); ?></p>
                 <div class="wrap-bottom-story">
                     <div class="wrap-desc-story">
-                        <div class="wrap-telling-image" style="background-image:url(<?php echo($story['telling_image']); ?>)"></div>
+                        <div class="wrap-telling-image" style="background-image:url(<?php echo($img); ?>)"></div>
                         <div class="wrap-desc-date-story">
                             <span class="date"><?php echo($date); ?></span>
                             <span class="name"><?php echo($story['telling_name']); ?></span>

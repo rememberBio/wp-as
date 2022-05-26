@@ -16,6 +16,8 @@
             //teake all place fields
             $text = $place['text'];
             $img = $place['img'];
+            $img_url = $place['img_url'];
+            if($img_url) $img = $img_url;
             $desc = $place['desc'];
             $name = $place['name'];
             $address = $place['address'];

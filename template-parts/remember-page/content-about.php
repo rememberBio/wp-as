@@ -3,6 +3,8 @@
     $want_hebrew_dates =  get_field("settings_want_hebrew_dates",$post_id);
     //get custom fields
     $hero_img = get_field("main_image_of_the_deceased",$post_id);
+    $hero_img_url = get_field("main_image_of_the_deceased_url",$post_id);
+    if($hero_img_url) $hero_img = $hero_img_url;
     $hero_desc = get_field("about_description",$post_id);
     $country = get_field("about_country",$post_id);
     $spouse = get_field("about__-_husband__wife",$post_id);

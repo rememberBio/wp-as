@@ -3,6 +3,7 @@
 
     //get custom fields
     $images = get_field("the_grave_images_gallery",$post_id);
+    $images_urls = get_field("the_grave_images_gallery_urls",$post_id);
     //the_grave_images_gallery
     $google_maps_details = get_field("the_grave_in_google_maps",$post_id);
     if($google_maps_details) {
@@ -24,6 +25,12 @@
                         <img src="<?= $img ?>" class="current-gallery-image" alt="">
                     <?php }?>
                         <img src="<?= $img ?>" class="  <?php if(!$images_count) { echo "hovered-current-img";  $images_count = 1; } ?>" alt="">
+                <?php } ?>
+                <?php foreach ($images_urls as $img) { ?>
+                    <?php if(!$images_count) { ?>
+                        <img src="<?= $img['img'] ?>" class="current-gallery-image" alt="">
+                    <?php }?>
+                        <img src="<?= $img['img'] ?>" class="  <?php if(!$images_count) { echo "hovered-current-img";  $images_count = 1; } ?>" alt="">
                 <?php } ?>
             </div>
             <div class="wrap-address">

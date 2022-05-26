@@ -109,13 +109,13 @@ span.top-item-gallery {
 
 .wrap-video-item video {
     border-radius: 8px;
+    height: 225px;
 }
 
 .wrap-content.tab-3 .wrap-item-gallery {
     gap: 0px 21px;
     padding-bottom: 4px;
 }
-
 .wrap-video-item {
     margin-bottom: 16px;
     position: relative;
@@ -348,6 +348,7 @@ a.wrap-video-item:before {
     a.wrap-video-item {
         margin-bottom: 11px;
         height: max-content;
+        max-height: 114px;
     }
     
     /* video popup*/

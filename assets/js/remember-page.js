@@ -306,7 +306,7 @@ function openAlbumTab(photosArr,videosArr,years,AlbumName) {
             let wrapItem = jQuery("<div class='wrap-photo-item'></div>");
             let item = jQuery("<img />").attr({ "src":element['url'],"data-index":indexEl});
             let caption = "";
-            if(element['caption'] != "") {
+            if(element['caption'] && element['caption'] != "") {
                 element['caption'] = element['caption'].replaceAll("+"," ");
                 caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
             }
@@ -385,7 +385,7 @@ function openVideoPhotoPopup(imagesArrToPopup,currentIndex) {
                             item = jQuery('<div class="wrap-image-popup-el"></div>').attr({ "data-index":index,"data-length-all":imagesLength });
                             img = jQuery("<img />").attr({ "src":element['url']});
                             item.append(img);
-                            if(element['caption'] != "") {
+                            if(element['caption'] && element['caption'] != "") {
                                 element['caption'] = element['caption'].replaceAll("+"," ");
                                 caption = jQuery("<span class='caption' style='display:none;'></span>").text(element['caption']);
                                 item.append(caption);

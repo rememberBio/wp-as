@@ -7,6 +7,8 @@ $url = get_permalink();
 
 //hero
 $hero_img = get_field("main_image_of_the_deceased",$post_id);
+$hero_img_url = get_field("main_image_of_the_deceased_url",$post_id);
+if($hero_img_url) $hero_img = $hero_img_url;
 $hero_name = get_field("full_name_of_the_deceased",$post_id);
 $hero_desc = get_field("a_few_words_about_the_deceased",$post_id);
 $remember_too_text = get_field("want_to_remmember_text_for_home","option");
@@ -290,6 +292,8 @@ if($google_maps_details) {
             foreach ($albums as $album) { 
                 $album_photos = $album['photos'];
                 $album_videos = $album['videos'];
+                $album_photos_url = $album['photos_urls'];
+                $album_videos_url = $album['videos_urls'];
                 if($album_photos && is_array($album_photos)) {
                     foreach ($album_photos as $photo) { ?>
                     <a href="<?= $url . '/?tab=gallery' ?>"><img class="lazy" src="" data-srcset="<?= $photo['url'] ?>" alt=""></a>
@@ -306,6 +310,25 @@ if($google_maps_details) {
                         <?php } ?>
                 <?php }
                 }
+                if($album_photos_url && is_array($album_photos_url)) {
+                    foreach ($album_photos_url as $photo) { ?>
+                    <?php if($photo['url']) { ?>
+                        <a href="<?= $url . '/?tab=gallery' ?>"><img class="lazy" src="" data-srcset="<?= $photo['url'] ?>" alt=""></a>
+                    <?php } ?>
+            <?php   }
+                }
+                if($album_videos_url && is_array($album_videos_url)) {
+                    foreach ($album_videos_url as $video) { ?>
+                        <?php if($video['video']) { ?>
+                            <a class="gallery-video" href="<?= $url . '/?tab=gallery' ?>">
+                                <video class="lazy">
+                                    <source src="" data-src="<?= $video['video'] ?>">
+                                </video>
+                            </a>
+                        <?php } ?>
+                <?php }
+                }
+                
             }
         } ?>
     </div>
@@ -354,6 +377,8 @@ if($google_maps_details) {
             if( $places_count > 3 ) break;
             $places_count = $places_count + 1;
             $img = $place['img'];
+            $img_url = $place['img_url'];
+            if($img_url) $img = $img_url;
             $address = $place['address'];
             $name = $place['name'];
         ?>

@@ -56,6 +56,8 @@ function get_dp_donations_per_dp_id($dp_id,$candles_flowers) {
                     $post_id = get_the_ID();
                     $name = get_field('full_name_of_the_deceased');
                     $img = get_field('main_image_of_the_deceased');
+                    $img_url = get_field("main_image_of_the_deceased_url");
+                    if($img_url) $img = $img_url;
                     $date_of_death = get_field('about_death_day');
                     
                     if($date_of_death && $date_of_death !== "") {
