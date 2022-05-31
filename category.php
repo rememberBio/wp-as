@@ -16,7 +16,11 @@ function is_flower($value)
 get_header();
 // get the current taxonomy term
 $term = get_queried_object();
-$image = get_field("category_image_category_page",$term);
+$image = get_field("custom_category_page_image",$term);
+if(is_numeric($image)) {
+    $image = wp_get_attachment_image_url($image,$size = null);
+}
+
 
 //dynamic products functions
 function get_dp_donations_per_dp_id($dp_id,$candles_flowers) {

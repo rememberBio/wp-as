@@ -106,6 +106,9 @@ if($google_maps_details) {
                     <input type="email" name="email" value="" id="email" placeholder="<?php  _e('enter your email', 'remmember'); ?>" >
                     <button type="submit"><img src="/wp-content/uploads/2022/03/remember-1.svg" alt=""></button>
                 </form>
+                <div class="agree">
+                    <?php  _e('On signing up I Agree to', 'remmember'); ?> <a href="" class="open-agree-popup"><?php  _e('Privacy Policy and term', 'remmember'); ?> </a> 
+			    </div>
             </div>
         </div>
     </div>

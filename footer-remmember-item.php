@@ -51,6 +51,9 @@ if(isset($_POST['email']))
 				<input type="email" name="email" value="" id="email" placeholder="<?php  _e('enter your email', 'remmember'); ?>" >
 				<button type="submit"><img src="/wp-content/uploads/2022/03/remember-1.svg" alt=""></button>
 			</form>
+			<div class="agree">
+			<?php  _e('On signing up I Agree to', 'remmember'); ?> <a href="" class="open-agree-popup"><?php  _e('Privacy Policy and term', 'remmember'); ?> </a> 
+			</div>
 		</div>
 		<?php if($current_tab == "") { ?>
 		<div class="remmber-footer-count-of-remmbers">
@@ -61,7 +64,23 @@ if(isset($_POST['email']))
 	</footer><!-- #colophon -->
 	
 </div><!-- #page -->
-
+<div id="agreePopup" class="popup" style="display:none">
+	<div class="header-popup">
+		<a href="" class="close close-agree-popup">
+			<img src="/wp-content/uploads/2022/02/Group-956.svg" alt="">
+		</a>
+		<h2><?php _e('Privacy Policy','remmember') ?></h2>
+	</div>
+	<div class="header-body">
+		<p>
+			<?php _e('a few words about him.a few words about him. lorem ipsum dolor s
+			it amet, consectetur iuung elit, sed do eiusmod tempor inc
+			ididunt ut magna aliqua. sit amet porttitor eget. in hendrgravida
+			rutrum quueon tellus orci. quistus nulla at.
+			tortor at risus erra adipiscing at in. diam','remmember') ?>
+		</p>
+	</div>
+</div>
 <?php wp_footer(); ?>
 
 </body>

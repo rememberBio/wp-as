@@ -4,7 +4,16 @@
 .mobile-only {
     display: none !important;
 }
+.agree {
+    font-size: 10px;
+    margin-top: 10px;
+    height: max-content !important;
+}
 
+.agree a {
+    color: var(--custom-light-blue);
+    border-bottom: 1px solid var(--custom-light-blue);
+}
 .menu-menu-1-container li.current a {color: var(--custom-light-blue);border-bottom: 3px solid var(--custom-light-blue);}
 
 .site-branding img {
@@ -88,7 +97,7 @@ footer.site-footer.remmember-item-footer.main-tab {
 
 footer.site-footer.remmember-item-footer:not(.main-tab) {
     height: 106px;
-    padding: 0px 12.5%;
+    padding: 11px 12.5% 0;
     display: flex;
     gap: 5%;
     align-items: center;
@@ -110,7 +119,7 @@ footer.site-footer.remmember-item-footer {
 
 footer.site-footer.remmember-item-footer.main-tab>.text {
     margin-bottom: 10px;
-    margin-top: 45px;
+    margin-top: 32px;
 }
 
 .wrap-form-footer {
@@ -195,6 +204,7 @@ footer.site-footer.remmember-item-footer:not(.main-tab)>.text {
 
 footer.site-footer.remmember-item-footer:not(.main-tab)>.wrap-form-footer {
     width: inherit;
+    height: max-content;
 }
 
 
@@ -239,6 +249,59 @@ section h1 {
    max-width: inherit !important;
 }
 /* End googlr maps */
+
+/* agree popup */
+div.popup {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 574px;
+    background: #F8F8F8;
+    height: max-content;
+    margin: auto;
+    padding: 55px 40px;
+    max-width: 50%;
+    box-shadow: 3px 3px 6px #00000029;
+    border-radius: 19px;
+}
+.header-popup h2 {
+    color: var(--custom-blue);
+    margin: 0;
+    font-size: 25px;
+}
+
+.header-body p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.header-body {
+    margin-top: 38px;
+}
+
+div.popup .close {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: var(--custom-light-blue);
+    border-radius: 50%;
+    top: -15px;
+    right: -13px;
+    box-shadow: 0px 3px 6px #00000029;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+div.popup .close img {
+    width: 14px;
+    height: 14px;
+}
+/* End agree popup */
 
 @media screen and (min-width: 1800px) { 
     form#registerForm button[type=submit] img {
@@ -368,7 +431,7 @@ section h1 {
         padding-left: calc(5% + 94px + 10%);
         padding-right: 5%;
         height: max-content;
-        padding-bottom: 19px;
+        padding-bottom: 15px;
     }
     
     footer.site-footer.remmember-item-footer.main-tab>.text {
@@ -380,12 +443,14 @@ section h1 {
         font-size: 15px;
     }
     form#registerForm input[type=email] {
-        font-size: 15px;
+        font-size: 12px;
     }
     .wrap-form-footer * {
         height: 33px !important;
     }
-    
+    .wrap-form-footer {
+        height: max-content;
+    }
     .remmber-footer-count-of-remmbers .num {
         max-width: 120px;
         font-size: 30px;
@@ -431,9 +496,40 @@ section h1 {
         width: unset;
         padding: 0px 17px;
     }
+    /* agree popup */
+    .agree {
+        margin-top: 8px;
+        height: unset !important;
+    }
+   
+    /* end agree popup */
 }
 
 @media screen and (max-width:767px) {
+    /* agree popup */
+    div.popup {
+        max-width: 85%;
+        padding: 30px;
+    }
+    .header-body {
+        margin-top: 20px;
+    }
+    .header-popup h2 {
+        font-size: 15px;
+    }
+    .header-body p {
+       
+        font-size: 13px;
+    }
+    div.popup .close img {
+        width: 10px;
+        height: 10px;
+    }
+    div.popup .close {
+        width: 35px;
+        height: 35px;
+    }
+    /* end agree popup */
     form#registerForm input[type=email] {
         padding: 12px;
     }

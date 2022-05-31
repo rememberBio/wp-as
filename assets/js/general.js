@@ -22,8 +22,31 @@ jQuery(document).ready(($)=>{
                 $('header#masthead #site-navigation.toggled').removeClass("toggled");
             }
         }
+        
+        //agreePopup
+        if($('#agreePopup').length) {
+            if(!$(event.target).is('.open-agree-popup')) {
+                closeAgreePopup();
+            }
+        }
     });
-    $('#site-navigation.toggled,#site-navigation.toggled,.custom-switchers.opened').on('click touch', function(event) {
+    $('#site-navigation.toggled,#site-navigation.toggled,.custom-switchers.opened,#agreePopup').on('click touch', function(event) {
         event.stopPropagation();
     });
+
+    $('.open-agree-popup').click((e) => {
+        e.preventDefault();
+        showAgreePopup();
+    })
+    $('.close-agree-popup').click((e) => {
+        e.preventDefault();
+        closeAgreePopup();
+    })
 });
+
+function showAgreePopup() {
+    jQuery("#agreePopup").show();
+}
+function closeAgreePopup() {
+    jQuery("#agreePopup").hide();
+}
