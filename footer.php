@@ -13,6 +13,9 @@ $url = get_site_url();
 $name = get_bloginfo( 'name' );
 $search_link = "/search";
 
+$create_remember_page_link = "https://app.remember.bio/rp/create";
+$login_remember_page_link = "https://app.remember.bio/auth/login";
+
 $current_lang = apply_filters( 'wpml_current_language', NULL );
 if($current_lang !== 'en') {
 	$search_link = apply_filters( 'wpml_permalink', get_site_url() . $search_link, $current_lang,true ); 
@@ -29,7 +32,7 @@ if($current_lang !== 'en') {
 					</a>
 					<span><?php _e('Find Remember page', 'remmember'); ?></span>
 				</div>
-				<a class="create-link mobile-only" href=""><?php  _e('Create Remember page', 'remmember'); ?></a>
+				<a class="create-link mobile-only" href="<?php echo $create_remember_page_link; ?>"><?php  _e('Create Remember page', 'remmember'); ?></a>
 
 			</div>
 			<div class="wrap-menus mobile-only">
@@ -56,7 +59,7 @@ if($current_lang !== 'en') {
 				</div>
 			<div class="part-4">
 				<div class="wrap-col-content">
-					<a class="create-link desktop-only" href=""><?php  _e('Create remember page', 'remmember'); ?></a>
+					<a class="create-link desktop-only" href="<?php echo $create_remember_page_link; ?>"><?php  _e('Create remember page', 'remmember'); ?></a>
 					<div class="share-btns">
 						<a href="<?= 'mailto:?subject=' . $url ?>" target="_blank" class="email">
 							<img src="/wp-content/uploads/2022/03/Group-182.svg" alt="">

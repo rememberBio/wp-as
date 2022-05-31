@@ -8,7 +8,8 @@
  *
  * @package remmember
  */
-$create_remember_page_link = "";
+$create_remember_page_link = "https://app.remember.bio/rp/create";
+$login_remember_page_link = "https://app.remember.bio/auth/login";
 $search_link = "/search";
 $site_link = get_site_url();
 
@@ -47,10 +48,10 @@ if(is_front_page() || is_home()) $is_home = true;
 					<img src="<?php if($is_home) { echo '/wp-content/uploads/2022/04/Group-185.png'; } else { echo '/wp-content/uploads/2022/04/search-3.svg'; } ?>" alt="">
 				</a>
 				<div class="wrap-btns desktop-only">
-					<a href="" class="login"><?php  _e('log in', 'remmember'); ?></a>
+					<a href="<?php echo $login_remember_page_link; ?>" class="login"><?php  _e('log in', 'remmember'); ?></a>
 					<a href="<?php echo $create_remember_page_link;  ?>" class="create"><?php  _e('Create remeber page', 'remmember'); ?></a>
 				</div>
-				<a href="" class="login mobile-only">
+				<a href="<?php echo $login_remember_page_link; ?>" class="login mobile-only">
 					<img src="<?php if($is_home) { echo '/wp-content/uploads/2022/04/user-1.svg'; } else { echo '/wp-content/uploads/2022/05/user-2.svg'; } ?>" alt="">
 				</a>
 				<?php echo custom_switcher(); ?>
@@ -69,7 +70,7 @@ if(is_front_page() || is_home()) $is_home = true;
 							<li id="menu-item-5" class="menu-item"><a href=""><?php  _e('Help', 'remmember'); ?></a></li>
 							<li id="menu-item-6" class="menu-item"><a href=""><?php  _e('Contact Us', 'remmember'); ?></a></li>
 							<div class="wrap-btns mobile-only">
-								<a href="" class="login"><?php  _e('log in', 'remmember'); ?></a>
+								<a href="<?php echo $login_remember_page_link; ?>" class="login"><?php  _e('log in', 'remmember'); ?></a>
 								<a href="<?php echo $create_remember_page_link;  ?>" class="create"><?php  _e('Create remeber page', 'remmember'); ?></a>
 							</div>
 						</ul>
